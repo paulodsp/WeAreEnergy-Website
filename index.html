@@ -94,7 +94,12 @@
       <!-- Custom styles for this Nav bar template -->
     <link href="css/navbar-top-fixed.css" rel="stylesheet">
     <!-- Google Recaptcha script -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+      }
+    </script>
   
     <!-- favicon links and stuff -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -488,8 +493,8 @@
     <input type="hidden" name="fbzx" value="7197792357799296946">
     <input type="hidden" name="pageHistory" value="0">
     
-    <input class="btn btn-we btn-l w-100" g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet" 
-    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA" 
+    <input class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet" 
+    data-sitekey="6Lc6Z44qAAAAALEqcyii31GpPOzluW9j7EnbMejO" 
     data-callback='onSubmit' 
     data-action='submit'>
   </form>

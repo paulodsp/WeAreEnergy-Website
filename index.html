@@ -494,17 +494,14 @@
     <input type="hidden" name="fvv" value="1">
     <input type="hidden" name="fbzx" value="7197792357799296946">
     <input type="hidden" name="pageHistory" value="0">
-    <script>
-      function onSubmit(token) {
-        document.getElementById("sendBtn").submit();
-      } // Use `requestSubmit()` for extra features like browser input validation.
-   </script>
+    
     <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
     data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
     data-callback='onSubmit'
     data-action='submit'>REGISTER & #savetheplanet</button>
     
   </form>
+
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
@@ -525,6 +522,12 @@
       }, false);
     })();
   </script>
+
+<script>
+  function onSubmit(token) {
+    document.getElementById("sendBtn").requestSubmit();
+  } // Use `requestSubmit()` for extra features like browser input validation.
+</script>
 
     <p class="lead" style="padding-top: 1rem;">By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.</p><p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
   </div>

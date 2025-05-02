@@ -1,7 +1,7 @@
 {
-    "event": {
-      "token": "TOKEN",
-      "expectedAction": "submit",
-      "siteKey": "6LfmWJAqAAAAANCwUCACLWGPhajssg1v1p-g1Ccx",
-    }
+  "event": {
+    "token": "TOKEN",
+    "expectedAction": "USER_ACTION",
+    "siteKey": "6Lc6Z44qAAAAALEqcyii31GpPOzluW9j7EnbMejO",
   }
+}

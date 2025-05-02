@@ -63,14 +63,29 @@
     <!-- Custom styles for this Nav bar template -->
     <link href="css/navbar-top-fixed.css" rel="stylesheet">
         <!-- Google Recaptcha script -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"></script>
-     
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf2hPMqAAAAAKerX2rixwNaXe7-zyqxlOzaHOVi"></script>
     <script>
-      function onSubmit(token) {
-        document.getElementById("demo-form").submit();
-      } // Use `requestSubmit()` for extra features like browser input validation.
-   </script>
+      const form = document.getElementById("bootstrapForm");
+      const button = document.getElementById("sendBtn");
+    
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        grecaptcha.enterprise.ready(function () {
+          grecaptcha.enterprise.execute('6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA', {action: 'submit'}).then(function (token) {
+            // Optionally add the token to the form
+            const tokenInput = document.createElement("input");
+            tokenInput.setAttribute("type", "hidden");
+            tokenInput.setAttribute("name", "g-recaptcha-response");
+            tokenInput.setAttribute("value", token);
+            form.appendChild(tokenInput);
+    
+            submitted = true;
+            form.requestSubmit(); // runs built-in validation
+          });
+        });
+      });
+    </script>
+    
 
     <!-- favicon links and stuff -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -336,139 +351,121 @@
  
   </div> <!--  end of /jumbotron -->
   <div class="jumbotron">
-    <!-- Form from Checkout Form Example -->
     <div class="container" style="background-color: #c0d726">
       <div class="py-5 text-center">
-      <h2>Please register your interest</h2>
-      <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
+        <h2>Please register your interest</h2>
+        <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
       </div>
+  
       <div class="form-row">
-      <!-- <div class="col-md-8 order-md-1"> -->
         <div class="col-md-12 order-md-1">
-        <h4 class="mb-3">Your Name, Contact & Address</h4></div>
-      </div>  
-  <!-- from https://stackoverflow.com/a/8558731 -->
-      <script type="text/javascript">var submitted=false;</script>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
-  <!-- / end from original index we are energy file form detail -->
-  
-        <!-- Disbaled from stepahno brilli google form extractor -->
-      <!-- <script> 
-          $('#bootstrapForm').submit(function (event) {
-        event.preventDefault()
-          var extraData = {}
-          $('#bootstrapForm').ajaxSubmit({
-          data: extraData,
-          dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
-          error: function () {
-              // Submit of form should be successful but JSONP callback will fail because Google Forms
-              // does not support it, so this is handled as a failure.
-              alert('Form Submitted. Thanks.')
-              // You can also redirect the user to a custom thank-you page:
-              // window.location = 'http://www.mydomain.com/thankyoupage.html'
-              }
-           })
-      })
-  
-      </script> -->
-  
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse" id="bootstrapForm" method="POST" autocomplete="on" class="needs-validation" novalidate target="hidden_iframe" onsubmit="submitted=true;" >
-      
-      <!-- Field type: "short" id: "669343783" -->
-      <div class="form-row">
-        <div class="col-md-6 mb-3"" id="entry.66386698">
-            <label for="669343783">Your Full Name</label>
-              <input id="66386698" type="text" name="entry.66386698" class="form-control" autocomplete="name" placeholder="e.g. First-name Surname" required>
-              <div class="invalid-tooltip">
-                Please type your full name.
-              </div>
-        </div>
-      <!-- Field type: "short" id: "993361248" -->
-        <div class="col-md-6 mb-3">
-          <label for="993361248">Email Address</label>
-            <input id="413471257" type="text" name="entry.413471257" class="form-control" autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" data-test="edit-email-input" required>
-            <div class="invalid-tooltip">
-              Please provide a valid email address.
-            </div>
+          <h4 class="mb-3">Your Name, Contact & Address</h4>
         </div>
       </div>
-      <!-- Field type: "short" id: "674151064" -->
-      <div class="form-row">
-          <div class="col-md-3 mb-3" style="width: 65%;">
-            <label for="674151064">Phone Number</label>
-              <input id="1199933740" type="text" name="entry.1199933740" class="form-control" autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" data-test="edit-phone-input" required>
-              <div class="invalid-tooltip">
-                Please provide a valid phone number.
-              </div>
+  
+      <!-- Hidden iframe for redirect on successful submission -->
+      <script type="text/javascript">var submitted = false;</script>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
+  
+      <form id="bootstrapForm" method="POST" action="#" target="hidden_iframe"
+            autocomplete="on" class="needs-validation" novalidate>
+  
+        <!-- Name -->
+        <div class="form-row">
+          <div class="col-md-6 mb-3" id="entry.66386698">
+            <label for="66386698">Your Full Name</label>
+            <input id="66386698" type="text" name="entry.66386698" class="form-control"
+                   autocomplete="name" placeholder="e.g. First-name Surname" required>
+            <div class="invalid-tooltip">Please type your full name.</div>
           </div>
-      <!-- Field type: "paragraph" id: "806979533" -->
+  
+          <!-- Email -->
           <div class="col-md-6 mb-3">
-            <label for="806979533">Address</label>
-              <input id="799268612" name="entry.799268612" class="form-control" placeholder="e.g. 1 My Street, My Town, My City" required></input>
-              <div class="invalid-tooltip">
-                Please provide a valid address.
-              </div>
+            <label for="413471257">Email Address</label>
+            <input id="413471257" type="email" name="entry.413471257" class="form-control"
+                   autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
+            <div class="invalid-tooltip">Please provide a valid email address.</div>
           </div>
-      <!-- Field type: "short" id: "1173834632" -->
+        </div>
+  
+        <!-- Phone & Address -->
+        <div class="form-row">
+          <div class="col-md-3 mb-3" style="width: 65%;">
+            <label for="1199933740">Phone Number</label>
+            <input id="1199933740" type="tel" name="entry.1199933740" class="form-control"
+                   autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
+            <div class="invalid-tooltip">Please provide a valid phone number.</div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="799268612">Address</label>
+            <input id="799268612" name="entry.799268612" class="form-control"
+                   placeholder="e.g. 1 My Street, My Town, My City" required>
+            <div class="invalid-tooltip">Please provide a valid address.</div>
+          </div>
+  
           <div class="col-md-3 mb-3" style="width: 55%;">
-            <label for="1173834632">Post Code</label>
-              <input id="643330730" type="text" name="entry.643330730" class="form-control"  placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" data-test="edit-postalcode-input" required>
-              <div class="invalid-tooltip">
-                Please provide a valid post code.
-              </div>
+            <label for="643330730">Post Code</label>
+            <input id="643330730" type="text" name="entry.643330730" class="form-control"
+                   placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
+            <div class="invalid-tooltip">Please provide a valid post code.</div>
           </div>
-      <!-- Field type: "dropdown" id: "1560061539" -->
+  
           <div class="col-auto">
             <label for="1560061539">Please choose your preferred contract length and Upfront contribution</label>
-              <select id="1560061539" name="entry.786389054" class="form-select">
-                  <option selected disabled value="Please choose">Please choose</option>
-                  <option value="8 years &amp; Zero Upfront">8 years &amp; Zero Upfront</option>
-                  <option value="6 years &amp; £2,500 Upfront">6 years &amp; £2,500 Upfront</option>
-                  <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
-              </select>
-              <div class="invalid-tooltip">
-                Please choose.
-              </div>
+            <select id="1560061539" name="entry.786389054" class="form-select" required>
+              <option selected disabled value="Please choose">Please choose</option>
+              <option value="8 years &amp; Zero Upfront">8 years &amp; Zero Upfront</option>
+              <option value="6 years &amp; £2,500 Upfront">6 years &amp; £2,500 Upfront</option>
+              <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
+            </select>
+            <div class="invalid-tooltip">Please choose.</div>
           </div>
         </div>
-      <input type="hidden" name="fvv" value="1">
-      <input type="hidden" name="fbzx" value="7197792357799296946">
-      <input type="hidden" name="pageHistory" value="0">
-      
-    <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
-    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-    data-callback='onSubmit'
-    data-action='submit'>REGISTER & #savetheplanet</button>
-    </form>
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
+  
+        <!-- Hidden tracking fields (if used by your Google Form backend) -->
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="fbzx" value="7197792357799296946">
+        <input type="hidden" name="pageHistory" value="0">
+  
+        <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
+        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
+        data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
+        data-action="submit"
+        data-callback="onSubmit">REGISTER & #savetheplanet</button>
+    
+      </form>
+    <!-- Form validation script -->
+<script>
+  (function () {
+    'use strict';
+    window.addEventListener('load', function () {
+      var forms = document.getElementsByClassName('needs-validation');
+      Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
         }, false);
-      })();
-    </script>
+      });
+    }, false);
+  })();
+</script>
 
+<!-- reCAPTCHA submit callback -->
 <script>
   function onSubmit(token) {
     document.getElementById("bootstrapForm").requestSubmit();
-  } // Use `requestSubmit()` for extra features like browser input validation.
+  }
 </script>
-  
-      <p class="lead" style="padding-top: 1rem;">By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.</p><p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
-    </div>
+
+<p class="lead" style="padding-top: 1rem;">
+  By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
+</p>
+<p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
+</div>
   </div>
 </main>
 <!-- <hr> -->
@@ -499,18 +496,22 @@
     </h4>                
   </div>
 </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Optional JavaScript; choose one of the two! -->
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<!-- jQuery (required for Bootstrap 4, but not for Bootstrap 5) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 
-<script src="js/formscript.js"></script>
+<!-- Bootstrap JS (only ONE version should be used) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+  crossorigin="anonymous"></script>
+
+<!-- Google reCAPTCHA v3 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Custom JS if needed -->
+<!-- <script src="js/formscript.js"></script> -->
 <script src="js/webapi.js"></script>
-<script>var submitted = false;</script>
 
-    </body>
+</body>
 </html>

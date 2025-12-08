@@ -240,6 +240,33 @@ button.bg-dark:focus {
   box-shadow: 0 0 0 0.2rem rgba(242, 107, 91, 0.5);
 }
 
+.p-link-blk {
+  color: #0e0a00;
+  border-color: #f1eee6;
+}
+
+.p-link-blk:hover {
+  color: #0a0a00;
+  background-color: #c0d726;
+  border-color: #f26b5b;
+}
+
+.p-link-gblk:focus, p-link-gblk.focus {
+  box-shadow: 0 0 0 0.2rem rgba(242, 107, 91, 0.5);
+}
+
+.p-link-blk.disabled, p-link-blk:disabled {
+  color: rgb(10, 12, 0);
+  background-color: transparent;
+}
+
+.p-link-blk:not(:disabled):not(.disabled):active, .p-link-blk:not(:disabled):not(.disabled).active,
+.show > .p-link-blk.dropdown-toggle {
+  color: #0a0a00;
+  background-color: #f1eee6;
+  border-color: #f1eee6;
+}
+
 .p-link-grn {
   color: #f1eee6;
   border-color: #f1eee6;

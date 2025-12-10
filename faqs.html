@@ -1,3 +1,4 @@
+// filepath: [faqs.html](http://_vscodecontentref_/0)
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,15 +29,15 @@
     })(window, document, 'script', 'dataLayer', 'GTM-NPSRW5F');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Bootstrap core CSS and Icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Bootstrap 5.3.8 core CSS ONLY -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-
+    
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;250;300;400;500;600;650;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -51,18 +52,29 @@
           font-size: 3.5rem;
         }
       }
+     /* Custom styles for the pricing table compare ways to join */
+
+      .pricing-header {
+        max-width: 700px;
+      }
+ /* If you need responsive horizontal scrolling for tables, use this simple rule.
+         Remove the Sass code — compile it into css/jumbotron-we-custom.css if needed. */
+      .table-responsive {
+       display: block;
+       width: 100%;
+       overflow-x: auto;
+       -webkit-overflow-scrolling: touch;
+      }
+      
     </style>
     <!-- Custom styles for this template -->
     <link href ="css/jumbotron-we-custom.css" rel="stylesheet">
     <!-- Custom fonts for alternate font classes Oswald San serif and PT-Serif -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;250;300;400;500;600;650;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- web api script -->
-    <!-- <script type="text/javascript" src="js/webapi.js" async="async"></script> -->
-    <!-- end webapi script -->
     <!-- Custom styles for this Nav bar template -->
     <link href="css/navbar-top-fixed.css" rel="stylesheet">
-        <!-- Google Recaptcha script -->
+    <!-- Google Recaptcha script -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf2hPMqAAAAAKerX2rixwNaXe7-zyqxlOzaHOVi"></script>
     <script>
       const form = document.getElementById("bootstrapForm");
@@ -85,7 +97,6 @@
         });
       });
     </script>
-    
 
     <!-- favicon links and stuff -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -94,27 +105,26 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <!-- end favicon stuff -->
-
 
   </head>
 
   <body style="background-color: #f1eee6">
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPSRW5F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!-- Fixed navbar -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPSRW5F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" href="https://WeAreEnergy.coop">
-    <img src="/images/energy/logos/weare_logo.png" height="75px"; alt="We Are Energy" title="We Are Energy Co-operative">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="https://WeAreEnergy.coop">
+      <img src="/images/energy/logos/weare_logo.png" height="75px" alt="We Are Energy" title="We Are Energy Co-operative">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbar-list">
     <ul class="navbar-nav mx-auto">
@@ -122,242 +132,243 @@
         <a class="nav-link" href="/index.html" alt="Home" title="Energy Home Page">ENERGY</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about.html" alt="About Us" title="About Us Page">ABOUT US <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/about.html" alt="About Us" title="About Us Page">ABOUT US <span class="visually-hidden">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" alt="frequently Asked Questions" title="Frequently Asked Questions">FAQ's<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" alt="frequently Asked Questions" title="Frequently Asked Questions">FAQ's<span class="visually-hidden">(current)</span></a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success-we my-2 my-sm-0" type="submit">Search</button> -->
       <a class="btn btn-outline-success-we my-2 my-sm-0" type="text" title="Join Us" href="#entry.66386698">JOIN US</a>
     </form>
   </div>
 </nav>
 <!-- Navbar end -->
+
 <main role="main">
   <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
+  <section class="py-5" style="background-color: #c0d726;">
     <div class="container-md">
       <h1 class="display-3" style="font-family: stencil;">Frequently asked questions</h1><hr>
-      <p class="p-narrow">We Are Energy is a new green energy services co-operative, designed to give every household and business the opportunity to generate, store and control their own renewable energy at <b>no upfront cost.</b><p>If you have any more questions don't hesitate to <a href="mailto:all@weareenergy.coop?subject=More Questions" title="Contact Us by Email" class="btn-we" style="background-color: transparent"><b>Contact Us</b></a></p>
-      <h2>Act now to fight climate change.</h2<h2> Save 16 tonnes of CO<sub>2</sub> over the first 10 years.</h2>
+      <p class="p-narrow">We Are Energy is a new green energy services co-operative, designed to give every household and business the opportunity to generate, store and control their own renewable energy at <b>no upfront cost.</b></p>
+      <p>If you have any more questions don't hesitate to <a href="mailto:all@weareenergy.coop?subject=More Questions" title="Contact Us by Email" class="btn-we" style="background-color: transparent"><b>Contact Us</b></a></p>
+      <h2>Act now to fight climate change.</h2>
+      <h2>Save 16 tonnes of CO<sub>2</sub> over the first 10 years.</h2>
       <a class="btn btn-we btn-lg" style="margin-top: 1rem;" href="#tfiwa1" alt="Learn More" role="button" title="Learn More from our Frequently Asked Questions">LEARN MORE &raquo;</a>
    </div>
-  </div>
+  </section>
 
-  <div id="tfiwa1" class="jumbotron" style="background-color: #f1eee6; margin-bottom:0.25rem" >
- <div class="container-md">
-      <h2>Frequently Asked Questions</h2>
-  <!-- from components collapse bootstrap documentation -->
-<div class="accordion" id="accordionExample" style="background-color: #f1eee6">
-  <div class="card">
-    <div class="card-header" id="QOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Q1: How can I become a customer?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        A: Please sign up using the <a class="btn-we" style="color: #f26b5b; background-color: transparent;" type="text" title="Join Us" href="#entry.66386698"><b>form below</b></a> and we'll contact you when we're ready to launch in your area. Initially you’ll need to be in the South, South-East or South-West of England. But very soon afterwards we’re hoping to be nearly everywhere in the UK - England, Scotland, Wales and Northern Ireland. There are some minor exceptions where we can’t yet connect you.<br><b>Please sign up, wherever you are in the UK, and we'll get back to you when we are ready to launch in your area.</b>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header-2" id="QTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          Q2: What equipment will I get when I join?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <p>A: We will install our superior, guaranteed and maintained equipment that includes the latest high performance solar panels on your roof, an inverter* , a smart meter panel and a battery which can be fitted inside or outside, in a garage or loft, or under the stairs. * The inverter transforms the dc current from the solar panels into ac current to use in your property.</p><p>The smart meter panel will show you how much electricity is being generated, how much is in your battery store, and how much you are using. It also links to the app that all our customers can download to give you full control and visibility of the system as well.</p><p>The smart meter also provides links back to our systems so we only bill you for the energy you have used and helps us ensure everything is working properly - it can advise us if there are any problems with the system which we'll fix remotely, or if that's not possible, we'll arrange to come and fix things as soon as we can and at a convenient time for you.</p> 
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Q3: What sort of property do I need to join?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        A: You’ll need to have a property with access to a South or West facing roof with space that can accommodate 10 - 12 panels (our standard 4kWp solar system has 11 panels). Our current panels are approximately 1.75m tall by 1m wide, so you'll need about 20 - 25 square meters. (We're continually working with our suppliers to improve the efficiency of the panels we supply so we can still guarantee a minimum electricity generation per site whilst needing fewer panels and a smaller amount of roof space).
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header-2" id="QFour">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Q4: Will you need access to my property other than when installing the equipment?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-      <div class="card-body">
-        A: Yes, the contract with you needs to ensure that we are able to access the equipment so that we can make sure that it is operating and delivering the most efficient service for you and to carry out any necessary maintenance. As the system very rarely has any faults, we're not expecting this to be a regular thing and have planned for around 3 visits in the contract period. These visits will only happen with appointments arranged when it’s convenient with you of course.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QFive">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Q5: What is my energy bill going to be? What savings will I make?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-      <div class="card-body">
-        <p>A: You pay for the energy you use based on our tariff for the region you live in. Remember we only supply 100% renewable electricity.</p>
-        <p>Whilst you are in your contract period, with our price promise guarantee, that means you’ll never pay <b>more</b> than the UK average price-cap, published twice yearly by Ofgem, for your electricity. We’ll work out a flat monthly rate based on your current usage, so you know what to budget for once everything has been installed and your supply switched over to us.</p>
-        <p>After your contract has finished <b>you’ll pay nothing for the electricity you use that’s generated by your system </b> and you'll only pay for any extra electricity that we import for you. The extra electricity that we deliver to you will mainly be delivered to your property at off-peak times and <b>you’ll only pay off-peak rates for that - these are on average about 40% less than peak rates.</b> There may be rare times when we have to provide you with electricity at peak times and if that’s the case we’ll charge you at the standard tariff rate you’ve been paying previously.</p>
-        <p>For example, after your contract has finished, your electricity should cost you about <b>75% less</b> than the average electricity fuel bill for the rest of the 25 years that the system is guaranteed to last.</p>
-        <p>After 10 years we calculate <b id="savings">savings of over £3,600* and over £30,000*</b> after 25 years. Plus all the other benefits you'll have given to the planet's future and your property as well!</p>
-        <p>*Savings and costs are based on a comparison with average latest Ofgem quoted price cap for a London customer with no upfront contribution on an 8 year contract, consuming 3,800kWh electricity, assuming bills rise by inflation at 3% per year and whose consumption rises 1.5% per year for electricity.</p>
-      </div>
-    </div>
-  </div>
-<div class="card">
-    <div class="card-header-2" id="QSix">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Q6: What happens if I move or want to sell my property before the contract has finished?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-      <div class="card-body">
-        <p>A: You can sell your property at any time. An improved EPC rating, lower energy bills and sustainable living are attractive to house buyers. There are a few options you can choose from:-</p><p>We can arrange to transfer the service to the new owner.</p><p>Or, you can buy the equipment outright to add additional value to your property as it’ll generate free electricity for the new owners.</p><p>Or, for a small fee we can move it to your new property if you’d like to keep the system and continue the contract term.</p><p>Or, we can also remove it at a smaller cost than you’d pay to buy it outright, again this will depend on how long you’ve been a customer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QSeven">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Q7: What if I want to remove the equipment from my property before the end of my contract?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-      <div class="card-body">
-        A: There is a contract with us for the installation of the system. Should you wish to terminate the contract early, we can remove the system from your property at a cost dependent on how much of your contract has left to run.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header-2" id="QEight">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          Q8: How much will it cost me to buy the system outright?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
-      <div class="card-body">
-        A: The price will depend on how much longer the contract has left to run. We will advise you once you contact us.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QNine">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-          Q9: Do I need to contact my mortgage provider?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
-      <div class="card-body">
-          A: You don’t need to. If you have a mortgage, we’ll contact your provider to secure their permission.
+  <section id="tfiwa1" class="py-5" style="background-color: #f1eee6; margin-bottom:0.25rem" >
+        <div class="container-md">
+              <h2>Frequently Asked Questions</h2>
+          <!-- from components collapse bootstrap documentation -->
+        <div class="accordion" id="accordionExample" style="background-color: #f1eee6">
+          <div class="card">
+            <div class="card-header" id="QOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Q1: How can I become a customer?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="QOne" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                A: Please sign up using the <a class="btn-we" style="color: #f26b5b; background-color: transparent;" type="text" title="Join Us" href="#entry.66386698"><b>form below</b></a> and we'll contact you when we're ready to launch in your area. Initially you'll need to be in the South, South-East or South-West of England. But very soon afterwards we're hoping to be nearly everywhere in the UK - England, Scotland, Wales and Northern Ireland. There are some minor exceptions where we can't yet connect you.<br><b>Please sign up, wherever you are in the UK, and we'll get back to you when we are ready to launch in your area.</b>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Q2: What equipment will I get when I join?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="QTwo" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                <p>A: We will install our superior, guaranteed and maintained equipment that includes the latest high performance solar panels on your roof, an inverter* , a smart meter panel and a battery which can be fitted inside or outside, in a garage or loft, or under the stairs. * The inverter transforms the dc current from the solar panels into ac current to use in your property.</p><p>The smart meter panel will show you how much electricity is being generated, how much is in your battery store, and how much you are using. It also links to the app that all our customers can download to give you full control and visibility of the system as well.</p><p>The smart meter also provides links back to our systems so we only bill you for the energy you have used and helps us ensure everything is working properly - it can advise us if there are any problems with the system which we'll fix remotely, or if that's not possible, we'll arrange to come and fix things as soon as we can and at a convenient time for you.</p> 
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Q3: What sort of property do I need to join?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="QThree" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                A: You'll need to have a property with access to a South, East or West facing roof with space that can accommodate 4 - 9 panels (our standard 4kWp solar system has 6 panels). Our panels are approximately 1.75m tall by 1m wide, so you'll need about 8 - 18 square meters. (Our next generation panels provide upto 30% more generation than current panels so need less space to give the same generation capacity).
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Q4: Will you need access to my property other than when installing the equipment?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="QFour" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                A: Yes, the contract with you needs to ensure that we are able to access the equipment so that we can make sure that it is operating and delivering the most efficient service for you and to carry out any necessary maintenance. As the system very rarely has any faults, we're not expecting this to be a regular thing and have planned for around 3 visits in the contract period. These visits will only happen with appointments arranged when it's convenient with you of course.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QFive">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Q5: What is my energy bill going to be? What savings will I make?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="QFive" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                <p>A: You pay for the energy you use based on our tariff for the region you live in. Remember we only supply 100% renewable electricity.</p>
+                <p>Whilst you are in your contract period, with our price promise guarantee, that means you'll never pay <b>more</b> than 50% of the UK price-cap for your region, published twice yearly by Ofgem, for your electricity. We'll work out a flat monthly rate based on your current usage, so you know what to budget for once everything has been installed and your supply switched over to us.</p>
+                <p>After your contract has finished <b>you'll pay nothing for the electricity you use that's generated by your system </b> and you'll only pay for any extra electricity that we import for you. The extra electricity that we deliver to you will mainly be delivered to your property at off-peak times and <b>you'll only pay off-peak rates for that - these are on average about 40% less than peak rates.</b> There may be rare times when we have to provide you with electricity at peak times and if that's the case we'll charge you at the standard tariff rate you've been paying previously.</p>
+                <p>For example, after your contract has finished, your electricity should cost you about <b>75% less</b> than the average electricity fuel bill for the rest of the 25 years that the system is guaranteed to last.</p>
+                <p>After 10 years we calculate <b id="savings">savings of over £6,000* and over £21,000*</b> after 25 years. Plus all the other benefits you'll have given to the planet's future and your property as well!</p>
+                <p>*Savings and costs are based on a comparison with average latest Ofgem quoted price cap for a London customer with no upfront contribution on an 7 year and 8 month  contract, consuming 2,855kWh electricity, assuming bills rise by inflation at 2% per year and whose consumption rises 2.8% per year for electricity.</p>
+              </div>
+            </div>
+          </div>
+        <div class="card">
+            <div class="card-header" id="QSix">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                  Q6: What happens if I move or want to sell my property before the contract has finished?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="QSix" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                <p>A: You can sell your property at any time. An improved EPC rating, lower energy bills and sustainable living are attractive to house buyers. There are a few options you can choose from:-</p><p>We can arrange to transfer the service to the new owner.</p><p>Or, you can buy the equipment outright to add additional value to your property as it'll generate free electricity for the new owners.</p><p>Or, for a small fee we can move it to your new property if you'd like to keep the system and continue the contract term.</p><p>Or, we can also remove it at a smaller cost than you'd pay to buy it outright, again this will depend on how long you've been a customer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QSeven">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                  Q7: What if I want to remove the equipment from my property before the end of my contract?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSeven" class="collapse" aria-labelledby="QSeven" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                A: There is a contract with us for the installation of the system. Should you wish to terminate the contract early, we can remove the system from your property at a cost dependent on how much of your contract has left to run.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QEight">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                  Q8: How much will it cost me to buy the system outright?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEight" class="collapse" aria-labelledby="QEight" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                A: The price will depend on how much longer the contract has left to run. We will advise you once you contact us.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QNine">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                  Q9: Do I need to contact my mortgage provider?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseNine" class="collapse" aria-labelledby="QNine" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                  A: You don't need to. If you have a mortgage, we'll contact your provider to secure their permission.
+                </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QTen">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                  Q10: How will I be billed for my energy use?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTen" class="collapse" aria-labelledby="QTen" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                  We will provide you with a bill which you'll pay by direct debit every month. You'll know what the bill is 10 days before the payment is taken.
+                </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QEleven">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                  Q11: How long does it take to install the equipment?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEleven" class="collapse" aria-labelledby="QEleven" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                  A: Installing our system is a fairly simple process. From start to finish, it usually takes just one or two days to fit the solar panels, inverter, meters and battery. A team from our local trained and qualified installation partners will oversee the entire process, including the positioning and removal of scaffolding if it's needed.
+                </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QTwelve">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                  Q12: What happens to my bill and the equipment at the end of my contract?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwelve" class="collapse" aria-labelledby="QTwelve" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                  <p>A: Once the period of your contract is up, ownership of the equipment will be transferred to you. The solar panels we install have a performance warranty of 25 years, so you'll still be able to generate clean, renewable energy for many years to come. The energy they generate is yours to use in your property at no cost from this time on.</p>
+                  <p>Any extra electricity you need - during the darker months for example - will mainly be imported from our renewable generation partners at off-peak times and you'll be charged at the discounted end of contract off-peak rate. This is normally at least 40% less than the average UK price.</p>
+                  <p>You'll also get given shares in the business you've helped make based on your bills to date and your continued cooperative membership. And you'll be eligible for dividends once the cooperative is sustainable and EBIT positive.</p>
+                </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="QFourteen">
+              <h2 class="mb-0">
+                <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                  Q14: Will I need to sign any legal documents?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFourteen" class="collapse" aria-labelledby="QFourteen" data-bs-parent="#accordionExample">
+              <div class="card-body">
+                  A: When you choose to join us as a customer, you will be required to sign a number of documents allowing us to contact your mortgage provider if you have one, secure a lease for your roof and set up a direct debit for your electricity payments. If you're unsure about anything, we recommend speaking with a qualified solicitor.
+                </div>
+            </div>
+          </div>
+          <div style="padding-top: 1rem;"><h2>If you have any more questions don't hesitate to <a class="btn-outline-success-we" href="mailto:all@weareenergy.coop?subject=A Question" title="Contact Us">Contact Us</a> and we'll get back to you asap with our answer. :-)</h2></div>
+          <p style="padding-top: 1rem;"><button id="share" class="btn btn-we btn-lg share-btn" title="Share with your friends">SHARE WITH FRIENDS</button></p>
+          <div><img src="/images/energy/coop_emgr_slogan_en.png" alt="Cooperative enterprises build a better world " class="mx-auto d-block" style="width:50%;">
+          </div>
         </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header-2" id="QTen">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-          Q10: How will I be billed for my energy use?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
-      <div class="card-body">
-          We will provide you with a bill which you’ll pay by direct debit every month. You’ll know what the bill is 10 days before the payment is taken.
-        </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QEleven">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-          Q:11 How long does it take to install the equipment?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
-      <div class="card-body">
-          A: Installing our system is a fairly simple process. From start to finish, it usually takes just one or two days to fit the solar panels, inverter, meters and battery. A team from our local trained and qualified installation partners will oversee the entire process, including the positioning and removal of scaffolding if it’s needed.
-        </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header-2" id="QTwelve">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-          Q12: What happens to my bill and the equipment at the end of my contract?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
-      <div class="card-body">
-          <p>A: Once the period of your contract is up, ownership of the equipment will be transferred to you. The solar panels we install have a performance warranty of 25 years, so you’ll still be able to generate clean, renewable energy for many years to come. The energy they generate is yours to use in your property at no cost from this time on.</p>
-          <p>Any extra electricity you need - during the darker months for example - will mainly be imported from our renewable generation partners at off-peak times and you’ll be charged at the discounted end of contract off-peak rate. This is normally at least 40% less than the average UK price.</p>
-          <p>You’ll also get given shares in the business you’ve helped make based on your bills to date and your continued fuel use. And you'll be eligible for dividends and rebates on the energy you put back into the system.</p>
-        </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="QFourteen">
-      <h2 class="mb-0">
-        <button class="btn btn-link-we btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
-          Q14: Will I need to sign any legal documents?
-        </button>
-      </h2>
-    </div>
-    <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordionExample">
-      <div class="card-body">
-          A: When you choose to join us as a customer, you will be required to sign a number of documents allowing us to contact your mortgage provider if you have one, secure a lease for your roof and set up a direct debit for your electricity payments. If you’re unsure about anything, we recommend speaking with a qualified solicitor.
-        </div>
-    </div>
-  </div>
-  <div style="padding-top: 1rem;"><h2>If you have any more questions don't hesitate to <a class="btn-outline-success-we" href="mailto:all@weareenergy.coop?subject=A Question" title="Contact Us" class="vertical-separator">Contact Us</a> and we'll get back to you asap with our answer. :-)</h2></div>
-  <p style="padding-top: 1rem;"><button id="share" class="btn btn-we btn-lg share-btn" title="Share with your friends">SHARE WITH FRIENDS</button></p>
-  <div><img src="/images/energy/coop_emgr_slogan_en.png" alt="Cooperative enterprises build a better world " class="mx-auto d-block" style="width:50%;">
-  </div>
-</div>
-<!-- end collapse -->
-</div> <!--  end of /container -->
+        <!-- end collapse -->
+</section <!--  end of /container -->
  
-  </div> <!--  end of /jumbotron -->
-  <div class="jumbotron">
-    <div class="container" style="background-color: #c0d726">
+  
+  <section class="py-5" style="background-color: #c0d726">
+    <div class="container">
       <div class="py-5 text-center">
         <h2>Please register your interest</h2>
         <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
       </div>
   
-      <div class="form-row">
+      <div class="row g-3">
         <div class="col-md-12 order-md-1">
           <h4 class="mb-3">Your Name, Contact & Address</h4>
         </div>
@@ -371,9 +382,9 @@
             autocomplete="on" class="needs-validation" novalidate>
   
         <!-- Name -->
-        <div class="form-row">
+        <div class="row g-3">
           <div class="col-md-6 mb-3" id="entry.66386698">
-            <label for="66386698">Your Full Name</label>
+            <label for="66386698" class="form-label">Your Full Name</label>
             <input id="66386698" type="text" name="entry.66386698" class="form-control"
                    autocomplete="name" placeholder="e.g. First-name Surname" required>
             <div class="invalid-tooltip">Please type your full name.</div>
@@ -381,7 +392,7 @@
   
           <!-- Email -->
           <div class="col-md-6 mb-3">
-            <label for="413471257">Email Address</label>
+            <label for="413471257" class="form-label">Email Address</label>
             <input id="413471257" type="email" name="entry.413471257" class="form-control"
                    autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
             <div class="invalid-tooltip">Please provide a valid email address.</div>
@@ -389,29 +400,30 @@
         </div>
   
         <!-- Phone & Address -->
-        <div class="form-row">
-          <div class="col-md-3 mb-3" style="width: 65%;">
-            <label for="1199933740">Phone Number</label>
+        <div class="row g-3">
+          <div class="col-md-3 mb-3">
+            <label for="1199933740" class="form-label">Phone Number</label>
             <input id="1199933740" type="tel" name="entry.1199933740" class="form-control"
                    autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
             <div class="invalid-tooltip">Please provide a valid phone number.</div>
           </div>
   
           <div class="col-md-6 mb-3">
-            <label for="799268612">Address</label>
+            <label for="799268612" class="form-label">Address</label>
             <input id="799268612" name="entry.799268612" class="form-control"
                    placeholder="e.g. 1 My Street, My Town, My City" required>
             <div class="invalid-tooltip">Please provide a valid address.</div>
           </div>
   
-          <div class="col-md-3 mb-3" style="width: 55%;">
-            <label for="643330730">Post Code</label>
+          <div class="col-md-3 mb-3">
+            <label for="643330730" class="form-label">Post Code</label>
             <input id="643330730" type="text" name="entry.643330730" class="form-control"
                    placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
             <div class="invalid-tooltip">Please provide a valid post code.</div>
           </div>
   
-          <div class="col-auto">
+         <!-- Old Contract Length & Upfront contribution selection for reference -->  
+          <!-- <div class="col-auto">
             <label for="1560061539">Please choose your preferred contract length and Upfront contribution</label>
             <select id="1560061539" name="entry.786389054" class="form-select" required>
               <option selected disabled value="Please choose">Please choose</option>
@@ -420,7 +432,7 @@
               <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
             </select>
             <div class="invalid-tooltip">Please choose.</div>
-          </div>
+          </div> -->
         </div>
   
         <!-- Hidden tracking fields (if used by your Google Form backend) -->
@@ -430,13 +442,14 @@
   
         <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
         <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
-        data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-        data-action="submit"
-        data-callback="onSubmit">REGISTER & #savetheplanet</button>
-    
-      </form>
-    <!-- Form validation script -->
-<script>
+    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
+    data-action="submit"
+    data-callback="onSubmit">REGISTER & #savetheplanet</button>
+
+    </form>
+
+     <!-- Form validation script -->
+    <script>
   (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -452,21 +465,21 @@
       });
     }, false);
   })();
-</script>
+    </script>
 
-<!-- reCAPTCHA submit callback -->
-<script>
+    <!-- reCAPTCHA submit callback -->
+    <script>
   function onSubmit(token) {
     document.getElementById("bootstrapForm").requestSubmit();
   }
-</script>
+    </script>
 
-<p class="lead" style="padding-top: 1rem;">
-  By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
-</p>
-<p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
-</div>
+    <p class="lead" style="padding-top: 1rem;">
+    By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
+    </p>
+    <p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
   </div>
+ </section>
 </main>
 <!-- <hr> -->
 <footer class="footer mt-auto py-3">
@@ -482,7 +495,7 @@
     </symbol>
   </svg>
   <div class="container col-sm-8" class="text-muted">
-    <h4 style="font-size: 1.0rem;"><a class="btn-outline-success-we" href="https://WeAreEnergy.coop" style="align-content: center">We Are Energy &copy; 2020<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script></a></h4>
+    <h4 style="font-size: 1.0rem;"><a class="btn-outline-success-we" href="https://WeAreEnergy.coop" style="align-content: center; background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;">We Are Energy &copy; 2020<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script></a></h4>
     <p style="font-size: 1.0rem;">We Are Energy is the trading name of We Are Energy Co-operative Limited, a registered society under the Co-operative and Community Benefit Societies Act 2014 - Registration Number 4686.</p>
     <div class="row justify-content-start" style="margin-bottom: 0.5rem;">
       <div class="col-1"><a class="btn-outline-success-we" href="https://twitter.com/intent/tweet?button_hashtag=wearenergycoop&ref_src=twsrc%5Etfw" title="Tweet Us" data-show-count="false"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a><a class"btn-outline-success-we"></a></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -492,19 +505,15 @@
       <div class="col-1"><a class="text-muted"alt="Opens the Facebook follow us link in a new browser window tab" type="redirect" title="Follow us on Facebook" target="Blank" href="https://www.facebook.com/WeAreEnergy.coop/"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a>
       </div>
     </div>
-    <h4 style="font-size: 1.25rem;"><a class="btn-outline-success-we" href="mailto:all@weareenergy.coop?subject=Launching Soon" title="Contact Us">Contact Us</a>
-    </h4>                
+    <h4 style="font-size: 1.25rem;"><a class="btn-outline-success-we" style="background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="mailto:all@weareenergy.coop?subject=Launching Soon" title="Contact Us">Contact Us</a>
+    </h4>
+    <br><p style="font-size: 1.0rem; background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;"><a class="btn-outline-success-we-disabled" style="color: #F26B5B; text-decoration: none;">Images thanks to </a><a class="btn-outline-success-we"  href="https://unsplash.com/@chrisabney">Chris Abney, </a><a class="btn-outline-success-we" href="https://unsplash.com/@pretty_and_pure">Briony Brown and </a><a class="btn-outline-success-we" href="https://unsplash.com/@andympbaxter">Andy Baxter </a><a class="btn-outline-success-we" href="https://unsplash.com"> on Unsplash.</a></p>
+    </p>                
   </div>
 </footer>
-<!-- jQuery (required for Bootstrap 4, but not for Bootstrap 5) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 
-<!-- Bootstrap JS (only ONE version should be used) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-  crossorigin="anonymous"></script>
+<!-- Bootstrap JS Bundle (includes Popper) - BOOTSTRAP 5.3 ONLY -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Google reCAPTCHA v3 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

@@ -30,11 +30,8 @@
     })(window, document, 'script', 'dataLayer', 'GTM-NPSRW5F');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Bootstrap core CSS and icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Bootstrap 5.3.8 core CSS ONLY -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
@@ -61,27 +58,15 @@
       .pricing-header {
         max-width: 700px;
       }
-
+ /* If you need responsive horizontal scrolling for tables, use this simple rule.
+         Remove the Sass code — compile it into css/jumbotron-we-custom.css if needed. */
       .table-responsive {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
-    &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-
-        // Prevent double border on horizontal scroll due to use of `display: block;`
-        > .table-bordered {
-          border: 0;
-        }
+       display: block;
+       width: 100%;
+       overflow-x: auto;
+       -webkit-overflow-scrolling: touch;
       }
-    }
-  }
-}
+      
     </style>
     <!-- Custom styles for this Jumbotron template -->
     <link href ="css/jumbotron-we-custom.css" rel="stylesheet">
@@ -144,29 +129,28 @@
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPSRW5F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
- <!-- Fixed navbar -->
+ <!-- Fixed navbar - UPDATED TO BOOTSTRAP 5.2 -->
  <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
   <a class="navbar-brand" href="https://WeAreEnergy.coop">
     <img src="images/energy/logos/weare_logo.png"  height="75px" alt="We Are Energy" title="We Are Energy Co-operative">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
+  <!-- BOOTSTRAP 5.2 UPDATE: data-toggle → data-bs-toggle, data-target → data-bs-target -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbar-list">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#" alt="Home" title="Energy Home Page">ENERGY <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" alt="Home" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about.html" alt="About Us" title="About Us Page">ABOUT US <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/about.html" alt="About Us" title="About Us Page">ABOUT US <span class="visually-hidden">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/faqs.html" alt="frequently Asked Questions" title="Frequently Asked Questions">FAQ's</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       <a class="btn btn-outline-success-we my-2 my-sm-0" type="text" title="Join Us" href="#entry.66386698">JOIN US</a>
     </form>
   </div>
@@ -176,28 +160,34 @@
 <main role="main">
 
   <!-- Carousel example from carousel.html Edit and change images in carousel.css -->
-<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+<!-- Carousel example from carousel.html Edit and change images in carousel.css -->
+     <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <!-- BOOTSTRAP 5.3 Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <!-- /Indicators -->
+
   <div class="carousel-inner">
+    <!-- Slide 1 -->
     <div class="carousel-item active">
       <svg class="bg1 bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="wild flower meadow" title="wild flower meadow"></svg>
-      <!-- <div class="frame"></div> -->
       <div class="container">
         <div class="carousel-caption">
           <h1 style="font-family: stencil; margin-bottom: 1.5rem;">We Are<br>Energy</h1>
-          <p>It's green energy, but not as you know it.<p>
-            <p>#FaceTheEarthSystemsCollapse</p>
+          <p>It's green energy, but not as you know it.</p>
+          <p>#FaceTheEarthSystemsCollapse</p>
           <p><a class="btn btn-lg btn-we" href="#entry.66386698" role="button" title="Sign up today">SIGN UP TODAY </a></p>
         </div>
       </div>
     </div>
+    <!-- /Slide 1 -->
+
+    <!-- Slide 2 -->
     <div class="carousel-item">
       <svg class="bg2 bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="tall trees"></svg>
-      <!-- <div class="frame"></div> -->
       <div class="container">
         <div class="carousel-caption">
           <h1 style="font-family: stencil; margin-bottom: 1.5rem;">A Brighter<br>Future</h1>
@@ -206,9 +196,11 @@
         </div>
       </div>
     </div>
+    <!-- /Slide 2 -->
+
+    <!-- Slide 3 -->
     <div class="carousel-item">
       <svg class="bg3 bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="sea during golden hour"></svg>
-      <!-- <div class="frame"></div> -->
       <div class="container">
         <div class="carousel-caption">
           <h1 style="font-family: stencil; margin-bottom: 1.5rem;">It's Time<br>To Act</h1>
@@ -217,39 +209,57 @@
         </div>
       </div>
     </div>
+    <!-- /Slide 3 -->
   </div>
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div><!-- end Carousel -->
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container-md">
-      <h1 class="display-3" style="font-family: stencil;">No upfront cost to #savetheplanet</h1>
-      <p style="margin-top: 1rem;">We Are Energy is a new green energy services co-operative, designed to give every household and business the opportunity to generate, store and efficiently use their own renewable energy at <b>No Upfront Cost.*</b></p>
-      <picture>
-        <source class="figure-img img-fluid rounded" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels" type="image/webp" srcset="images/farewellfossilfuels_nl.webp">
-        <source class="figure-img img-fluid rounded" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels" type="image/png" srcset="images/farewellfossilfuels_nl.jpg">
-        <img src="/images/farewellfossilfuels_nl.jpg" class="img-fluid card border-dark" style="margin-bottom: 1.5rem;" title="Coal lump under glass cover with slogan Farewell to Fossil Fuels" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels">
-      </picture>
-      <h1 class="display-3" style="font-family: stencil;">Act now & fight #climatechange</h1>
-      <p>Say farewell to fossil fuels and make the future of energy local and co-operative.</p>
-      <a class="btn btn-we btn-lg" href="#reasons" alt="Learn More" role="button" title="Learn More">LEARN MORE &raquo;</a>
-      <p style="margin-top: 1rem;"><b>*</b> No Upfront Cost means you <b>pay nothing</b> to install our <a class="p-link-grn" type="text" role="link" href="#tfiwa1">superior</a> solar generation and battery storage system.<dd>Just pay for the energy you use, just like you do now. And save 16 tonnes of CO<sub>2</sub> over the first 10 years.</dd></p>
-      <button id="share" class="btn btn-we btn-lg share-btn" title="Share with your friends">SHARE WITH FRIENDS</button>
-    </div>
-  </div>
-</div>
+  <!-- /carousel-inner -->
 
-<div class="jumbotron" id="thefutureisgreen" style="background-color: #f1eee6">
+  <!-- BOOTSTRAP 5.3 Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <!-- /Controls -->
+     </div>
+<!-- end Carousel -->
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <section class="py-5" style="background-color: #c0d726;">
+    <div class="container-md">
+        <h1 class="display-3" style="font-family: stencil;">No upfront cost to #savetheplanet</h1>
+        <p style="margin-top: 1rem;">We Are Energy is a new green energy services co-operative, designed to give every household and business the opportunity to generate, store and efficiently use their own renewable energy at <b>No Upfront Cost.*</b></p>
+        <h2>Our reveloutionary Soluton: The Energy Efficiency Lease</h2>
+        <p>Our energy-efficiency lease means you pay no upfront cost for our next generation super efficient solar pv panels. We supply, install and maintain everything including a  battery, inverter and our easy to use control system.</p>
+        <p>During the 7 year and 8 months lease you'll pay a fixed price for the electricity you use that is set at <strong>50% less than the Ofgem energy price cap</strong> for your region, so your bills are immediately lower. See more about the price cap <a class="p-link-blk" href="https://www.ofgem.gov.uk/information-consumers/energy-advice-households/get-energy-price-cap-standing-charges-and-unit-rates-region" target="blank" rel="noopener noreferrer"><b>here *</b></a></p>
+        <p>When your lease ends, all the electricity that your system generates and stores is free to use in your building, and any extra electricity we import for you is supplied at off‑peak times, so you only pay discounted off‑peak rates.</p>
+
+        <picture>
+            <source class="figure-img img-fluid rounded" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels" type="image/webp" srcset="images/farewellfossilfuels_nl.webp">
+            <source class="figure-img img-fluid rounded" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels" type="image/png" srcset="images/farewellfossilfuels_nl.jpg">
+            <img src="/images/farewellfossilfuels_nl.jpg" class="img-fluid card border-dark" style="margin-bottom: 1.5rem;" title="Coal lump under glass cover with slogan Farewell to Fossil Fuels" alt="Coal lump under glass cover with slogan Farewell to Fossil Fuels">
+        </picture>
+        <h1 class="display-3" style="font-family: stencil;">Act now & fight #climatechange</h1>
+        <p>Say farewell to fossil fuels and make the future of energy local and co-operative.</p>
+        <a class="btn btn-we btn-lg" href="#reasons" alt="Learn More" role="button" title="Learn More">LEARN MORE &raquo;</a>
+        <p style="margin-top: 1rem;"><b>*</b> No Upfront Cost means you <b>pay nothing</b> to install our <a class="p-link-grn" type="text" role="link" href="#tfiwa1">superior</a> solar generation and battery storage system.<dd>Just pay for the energy you use, just like you do now. And save 22 tonnes of CO<sub>2</sub> over the 25 years your system is guaranteed for.</dd></p>
+        <button id="share" class="btn btn-we btn-lg share-btn" title="Share with your friends">SHARE WITH FRIENDS</button>
+    </div>
+  </section>
+
+
+<section id="thefutureisgreen" class="py-5" style="background-color: #f1eee6">
   <div class="container" id="tfiwa1">
-    <div col-md-2 style="padding-bottom:4rem;"><h1 class="display-3" id="reasons" style="font-family: stencil; color:#c0d726" >JOIN THE GREEN ENERGY REVOLUTION</h1><dd>Become part of our distributed electricity generation co-operative.</dd><h2>Superior, Maintained and Guaranteed for 25 years.</h2><p>We will install our superior 4kWp solar photo-voltaic panels system, 13.5 kWhr battery storage and smart meter control system at no upfront cost to you.</p>
-      <dd><a class="btn btn-we btn-lg" href="https://WeAreEnergy.coop/faqs.html" alt="See our Frequently Asked Questions" role="button" title="Open Frequently Asked Questions page">FIND OUT MORE &raquo;</a></dd>
+    <div class="mb-4" style="padding-bottom:4rem;">
+    <h1 class="display-3" id="reasons" style="font-family: stencil; color:#c0d726" >JOIN THE GREEN ENERGY REVOLUTION</h1>
+    <dd>Become part of our distributed electricity generation co-operative.</dd>
+    <h2>Superior, Maintained and Guaranteed for 25 years.</h2>
+    <p>We will install our superior next generation solar photo-voltaic panels system, a battery storage sized to cover your days usage and a smart meter control system at no upfront cost to you.</p>
+      <dd>
+        <a class="btn btn-we btn-lg" href="https://WeAreEnergy.coop/faqs.html" alt="See our Frequently Asked Questions" role="button" title="Open Frequently Asked Questions page">FIND OUT MORE &raquo;</a>
+      </dd>
     </div>
    <!--  --> 
     <div class="row g-4">
@@ -266,7 +276,7 @@
         <div class="card border-dark" style="background-color: #373837">
           <div class="card-body">
             <h2 class="card-title" style="color: #f1eee6;">A Brighter Future for Our Planet</h2>
-            <p class="card-text" style="color: #f1eee6;"><b style="color: #F26B5B">Save</b> 16 tonnes of CO<sub>2</sub> and over <b style="color: #F26B5B; text-decoration: underline;">£3,600</b> in the first 10 years<a class="p-link-red" href="/faqs.html#QThree" alt="Savings" type="text" role="link" title="asterisk"><b>*</b></a>.</p><p class="card-text" style="color: #f1eee6;">The electricity you generate is <b style="color: #F26B5B">FREE</b> to use after your <b>8</b> year contract and for the rest of the life of the system.</p>
+            <p class="card-text" style="color: #f1eee6;"><b style="color: #F26B5B">Save</b> 16 tonnes of CO<sub>2</sub> and over <b style="color: #F26B5B; text-decoration: underline;">£6,000</b> in the first 10 years<a class="p-link-red" href="/faqs.html#QThree" alt="Savings" type="text" role="link" title="asterisk"><b>*</b></a>.</p><p class="card-text" style="color: #f1eee6;">The electricity you generate is <b style="color: #F26B5B">FREE</b> to use when your lease ends and for the rest of the life of the system.</p>
             <a class="w-100 btn btn-we-red btn-lg" href="https://WeAreEnergy.coop/faqs.html" alt="See our Frequently Asked Questions" role="button" title="Open Frequently Asked Questions page">FIND OUT MORE &raquo;</a>
           </div>
         </div>
@@ -282,15 +292,29 @@
       </div>
     </div>
 
-    <div col-md-2 style="padding-top:4rem; padding-bottom: 1.5rem;"><h1 class="display-3" id="reasons" style="font-family: stencil; color:#c0d726" >NOW WITH MORE FLEXIBLE WAYS TO JOIN</h1><p>Simply choose from <b>0% to 50%</b> Upfront contribution and reduce the time from 8 to 4 years when it's free to use the energy you generate from your system.</p>
-    </div>
+    <div class="pt-4 pb-3">
+      <h2>How our Energy Efficiency Lease works</h2>
 
+  
+      <p>
+        No upfront cost for solar PV, battery storage and smart controls.
+        <dd>For 7 years and 8 months just pay for the electricity you use at a 50% discount off the Ofgem price cap for your region throughout the lease term.<sup><a class="p-link-blk" href="/documents/customer-savings-summary.html" alt="Savings vs Ofgem Price Cap" type="text" role="link" title="asterisk"><b>*</b></a></sup></dd>
+        <dd>After the lease, power generated from your system is free to use, and any extra electricity we import for you is mainly delivered at off‑peak times so you only pay discounted off‑peak rates.</dd>
+        <dd>Co-operative membership from day one, with the potential for future dividends and an Energy Democracy Fund once we reach sustainable surplus.</dd>
+        <dd>A typical household can save around <strong>£4,400 during the lease term and £21,000 over 25 years</strong>, depending on their usage and location.<sup><a class="p-link-blk" href="/documents/customer-savings-summary.html" target="blank" alt="Savings vs Ofgem Price Cap" type="text" role="link" title="asterisk"><b>*</b></a></sup></dd>
+      </p>
+      <!-- OLD PRICING SECTION AND COMPARISON TABLES - KEPT FOR REFERENCE TO REVERT IF NEEDED -->
+
+      <!-- <h1 class="display-3" id="reasons" style="font-family: stencil; color:#c0d726" >NOW WITH MORE FLEXIBLE WAYS TO JOIN</h1> -->
+      <!--       <p>Simply choose from <b>0% to 50%</b> Upfront contribution and reduce the time from 8 to 4 years when it's free to use the energy you generate from your system.</p>
+      <!--     </div> 
+      -->
        <!--  Pricing examples -->
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
-              <div class="card mb-4 border-dark rounded-3 shadow-sm">
-                <div class="card-header shadow-sm py-3" style="border-bottom: 1.5px solid">
-                  <h4 style="color:#373837">8 Years contract</h4>
+      <!-- <div class="row row-cols-1 row-cols-md-3 mb-3 text-center"> --> 
+            <!-- <div class="col"> -->
+      <!--               <div class="card mb-4 border-dark rounded-3 shadow-sm">
+                 <div class="card-header shadow-sm py-3" style="border-bottom: 1.5px solid"> -->
+      <!--                   <h4 style="color:#373837">8 Years contract</h4>
                 </div>
                 <div class="card-body" >
                   <h1 class="card-title pricing-card-title">£0<small class="text-muted fw-light"> upfront</small><ul style="margin-top: 0.5rem;">Save £3,600* <small class="text-muted fw-light">in 10 years</small></ul></h1>
@@ -298,41 +322,41 @@
                     <li>8 year contract</li>
                     <li>Prices <b>5%</b> less than the last <b>2024</b> Ofgem price cap</li><li>Save <b>£3,600</b><b>*</b> in 10 years</li>
                   </ul> -->  
-                  <a class="w-100 btn btn-we btn-lg" href="#entry.66386698" role="text" title="Register Now">REGISTER NOW &raquo;</a></button>
+                  <!-- <a class="w-100 btn btn-we btn-lg" href="#entry.66386698" role="text" title="Register Now">REGISTER NOW &raquo;</a></button>
                 </div>
               </div>
-            </div>
-            <div class="col">
+            </div> 
+            <!-- <div class="col">
               <div class="card mb-4 border-dark rounded-3 shadow-sm">
                 <div class="card-header py-3" style="background-color:#373837; border-bottom: 1.5px solid">
                   <h4 style="color:#f1eee6">6 Years contract</h4>
                 </div>
                 <div class="card-body border-light">
                   <h1 class="card-title pricing-card-title">£2,500<small class="text-muted fw-light"> upfront</small><ul style="margin-top: 0.5rem;">Save £5,400* <small class="text-muted fw-light">in 10 years</small></ul></h1>
-                  <!-- <ul class="list-unstyled mt-3 mb-4">
+                   <ul class="list-unstyled mt-3 mb-4">
                     <li>6 year contract</li>
                     <li>Save <b>£6,850</b><b>*</b> in 10 years</li>
-                  </ul> -->
+                  </ul>  
                   <a class="w-100 btn btn-we btn-lg" style="background-color:#F26B5B" href="#entry.66386698" role="text" title="Register Now">REGISTER NOW &raquo;</a></button>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card mb-4 border-dark rounded-3 shadow-sm">
-                <div class="card-header py-3" style="background-color:#F26B5B; border-bottom: 1.5px solid">
-                  <h4 style="color:#373837">4 Years contract</h4>
-                </div>
-                <div class="card-body">
-                  <h1 class="card-title pricing-card-title">£5,000<small class="text-muted fw-light"> upfront</small><ul style="margin-top: 0.5rem;">Save £7,500* <small class="text-muted fw-light">in 10 years</small></ul></h1>
-                  <!-- <ul class="list-unstyled mt-3 mb-4">
+            <div class="col"> 
+        <!--               <div class="card mb-4 border-dark rounded-3 shadow-sm"> -->
+        <!--                 <div class="card-header py-3" style="background-color:#F26B5B; border-bottom: 1.5px solid">
+             <h4 style="color:#373837">4 Years contract</h4>
+                <!-- </div> -->
+        <!--                 <div class="card-body">
+                    <h1 class="card-title pricing-card-title">£5,000<small class="text-muted fw-light"> upfront</small><ul style="margin-top: 0.5rem;">Save £7,500* <small class="text-muted fw-light">in 10 years</small></ul></h1>
+                 <!-- <ul class="list-unstyled mt-3 mb-4">
                     <li>4 year contract</li>
                     <li>Save <b>£9,650</b><b>*</b> in 10 years</li>
                   </ul> -->
-                  <a class="w-100 btn btn-we btn-lg" href="#entry.66386698" role="text" title="Register Now">REGISTER NOW &raquo;</a></button>
+                  <!-- <a class="w-100 btn btn-we btn-lg" href="#entry.66386698" role="text" title="Register Now">REGISTER NOW &raquo;</a></button>
                 </div>
               </div>
             </div>
-    </div>
+        </div>
           <p style="margin-top: 0.5rem;"><b>*</b> Estimated savings based on annual electricity bills over 10 years compared to the latest Ofgem published price cap</p>
           <dd><a class="btn btn-we btn-lg" href="#comparewaystojoin" alt="See our Frequently Asked Questions" role="button" title="Open Frequently Asked Questions page">FIND OUT MORE &raquo;</a></dd>
           
@@ -389,35 +413,33 @@
               </tbody>
             </table>
           </div>
-        
+         -->
       
       <div class="py-3" style="margin-top: 4rem;">
         <picture><source class="figure-img img-fluid rounded" alt="Cooperative enterprises build a better world" type="image/webp" srcset="images/energy/coop_spgr_slogan_en.webp">
           <source class="figure-img img-fluid rounded" alt="Cooperative enterprises build a better world" type="image/png" srcset="images/energy/coop_spgr_slogan_en.png"><img src="images/energy/coop_spgr_slogan_en.png" title="Cooperative enterprises build a better world" alt="Cooperative enterprises build a better world" class="mx-auto d-block" style="width:50%;"></picture>
       </div>
       <div>
-        
         <picture>
         <source class="figure-img img-fluid rounded" alt="Resilience, new plants growing from old tree stump" type="image/webp" srcset="images/resilience-nologo.webp">
           <source class="figure-img img-fluid rounded" alt="Resilience, new plants growing from old tree stump" type="image/png" srcset="images/resilience-nologo.png">
             <img src="/images/resilience-nologo.png" class="img-fluid card border-dark" alt="Resilience, new plants growing from old tree stump" title="Resilience, new plants growing from old tree stump">
         </picture>
         <h2 class="py-5 text-center">With 100% renewable electricity from your own solar panels and battery storage you'll be energy resilient when you <a class="btn-outline-success-we" type="text" role="link" title="Join Us"href="#entry.66386698">join us</a></h2>
-        
       </div>
     </div>
     
   </div>
+</section>
 
-
-  <div class="jumbotron">
-    <div class="container" style="background-color: #c0d726">
+<section class="py-5" style="background-color: #c0d726">
+    <div class="container">
       <div class="py-5 text-center">
         <h2>Please register your interest</h2>
         <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
       </div>
   
-      <div class="form-row">
+      <div class="row g-3">
         <div class="col-md-12 order-md-1">
           <h4 class="mb-3">Your Name, Contact & Address</h4>
         </div>
@@ -431,9 +453,9 @@
             autocomplete="on" class="needs-validation" novalidate>
   
         <!-- Name -->
-        <div class="form-row">
+        <div class="row g-3">
           <div class="col-md-6 mb-3" id="entry.66386698">
-            <label for="66386698">Your Full Name</label>
+            <label for="66386698" class="form-label">Your Full Name</label>
             <input id="66386698" type="text" name="entry.66386698" class="form-control"
                    autocomplete="name" placeholder="e.g. First-name Surname" required>
             <div class="invalid-tooltip">Please type your full name.</div>
@@ -441,7 +463,7 @@
   
           <!-- Email -->
           <div class="col-md-6 mb-3">
-            <label for="413471257">Email Address</label>
+            <label for="413471257" class="form-label">Email Address</label>
             <input id="413471257" type="email" name="entry.413471257" class="form-control"
                    autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
             <div class="invalid-tooltip">Please provide a valid email address.</div>
@@ -449,29 +471,30 @@
         </div>
   
         <!-- Phone & Address -->
-        <div class="form-row">
-          <div class="col-md-3 mb-3" style="width: 65%;">
-            <label for="1199933740">Phone Number</label>
+        <div class="row g-3">
+          <div class="col-md-3 mb-3">
+            <label for="1199933740" class="form-label">Phone Number</label>
             <input id="1199933740" type="tel" name="entry.1199933740" class="form-control"
                    autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
             <div class="invalid-tooltip">Please provide a valid phone number.</div>
           </div>
   
           <div class="col-md-6 mb-3">
-            <label for="799268612">Address</label>
+            <label for="799268612" class="form-label">Address</label>
             <input id="799268612" name="entry.799268612" class="form-control"
                    placeholder="e.g. 1 My Street, My Town, My City" required>
             <div class="invalid-tooltip">Please provide a valid address.</div>
           </div>
   
-          <div class="col-md-3 mb-3" style="width: 55%;">
-            <label for="643330730">Post Code</label>
+          <div class="col-md-3 mb-3">
+            <label for="643330730" class="form-label">Post Code</label>
             <input id="643330730" type="text" name="entry.643330730" class="form-control"
                    placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
             <div class="invalid-tooltip">Please provide a valid post code.</div>
           </div>
   
-          <div class="col-auto">
+         <!-- Old Contract Length & Upfront contribution selection for reference -->  
+          <!-- <div class="col-auto">
             <label for="1560061539">Please choose your preferred contract length and Upfront contribution</label>
             <select id="1560061539" name="entry.786389054" class="form-select" required>
               <option selected disabled value="Please choose">Please choose</option>
@@ -480,7 +503,7 @@
               <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
             </select>
             <div class="invalid-tooltip">Please choose.</div>
-          </div>
+          </div> -->
         </div>
   
         <!-- Hidden tracking fields (if used by your Google Form backend) -->
@@ -496,8 +519,8 @@
 
     </form>
 
-  <!-- Form validation script -->
-<script>
+     <!-- Form validation script -->
+    <script>
   (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -513,21 +536,21 @@
       });
     }, false);
   })();
-</script>
+    </script>
 
-<!-- reCAPTCHA submit callback -->
-<script>
+    <!-- reCAPTCHA submit callback -->
+    <script>
   function onSubmit(token) {
     document.getElementById("bootstrapForm").requestSubmit();
   }
-</script>
+    </script>
 
-<p class="lead" style="padding-top: 1rem;">
-  By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
-</p>
-<p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
+    <p class="lead" style="padding-top: 1rem;">
+    By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
+    </p>
+    <p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
   </div>
-</div>
+ </section>
 </main>
 
 <footer class="footer mt-auto py-3">
@@ -559,15 +582,9 @@
     </p>                
   </div>
 </footer>
-<!-- jQuery (required for Bootstrap 4, but not for Bootstrap 5) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 
-<!-- Bootstrap JS (only ONE version should be used) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-  crossorigin="anonymous"></script>
+<!-- Bootstrap JS Bundle (includes Popper) - BOOTSTRAP 5.3 ONLY -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Google reCAPTCHA v3 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

@@ -243,6 +243,8 @@ button.bg-dark:focus {
 .p-link-blk {
   color: #0e0a00;
   border-color: #f1eee6;
+  text-decoration: solid;
+  text-decoration: none;
 }
 
 .p-link-blk:hover {
@@ -320,6 +322,22 @@ button.bg-dark:focus {
   background-color: #f1eee6;
   border-color: #f26b5b;
 }
+
+sup > a.p-link-blk {
+  text-decoration: underline;
+  color: inherit !important;
+  border-bottom: 0 !important;
+  font-weight: bolder;
+  text-align: justify;
+  baseline-shift:var(#000)
+}
+sup > a.p-link-blk:hover,
+sup > a.p-link-blk:focus {
+  text-decoration: none !important;
+  color: inherit !important;
+  background-color: transparent !important; /* keep original hover behaviour if desired */
+}
+
 .btn-outline-success-we:not(:disabled):not(.disabled):active:focus, .btn-outline-success-we:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-success-we.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(242, 107, 91, 0.5);

@@ -2,12 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Join the new green energy co-operative and fight climate change now">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Join the new green energy co-operative and fight climate change now" "who-we-are" "inspiration" "vision" "mission" "values" "futureplans" "co-operative">
     <meta name="author" content="We Are Energy - Paul Phillips">
-    <meta name="generator" content="Jekyll v4.0.1">
-    <title>About We Are Energy Coop- About us, our purpose, vision, mission and what we believe in.
-</title>
+    <title>About We Are Energy Coop - About us, our purpose, vision, mission and what we believe in.</title>
 
     <link rel="canonical" href="https://WeAreEnergy.coop/about.html"/>
     <!-- Google Tag Manager -->
@@ -15,27 +13,32 @@
     (function(w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-            'gtm.start':
-            new Date().getTime(),
+            'gtm.start': new Date().getTime(),
             event: 'gtm.js'
         });
         var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s),
             dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
-        j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NPSRW5F');
+    })(window, document, 'script', 'dataLayer','GTM-NPSRW5F');
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Bootstrap core CSS and icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Fonts used on site -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="css/jumbotron-we-custom.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/navbar-top-fixed.css" rel="stylesheet">
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;250;300;400;500;600;650;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -54,320 +57,291 @@
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
-        .card-title {
-          font-size: 28px;
-        }
       }
-      @media (min-width: 990px) {
-        .card-title {
-          font-size: 32px;
-        }
+     /* Custom styles for the pricing table compare ways to join */
+
+      .pricing-header {
+        max-width: 700px;
       }
+ /* If you need responsive horizontal scrolling for tables, use this simple rule.
+         Remove the Sass code — compile it into css/jumbotron-we-custom.css if needed. */
+      .table-responsive {
+       display: block;
+       width: 100%;
+       overflow-x: auto;
+       -webkit-overflow-scrolling: touch;
+      }
+      
     </style>
-    <!-- Custom styles for this Jumbotron template -->
-    <link href ="css/jumbotron-we-custom.css" rel="stylesheet">
-    <!-- custom styles for carousel -->
-    <link href="css/carousel.css" rel="stylesheet">
-    
-    <!-- Custom fonts for alternate font classes Oswald San serif and PT-Serif -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;250;300;400;500;600;650;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    
-        <!-- Custom styles for this Nav bar template -->
-    <link href="css/navbar-top-fixed.css" rel="stylesheet">
-    <!-- Google Recaptcha script -->
+    <!-- Google Recaptcha script (kept) -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf2hPMqAAAAAKerX2rixwNaXe7-zyqxlOzaHOVi"></script>
-    <script>
-      const form = document.getElementById("bootstrapForm");
-      const button = document.getElementById("sendBtn");
-    
-      button.addEventListener("click", function (event) {
-        event.preventDefault();
-        grecaptcha.enterprise.ready(function () {
-          grecaptcha.enterprise.execute('6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA', {action: 'submit'}).then(function (token) {
-            // Optionally add the token to the form
-            const tokenInput = document.createElement("input");
-            tokenInput.setAttribute("type", "hidden");
-            tokenInput.setAttribute("name", "g-recaptcha-response");
-            tokenInput.setAttribute("value", token);
-            form.appendChild(tokenInput);
-    
-            submitted = true;
-            form.requestSubmit(); // runs built-in validation
-          });
-        });
-      });
-    </script>
-    
-  
-    <!-- favicon links and stuff -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-    <!-- end favicon stuff -->
-
   </head>
-  
+
   <body style="background-color: #f1eee6">
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPSRW5F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
- <!-- Fixed navbar -->
- <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" href="https://WeAreEnergy.coop">
-    <img src="images/energy/logos/weare_logo.png" height="75px" alt="We Are Energy" title="We Are Energy Co-operative">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbar-list">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/index.html" alt="Home" title="Energy Home Page">ENERGY <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" alt="About Us" title="About Us Page">ABOUT US <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/faqs.html" alt="frequently Asked Questions" title="Frequently Asked Questions">FAQ's</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-      <a class="btn btn-outline-success-we my-2 my-sm-0" type="text" title="Join Us"href="#entry.66386698">JOIN US</a>
-    </form>
-  </div>
-</nav>
-<!-- Navbar end -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPSRW5F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<main role="main">
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container-md">
-      <h1 class="display-3" id="who we are" style="font-family: stencil; margin-top: 1.5rem;">WHO WE ARE</h1><hr>    
-      <p style="margin-top: 1rem;">Our founder Paul, a qualified engineer and industrial designer, has used his skills to put customers needs at the heart of many well known organisations, including mobile phone networks; supermarkets; consumer electronics manufacturers and the NHS.</p><p class="border-dark" style="background-color: #f1eee6; padding: 10px; border-radius: 4px;">We believe that sustainable design can make the world a brighter and inclusive place, with better social, economic and environmental outcomes for all. And that innovation starts with the needs of those we serve and is the process of understanding how people, places, tools and services can be combined to create the best experience and outcomes for everyone involved.</p>
-      <p>Since 2013 we've been building knowledge and connections in the energy industry, convinced we could create a fairer and greener solution for the places where we live, work and play ... the result is We Are Energy.</p>
-      <h1 class="display-3" id="inspiration" style="font-family: stencil; margin-top: 1.5rem;">INSPIRATION</h1><hr>
-      <p>We recognise that many home and business owners would like to install solar panels or heat pumps and make use of the latest technologies like battery storage but don't have the savings or access to the cash to pay for them. So, we've launched a new co-operative with no upfront cost to overcome this barrier.</p>
-      <button id="share" class="btn btn-we share-btn" title="Share with your friends">SHARE WITH FRIENDS</button>
-    </div>
-  </div>
-  <div class="jumbotron" style="background-color: #f1eee6; padding-top: 0rem">
-    <div class="container-md" >
-      <h1 class="display-3" style="font-family: stencil; ">Vision</h1><hr><p style="margin-top: 1rem;">We Are Energy Co-operative Limited is an organisation united by a vision:-<br><i style="background-color:#373837; color: #f1eee6;">To enable people at <b style="color:#c0d726;">no upfront cost*</b> to generate, store and efficiently use renewable energy wherever we can.</i></p id="vision">
-        <p><b>*</b> No Upfront Cost means you currently <b>pay nothing</b> to install our superior solar generation and battery store system.</p>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://WeAreEnergy.coop">
+          <img src="images/energy/logos/weare_logo.png" height="75" alt="We Are Energy" title="We Are Energy Co-operative">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list" aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <h1 class="display-3" style="margin-top: 2rem; font-family: stencil; color: #c0d726;">VALUES</h1><hr>
-      <div class="row g-4">
-        <div class="card-group col-md-4">
-          <div class="card border-dark" style="background-color: #F26B5B">
-            <div class="card-body">
-              <h2 class="card-title" style="font-family: stencil;">WE ARE</h2>
-              <h2 class="card-title" style="font-family: PT-serif; font-weight: bold; color: #f1eee6; line-height: .8rem;">caring</h2>
-              <p class="card-text" style="font-weight: bold;">We choose to put others first and care for the well-being of our planet and its people, both now and in the future.</p>
+        <div class="collapse navbar-collapse" id="navbar-list">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="/index.html" title="Energy Home Page">ENERGY</a></li>
+            <li class="nav-item active"><a class="nav-link" href="#" title="About Us Page">ABOUT US <span class="visually-hidden">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/faqs.html" title="Frequently Asked Questions">FAQ's</a></li>
+          </ul>
+          <div class="d-flex">
+            <a class="btn btn-outline-success-we" href="#entry.66386698" title="Join Us">JOIN US</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+
+    <main role="main">
+      <!-- WHO WE ARE (replaced jumbotron with section) -->
+      <section class="py-5" style="background-color: #c0d726;" >
+        <div class="container-md">
+          <h1 class="display-3" id="who-we-are" style="font-family: stencil; margin-top: 1.5rem;">WHO WE ARE</h1>
+          <hr>
+          <p style="margin-top: 1rem;">Our founder Paul, a qualified engineer and industrial designer, has used his skills to put customers needs at the heart of many well known organisations, including mobile phone networks; supermarkets; consumer electronics manufacturers and the NHS.</p>
+          <p class="border-dark" style="background-color: #f1eee6; padding: 10px; border-radius: 4px;">We believe that sustainable design can make the world a brighter and inclusive place, with better social, economic and environmental outcomes for all. And that innovation starts with the needs of those we serve and is the process of understanding how people, places, tools and services can be combined to create the best experience and outcomes for everyone involved.</p>
+          <p>Since 2013 we've been building knowledge and connections in the energy industry, convinced we could create a fairer and greener solution for the places where we live, work and play. <br>The result is We Are Energy Co-operative.</p>
+
+          <h1 class="display-3" id="inspiration" style="font-family: stencil; margin-top: 1.5rem;">INSPIRATION</h1>
+          <hr>
+          <h2>We start with people, not tools.</h2><br>
+          <p>We Are Energy is building a member-owned movement that transforms how people power their lives through genuine energy democracy. At the heart of our mission stand the families, communities, and organisations whose lives we're changing - delivering immediate energy independence while creating genuine cooperative ownership of the systems that serve them.</p>
+          <p>We recognise that many home and business owners would like to install solar panels or heat pumps and make use of the latest technologies like battery storage. But fewer than 4% of households have the funds to cover the prohibitive upfront costs of £8,000-£15,000 for these types of systems. Meanwhile, energy poverty affects millions of families who remain trapped in a system designed for corporate profit rather than community benefit. So, we've launched a new co-operative with no upfront cost to overcome this barrier.</p>
+          <button id="share" class="btn btn-we share-btn" title="Share with your friends">SHARE WITH FRIENDS</button>
+        </div>
+      </section>
+
+      <!-- VISION / VALUES / MISSION (replaced jumbotron with section) -->
+      <section class="py-5" style="background-color: #f1eee6">
+        <div class="container-md">
+          <h1 class="display-3" style="font-family: stencil;">Vision</h1>
+          <hr>
+          <p id="vision" style="margin-top: 1rem;">We Are Energy Co-operative Limited is an organisation united by a vision:-<br>
+            <h2>Beyond Clean Energy to Abundant Living.</h2><br>
+                <p>We believe that when abundant, affordable energy meets community ownership, entirely new possibilities emerge. The buildings of 2035 won't just consume less energy-they'll become productive spaces where energy independence enables new forms of prosperity, where cooperative ownership creates regenerative community economics, where kitchen appliances might grow fresh food powered by member-owned renewable systems and where new possibilities can emerge.</p>
+
+          <h1 class="display-3" style="margin-top: 2rem; font-family: stencil;">MISSION</h1>
+          <hr>
+          <p id="mission">Our mission is to build a co-operative that serves to ensure its people, partners and customers can share positive actions that help to protect our planet and deliver our vision.</p>
+          <p id="mission">We Are Energy is developing the UK’s first member-owned next generation solar gigafactory, demonstrating that when communities control essential infrastructure, everyone prospers. Our strategic implementation plan shows how democratic ownership can scale from 501 founding members to 10+ million cooperative owners by 2050.</p>
+
+          <p>We’ll do that initially by covering as many of the suitable roofs in the UK, so that their surfaces can generate electricity using solar photovoltaic panels. We will develop tools and services to help our members use the energy they need in the most caring, creative and collaborative ways - helping to reduce energy consumption and energy costs for all.</p>
+
+          <h2>Our Revolutionary Solution: The Energy Efficiency Lease.</h2>
+          <p>Our energy efficiency lease model removes every barrier to clean energy access while creating genuine cooperative ownership:<br>
+          <b>Zero upfront costs</b> - We supply, install, and maintain everything.<br>
+          <b>Immediate 50% discount</b> on all energy used versus Ofgem price cap throughout the lease term.<br>
+          <b>Post-lease energy abundance</b> - Members pay only off-peak rates for imported energy while enjoying free use of all generated and stored power for life<br>
+          <b>Cooperative dividends</b> - When we achieve sustainable EBIT-positive margins, members share in our success through annual dividends and our Energy Democracy Fund<br>
+          <b>Lifetime member benefits</b> - Free battery replacements, system upgrades, and democratic participation in energy system decisions</p>
+
+          <p><i style="background-color:#373837; color: #f1eee6;">To enable people at <b style="color:#c0d726;">no upfront cost*</b> to generate, store and efficiently use renewable energy wherever we can.</i></p>
+          <p><b>*</b> No Upfront Cost means you <b>pay nothing</b> to install our superior solar generation and battery store system.</p>
+          
+          <h1 class="display-3" style="margin-top: 2rem; font-family: stencil; color: #c0d726;">VALUES</h1>
+          <hr><br>
+          <div class="row g-4">
+            <div class="card-group col-md-4">
+              <div class="card border-dark" style="background-color: #F26B5B">
+                <div class="card-body">
+                  <h2 id="values" class="card-title" style="font-family: stencil;">WE ARE</h2>
+                  <h2 class="card-title" style="font-family: PT-Serif; font-weight: bold; color: #f1eee6; line-height: .8rem;">caring</h2>
+                  <p class="card-text" style="font-weight: bold;">We choose to put others first and care for the well-being of our planet and its people, both now and in the future.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-group col-md-4">
+              <div class="card border-dark" style="background-color: #373837;">
+                <div class="card-body text-light">
+                  <h2 class="card-title" style="font-family: stencil; font-weight: bold; color: #f1eee6;">WE ARE</h2>
+                  <h2 class="card-title" style="font-family: PT-Serif; font-weight: bold; color: #c0d726; line-height: .8rem;">creative</h2>
+                  <p class="card-text" style="font-weight: bold; color: #f1eee6;">We accelerate new and sustainable solutions for the world's biggest problems.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-group col-md-4">
+              <div class="card border-dark" style="background-color: #c0d726">
+                <div class="card-body">
+                  <h2 class="card-title" style="font-family: stencil;">WE ARE</h2>
+                  <h2 class="card-title" style="font-family: PT-Serif; font-weight: bold; color: #f1eee6; line-height: .8rem;">collaborative</h2>
+                  <p class="card-text" style="font-weight: bold;">We work together with individuals, communities and partners locally and around the world to make a tangible difference.</p>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          
+          <h1 class="display-3" style="margin-top: 2rem; font-family: stencil; color: #c0d726;">FUTURE PLANS</h1>
+          <hr>
+          <div class="row">
+            <div class="card-group col-sm-12">
+              <div class="card border-dark" style="background-color: #F26B5B">
+                <div class="card-body" style="color: #373837;">
+                  <p id="futureplans" class="card-text">In the future we plan to include food gardens as part of the installations for our customers, to help contribute to cleaning the air we breathe, storing carbon and helping lower the temperature.</p>
+                  <p>And we are looking at ways to help customers collect power from wind turbines, heat water from solar collectors and generate heat for their buildings with heat pumps or hydrogen boilers.</p>
+                  <p>Together with other committed organisations, we will help to build greener, smarter places to live: at home, at work and when we are out and about. A world we are proud to leave for the next generation.</p>
+                  <p>We're already planning many exciting new ways to help the wider society — like donating energy to help prevent energy poverty for example.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-group col-md-4">
-          <div class="card border-dark" style="background-color: #373837;">
-            <div class="card-body">
-              <h2 class="card-title" style="font-family: stencil; font-weight: bold; color: #f1eee6;">WE ARE</h2>
-              <h2 class="card-title" style="font-family: PT-serif; font-weight: bold; color: #c0d726; line-height: .8rem;">creative</h2>
-              <p class="card-text" style="font-weight: bold; color: #f1eee6;">We accelerate new and sustainable solutions for the world's biggest problems.</p>
+
+          <h1 class="display-3" style="margin-top: 2.5rem; font-family: stencil;">CO-OPERATIVE</h1>
+          <hr>
+          <p id="cooperative">We received our co-operative society regulated status from the UK's Financial Conduct Authority on the basis that we'll give an equal voice to all our members to help decide on our future. This includes our staff, our paying user members and consumer members - like their families - as well as our partners who help us to deliver the services we offer. Our membership is voluntary and open to all our stakeholders.</p>
+          <p>We are a business driven by values (caring, creative and collaborative) not by the payment of capital. We can't wait and sit back any longer for others to make things better for our children or soothe our conscience on the sofa of ethical consumerism. This is the decade to be active and intentional in our choices, to make our world a better place with clarity of purpose and positive action.</p>
+
+          <div><img src="/images/energy/coop_spgr_slogan_en.png" alt="Cooperative enterprises build a better world " class="mx-auto d-block" style="width:50%; margin-top: 2rem; margin-bottom: 2rem;"></div>
+
+          <h2>The Cooperative Difference</h2>
+          <p>Our cooperative structure ensures that all benefits flow directly to members rather than external shareholders, creating a regenerative economic model that grows stronger as it scales This isn't just about clean energy-it's about transforming how communities can own and control the essential infrastructure that powers their lives.</p>
+          <p>Our plans are built to show how cooperative principles and patient capital, applied to energy systems, can eliminate fuel poverty while building the foundation for a future where abundant, democratic energy enables new forms of community prosperity and environmental regeneration.</p>
+
+          <p>Together we are inspired to face the earth systems collapse and acknowledge the impact of our actions on the sustainability of our planet.</p>
+
+          <p>We support the <a class="btn-outline-success-we" href="https://www.un.org/sustainabledevelopment/sustainable-development-goals/" >United Nations sustainable development goals,</a> especially <a class="btn-outline-success-we" href="https://www.un.org/sustainabledevelopment/energy/">Goal 7 </a>that aims to ensure access to affordable, reliable, sustainable and modern renewable energy.</p>
+
+          <div class="container" style="max-width: 40rem; margin-top:3rem;">
+            <div class="card-deck">
+              <div class="card text-center" style="background-color: #F26B5B;">
+                <div class="card-body text-white">
+                  <h2 class="card-title" id="decade" style="font-weight: bold; color: #373837">It's the Decade of Action</h2>
+                  <img src="images/energy/Decade-of-Action.png" class="img-fluid" alt="Decade of Action">
+                  <p class="card-text" style="font-weight: bold; color: #373837">Once you've registered with us, find out what more you can do in the next 10 years</p>
+                  <a href="https://www.un.org/sustainabledevelopment/decade-of-action/" target="_blank" class="btn btn-we"><b>FIND OUT MORE</b></a>
+                </div>
+              </div>
+
+              <div class="card text-center" style="background-color: #373837;">
+                <div class="card-body text-white">
+                  <h2 class="card-title" id="act-now" style="font-weight: bold;">It's the time to Act Now</h2>
+                  <img src="images/energy/Act-Now.png" class="img-fluid mx-auto d-block" alt="Act Now">
+                  <p class="card-text" style="font-weight: bold;">Once you've registered with us, be part of a movement that asks you to engage</p>
+                  <a href="https://www.un.org/en/actnow/" target="_blank" class="btn btn-we-red"><b>ENGAGE HERE</b></a>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="d-flex justify-content-center" style="margin-top: 3rem;">
+            <button class="btn btn-we-red" role="button" title="Register Now"><b>DELAY NO LONGER - REGISTER NOW</b></button>
+          </div>
         </div>
-        <div class="card-group col-md-4">
-          <div class="card border-dark" style="background-color: #c0d726">
-            <div class="card-body">
-              <h2 class="card-title" style="font-family: stencil;">WE ARE</h2>
-              <h2 class="card-title" style="font-family: PT-serif; font-weight: bold; color: #f1eee6; line-height: .8rem;">collaborative</h2>
-              <p class="card-text" style="font-weight: bold;">We work together with individuals, communities and partners locally and around the world to make a tangible difference.</p>
+      </section>
+
+      <!-- Registration form (full-bleed green) -->
+      <section class="py-5" style="background-color:#c0d726;">
+        <div class="container py-5">
+          <div class="text-center">
+            <h2>Please register your interest</h2>
+            <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-12">
+              <h4 class="mb-3">Your Name, Contact & Address</h4>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <h1 class="display-3" style="margin-top: 2rem; font-family: stencil;">MISSION</h1><hr>
-        <p>Our mission is to build a co-operative that serves to ensure its people, partners and customers can share positive actions that help to protect our planet and deliver our vision.</p>
-        <p id="mission">We’ll do that initially by covering as many of the  suitable roofs in the UK, so that all their surfaces can generate electricity using solar photovoltaic panels. We will develop tools and services to help our members use the energy they need in the most caring, creative and collaborative ways - helping to reduce energy consumption and energy costs for all.</p>
 
-        <h1 class="display-3" style="margin-top: 2rem; font-family: stencil; color: #c0d726;">FUTURE PLANS</h1><hr>
-        <div class="row">
-          <div class="card-group col-sm-12">
-          <div class="card border-dark" style="background-color: #F26B5B">
-            <div class="card-body" style="color: #373837; ">
-              <p class="card-text">In the future we plan to include food gardens as part of the installations for our customers, to help contribute to cleaning the air we breathe, storing carbon and helping lower the temperature.</p>
-              <p>And we are looking at ways to help customers collect power from wind turbines, heat water from solar collectors and generate heat for their buildings with heat pumps or hydrogen boilers.</p>
-              <p>Together with other committed organisations, we will help to build greener, smarter places to live: at home, at work and when we are out and about. A world we are proud to leave for the next generation.</p>
-              <p>We're already planning many exciting new ways to help the wider society — like donating energy to help prevent energy poverty for example.</p>
+          <script type="text/javascript">var submitted = false;</script>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
+
+          <form id="bootstrapForm" method="POST" action="#" target="hidden_iframe" autocomplete="on" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="66386698" class="form-label">Your Full Name</label>
+                <input id="66386698" type="text" name="entry.66386698" class="form-control" autocomplete="name" placeholder="e.g. First-name Surname" required>
+                <div class="invalid-feedback">Please type your full name.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="413471257" class="form-label">Email Address</label>
+                <input id="413471257" type="email" name="entry.413471257" class="form-control" autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      
-      <h1 class="display-3" style="margin-top: 2.5rem; font-family: stencil;">CO-OPERATIVE</h1><hr>
-      <p id="coop">We received our co-operative society regulated status from the UK's Financial Conduct Authority on the basis that we'll give an equal voice to all our members to help decide on our future. This includes our staff, our paying user members and consumer members - like their families - as well as our partners who help us to deliver the services we offer. Our membership is voluntary and open to all our stakeholders.</p><p>We are a business driven by values (caring, creative and collaborative) not by the payment of capital. We can't wait and sit back any longer for others to make things better for our children or soothe our conscience on the sofa of ethical consumerism. This is the decade to be active and intentional in our choices, to make our world a better place with clarity of purpose and positive action.</p>
-      <div><img src="/images/energy/coop_spgr_slogan_en.png" alt="Cooperative enterprises build a better world " class="mx-auto d-block" style="width:50%; margin-top: 2rem; margin-bottom: 2rem;">
-      </div>
-      <p>Together we are inspired to face the earth systems collapse and acknowledge the impact of our actions on the sustainability of our planet.</p>
-      <p>We support the <a class="btn-outline-success-we" href="https://www.un.org/sustainabledevelopment/sustainable-development-goals/" >United Nations sustainable development goals,</a> especially <a class="btn-outline-success-we" href="https://www.un.org/sustainabledevelopment/energy/">Goal 7 </a>that aims to ensure access to affordable, reliable, sustainable and modern renewable energy.</p>
-    
-      <div class="container" style="max-width: 40rem; margin-top:3rem;">
-        <div class="card-deck">
-        <div class="card text-center" style="background-color: #F26B5B;">
-          <div class="card-body text-white">
-            <h2 class="card-title" id="decade" style="font-weight: bold; color: #373837">It's the Decade of Action</h2>
-            <img src="images/energy/Decade-of-Action.png" class="img-fluid" alt="Decade of Action">
-            <p class="card-text" style="font-weight: bold; color: #373837">Once you've registered with us, find out what more you can do in the next 10 years</p>
-            <a href="https://www.un.org/sustainabledevelopment/decade-of-action/" target="blank" class="btn btn-we"><b>FIND OUT MORE</b></a>
-          </div>
-        </div>
-      
-        <div class="card text-center" style="background-color: #373837;">
-          <div class="card-body text-white">
-            <h2 class="card-title" id="act-now" style="font-weight: bold;">It's the time to Act Now</h2>
-            <img src="images/energy/Act-Now.png" class="img-fluid mx-auto d-block" alt="Act Now">
-            <p class="card-text" style="font-weight: bold;">Once you've registered with us, be part of a movement that asks you to engage</p>
-            <a href="https://www.un.org/en/actnow/" target="blank" class="btn btn-we-red"><b>ENGAGE HERE</b></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end of row -->
-      <div class="d-flex justify-content-center" style="margin-top: 3rem;"><button class="btn btn-we-red" href="#entry.66386698" alt="Register Now" role="button" title="Register Now"><b>DELAY NO LONGER - REGISTER NOW</b></button></div>
-    </div>
-<!-- /container -->
-  </div>
-  <div class="jumbotron">
-    <div class="container" style="background-color: #c0d726">
-      <div class="py-5 text-center">
-        <h2>Please register your interest</h2>
-        <p class="lead">We'll get back to you when we are ready to launch our service in your area.</p>
-      </div>
-  
-      <div class="form-row">
-        <div class="col-md-12 order-md-1">
-          <h4 class="mb-3">Your Name, Contact & Address</h4>
-        </div>
-      </div>
-  
-      <!-- Hidden iframe for redirect on successful submission -->
-      <script type="text/javascript">var submitted = false;</script>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
-  
-      <form id="bootstrapForm" method="POST" action="#" target="hidden_iframe"
-            autocomplete="on" class="needs-validation" novalidate>
-  
-        <!-- Name -->
-        <div class="form-row">
-          <div class="col-md-6 mb-3" id="entry.66386698">
-            <label for="66386698">Your Full Name</label>
-            <input id="66386698" type="text" name="entry.66386698" class="form-control"
-                   autocomplete="name" placeholder="e.g. First-name Surname" required>
-            <div class="invalid-tooltip">Please type your full name.</div>
-          </div>
-  
-          <!-- Email -->
-          <div class="col-md-6 mb-3">
-            <label for="413471257">Email Address</label>
-            <input id="413471257" type="email" name="entry.413471257" class="form-control"
-                   autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
-            <div class="invalid-tooltip">Please provide a valid email address.</div>
-          </div>
-        </div>
-  
-        <!-- Phone & Address -->
-        <div class="form-row">
-          <div class="col-md-3 mb-3" style="width: 65%;">
-            <label for="1199933740">Phone Number</label>
-            <input id="1199933740" type="tel" name="entry.1199933740" class="form-control"
-                   autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
-            <div class="invalid-tooltip">Please provide a valid phone number.</div>
-          </div>
-  
-          <div class="col-md-6 mb-3">
-            <label for="799268612">Address</label>
-            <input id="799268612" name="entry.799268612" class="form-control"
-                   placeholder="e.g. 1 My Street, My Town, My City" required>
-            <div class="invalid-tooltip">Please provide a valid address.</div>
-          </div>
-  
-          <div class="col-md-3 mb-3" style="width: 55%;">
-            <label for="643330730">Post Code</label>
-            <input id="643330730" type="text" name="entry.643330730" class="form-control"
-                   placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
-            <div class="invalid-tooltip">Please provide a valid post code.</div>
-          </div>
-  
-          <div class="col-auto">
-            <label for="1560061539">Please choose your preferred contract length and Upfront contribution</label>
-            <select id="1560061539" name="entry.786389054" class="form-select" required>
-              <option selected disabled value="Please choose">Please choose</option>
-              <option value="8 years &amp; Zero Upfront">8 years &amp; Zero Upfront</option>
-              <option value="6 years &amp; £2,500 Upfront">6 years &amp; £2,500 Upfront</option>
-              <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
-            </select>
-            <div class="invalid-tooltip">Please choose.</div>
-          </div>
-        </div>
-  
-        <!-- Hidden tracking fields (if used by your Google Form backend) -->
-        <input type="hidden" name="fvv" value="1">
-        <input type="hidden" name="fbzx" value="7197792357799296946">
-        <input type="hidden" name="pageHistory" value="0">
-  
-        <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
-        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
-    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-    data-action="submit"
-    data-callback="onSubmit">REGISTER & #savetheplanet</button>
 
-      </form>
- <!-- Form validation script -->
-<script>
-  (function () {
-    'use strict';
-    window.addEventListener('load', function () {
-      var forms = document.getElementsByClassName('needs-validation');
-      Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
-</script>
+            <div class="row g-3 mt-2">
+              <div class="col-md-4">
+                <label for="1199933740" class="form-label">Phone Number</label>
+                <input id="1199933740" type="tel" name="entry.1199933740" class="form-control" autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
+                <div class="invalid-feedback">Please provide a valid phone number.</div>
+              </div>
 
-<!-- reCAPTCHA submit callback -->
-<script>
-  function onSubmit(token) {
-    document.getElementById("bootstrapForm").requestSubmit();
-  }
-</script>
+              <div class="col-md-6">
+                <label for="799268612" class="form-label">Address</label>
+                <input id="799268612" name="entry.799268612" class="form-control" placeholder="e.g. 1 My Street, My Town, My City" required>
+                <div class="invalid-feedback">Please provide a valid address.</div>
+              </div>
 
-<p class="lead" style="padding-top: 1rem;">
-  By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
-</p>
-<p><small class="font-weight-bold font-italic">This consent is not a condition of purchase.</small></p>
-</div>
-  </div> 
- 
-</main>
-<!-- <hr> -->
-<footer class="footer mt-auto py-3">
+              <div class="col-md-2">
+                <label for="643330730" class="form-label">Post Code</label>
+                <input id="643330730" type="text" name="entry.643330730" class="form-control" placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
+                <div class="invalid-feedback">Please provide a valid post code.</div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-3">
+              <div class="col-auto w-100">
+                <label for="1560061539" class="form-label">Please choose your preferred contract length and Upfront contribution</label>
+                <select id="1560061539" name="entry.786389054" class="form-select" required>
+                  <option selected disabled value="Please choose">Please choose</option>
+                  <option value="8 years &amp; Zero Upfront">8 years &amp; Zero Upfront</option>
+                  <option value="6 years &amp; £2,500 Upfront">6 years &amp; £2,500 Upfront</option>
+                  <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
+                </select>
+                <div class="invalid-feedback">Please choose.</div>
+              </div>
+            </div>
+
+            <input type="hidden" name="fvv" value="1">
+            <input type="hidden" name="fbzx" value="7197792357799296946">
+            <input type="hidden" name="pageHistory" value="0">
+
+            <button id="sendBtn" class="btn btn-we btn-l w-100 g-recaptcha mt-4" type="submit" data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA" data-action="submit" data-callback="onSubmit">REGISTER & #savetheplanet</button>
+          </form>
+
+          <script>
+            (function () {
+              'use strict';
+              window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+            function onSubmit(token) { document.getElementById("bootstrapForm").requestSubmit(); }
+          </script>
+
+          <p class="lead mt-3">By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.</p>
+          <p><small class="fw-bold fst-italic">This consent is not a condition of purchase.</small></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer mt-auto py-3">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="facebook" viewBox="0 0 16 16">
       <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
@@ -391,25 +365,19 @@
       </div>
     </div>
     <h4 style="font-size: 1.25rem;"><a class="btn-outline-success-we" style="background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="mailto:all@weareenergy.coop?subject=Launching Soon" title="Contact Us">Contact Us</a>
-    </h4>                
+    </h4>
+    <br><p style="font-size: 1.0rem; background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;"><a class="btn-outline-success-we-disabled" style="color: #F26B5B; text-decoration: none;">Images thanks to </a><a class="btn-outline-success-we"  href="https://unsplash.com/@chrisabney">Chris Abney, </a><a class="btn-outline-success-we" href="https://unsplash.com/@pretty_and_pure">Briony Brown and </a><a class="btn-outline-success-we" href="https://unsplash.com/@andympbaxter">Andy Baxter </a><a class="btn-outline-success-we" href="https://unsplash.com"> on Unsplash.</a></p>
+    </p>                
   </div>
 </footer>
-<!-- jQuery (required for Bootstrap 4, but not for Bootstrap 5) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 
-<!-- Bootstrap JS (only ONE version should be used) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-  crossorigin="anonymous"></script>
+    <!-- Bootstrap bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Google reCAPTCHA v3 -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<!-- Custom JS if needed -->
-<!-- <script src="js/formscript.js"></script> -->
-<script src="js/webapi.js"></script>
-
-</body>
+    <!-- Custom JS -->
+    <script src="js/webapi.js"></script>
+  </body>
 </html>

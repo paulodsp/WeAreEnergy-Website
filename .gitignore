@@ -4,3 +4,6 @@
 .vscode/settings.json
 .vscode/spellright.dict
 node_modules
+google-cloud-sdk/
+google-cloud-sdk-*.tar.gz
+

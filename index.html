@@ -461,8 +461,7 @@
         Sending your details…
       </div>
    
-      <form id="bootstrapForm" method="POST" action="#" target="hidden_iframe"
-            autocomplete="on" class="needs-validation" novalidate>
+      <form id="form" method="POST" action="#" autocomplete="on" class="needs-validation" novalidate>
   
         <!-- Name -->
         <div class="row g-3">
@@ -524,10 +523,11 @@
         <input type="hidden" name="pageHistory" value="0">
   
         <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
-        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
-    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-    data-action="submit"
-    data-callback="onSubmit">REGISTER & #savetheplanet</button>
+        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="button" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet" >REGISTER & #savetheplanet</button>
+        
+        <!-- data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
+        data-action="submit"
+        data-callback="onSubmit" -->
 
     </form>
 

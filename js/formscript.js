@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 1. HTML5 + Bootstrap validation
     if (!formEl.checkValidity()) {
       formEl.classList.add("was-validated");
+      console.log("Form invalid – not posting");
       return;
     }
 
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "entry.799268612": document.getElementById("799268612").value,
       "entry.643330730": document.getElementById("643330730").value
     };
+    console.log("About to post to Google", data);
 
     // 3. UI state + POST + redirect
     $("#form").hide();
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function postToGoogle(googleURL, data) {
+  console.log("postToGoogle called");
   $.ajax({
     url: googleURL,
      data,
@@ -48,7 +51,8 @@ function postToGoogle(googleURL, data) {
         // Success
       }
     },
-    error: function () {
+    error: function (xhr, status, error) {
+      console.log("AJAX error", status, error);
       $("#form").show();
       $("#loading").hide();
     }

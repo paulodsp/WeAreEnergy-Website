@@ -1,8 +1,15 @@
-  var formURL =
+var formURL =
   "https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse?";
   
+var sendBtn = document.getElementById("sendBtn");
+var formEl  = document.getElementById("form");
 
 sendBtn.onclick = function() {
+  // This adds the “ticks” / Bootstrap validation feedback
+  if (!formEl.checkValidity()) {
+    formEl.classList.add("was-validated");
+    return;
+  }
   var data = {
     "entry.66386698": document.getElementById("entry.66386698").value,
     "entry.413471257": document.getElementById("entry.413471257").value,

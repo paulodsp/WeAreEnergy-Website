@@ -456,7 +456,7 @@
       <script type="text/javascript">var submitted = false;</script>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
   
-      <form id="bootstrapForm" method="POST" action="#" target="hidden_iframe"
+      <form id="bootstrapForm" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse" target="hidden_iframe"
             autocomplete="on" class="needs-validation" novalidate>
   
         <!-- Name -->
@@ -519,30 +519,38 @@
         <input type="hidden" name="pageHistory" value="0">
   
         <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
-        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
-    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-    data-action="submit"
-    data-callback="onSubmit">REGISTER & #savetheplanet</button>
+        <button class="btn btn-we btn-l w-100" 
+        style="margin-top: 1.5rem;" 
+        type="submit" 
+        value="REGISTER & #savetheplanet" 
+        id="sendBtn" 
+        title="Register and #savetheplanet"
+        >REGISTER & #savetheplanet
+        </button>
 
+        <!-- reCAPTCHA removed from button action -->
+        <!-- data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
+        data-action="submit"
+        data-callback="onSubmit" -->
     </form>
 
      <!-- Form validation script -->
     <script>
-  (function () {
-    'use strict';
-    window.addEventListener('load', function () {
-      var forms = document.getElementsByClassName('needs-validation');
-      Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
+          } else {
+            submitted = true; // only set this if the form is valid
           }
           form.classList.add('was-validated');
         }, false);
       });
-    }, false);
-  })();
+    })();
     </script>
 
     <!-- reCAPTCHA submit callback -->

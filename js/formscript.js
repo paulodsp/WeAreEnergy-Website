@@ -1,8 +1,16 @@
 var formURL =
   "https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse?";
   
-
+var sendBtn = document.getElementById("sendBtn");
 sendBtn.onclick = function() {
+  var formEl = document.getElementById("form");
+
+  // HTML5 + Bootstrap validation
+  if (!formEl.checkValidity()) {
+    formEl.classList.add("was-validated");
+    return; // do not send if invalid
+  }
+
   var data = {
     "entry.66386698": document.getElementById("entry.66386698").value,
     "entry.413471257": document.getElementById("entry.413471257").value,
@@ -13,6 +21,7 @@ sendBtn.onclick = function() {
   };
   $("#form").hide();
   $("#loading").show();
+  
   postToGoogle(formURL, data);
   loadSheet.click("https://weareenergy.coop/thankyou.html");
 };
@@ -35,7 +44,7 @@ function postToGoogle(googleURL, data) {
 
     error: function(){
       // actually throws an error, but does send properly
-       $("#bootstrapForm").show();
+       $("#form").show();
        $("#loading").hide();
     },
   });

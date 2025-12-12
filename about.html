@@ -313,7 +313,10 @@
             <input type="hidden" name="fbzx" value="7197792357799296946">
             <input type="hidden" name="pageHistory" value="0">
 
-            <button id="sendBtn" class="btn btn-we btn-l w-100 g-recaptcha mt-4" type="submit" data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA" data-action="submit" data-callback="onSubmit">REGISTER & #savetheplanet</button>
+            <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="submit" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet"
+    data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
+    data-action="submit"
+    data-callback="onSubmit">REGISTER & #savetheplanet</button>
           </form>
 
           <script>
@@ -378,7 +381,12 @@
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <!-- Custom JS -->
-    <script src="js/webapi.js"></script>
+    <!-- Custom JS if needed -->
+ <!-- jQuery is required for formscript.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="js/formscript.js"></script>
+<script src="js/webapi.js"></script>
   </body>
 </html>

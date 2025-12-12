@@ -9,7 +9,7 @@ sendBtn.onclick = function() {
     "entry.1199933740": document.getElementById("entry.1199933740").value,
     "entry.799268612": document.getElementById("entry.799268612").value,
     "entry.643330730": document.getElementById("entry.643330730").value,
-    "entry.1560061539": document.getElementById("entry.1560061539").value
+    /* "entry.1560061539": document.getElementById("entry.1560061539").value */
   };
   $("#form").hide();
   $("#loading").show();

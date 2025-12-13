@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Join the new green energy co-operative and fight climate change now">
-    <meta name="author" content="We Are Energy - Paul Phillips">
+<meta name="description" content="Join We Are Energy Co-operative. Get solar panels and battery storage at no upfront cost with our energy efficiency lease. Save 50% on bills and fight climate change.">    <meta name="author" content="We Are Energy - Paul Phillips">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>We Are Energy Coop- The green energy services co-operative fighting climate change with no upfront cost.</title>
+<!-- WhatsApp specific (add to <head>) -->
+<meta property="og:site_name" content="We Are Energy Co-operative">
+<meta property="og:locale" content="en_GB">
 
     <link rel="canonical" href="https://WeAreEnergy.coop/"/>
     <link rel="preconnect" href="https://gstatic.com">
@@ -66,8 +68,13 @@
        overflow-x: auto;
        -webkit-overflow-scrolling: touch;
       }
-      
     </style>
+    <!-- web api script -->
+    <script type="text/javascript" src="js/webapi.js" async="async"></script>
+    <!-- end webapi script -->
+    <!-- sharethis.com script -->
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ed6244627140a0012717796&product=inline-share-buttons" async="async"></script>
+    <!-- end sharethis.com script -->
     <!-- Custom styles for this Jumbotron template -->
     <link href ="/css/jumbotron-we-custom.css" rel="stylesheet">
     <!-- custom styles for carousel -->
@@ -80,29 +87,7 @@
     <link href="/css/navbar-top-fixed.css" rel="stylesheet">
     <!-- Google Recaptcha script -->
      <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf2hPMqAAAAAKerX2rixwNaXe7-zyqxlOzaHOVi"></script>
-     <!-- <script>
-      const form = document.getElementById("bootstrapForm");
-      const button = document.getElementById("sendBtn");
-    
-      button.addEventListener("click", function (event) {
-        event.preventDefault();
-        grecaptcha.enterprise.ready(function () {
-          grecaptcha.enterprise.execute('6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA', {action: 'submit'}).then(function (token) {
-            // Optionally add the token to the form
-            const tokenInput = document.createElement("input");
-            tokenInput.setAttribute("type", "hidden");
-            tokenInput.setAttribute("name", "g-recaptcha-response");
-            tokenInput.setAttribute("value", token);
-            form.appendChild(tokenInput);
-    
-            submitted = true;
-            form.requestSubmit(); // runs built-in validation
-          });
-        });
-      });
-    </script> -->
-    
-  
+     
     <!-- favicon links and stuff -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -113,6 +98,50 @@
     <meta name="msapplication-TileColor" content="#603cba">
     <meta name="theme-color" content="#ffffff">
     <!-- end favicon stuff -->
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://WeAreEnergy.coop/">
+    <meta property="og:title" content="We Are Energy Co-op - No Upfront Cost Solar & Battery">
+    <meta property="og:description" content="Join the green energy revolution. Get solar panels and battery storage at no upfront cost. Save 50% on energy bills.">
+    <meta property="og:image" content="https://WeAreEnergy.coop/images/energy/logos/weare_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://WeAreEnergy.coop/">
+    <meta property="twitter:title" content="We Are Energy Co-op - No Upfront Cost Solar & Battery">
+    <meta property="twitter:description" content="Join the green energy revolution. Get solar panels and battery storage at no upfront cost. Save 50% on energy bills.">
+    <meta property="twitter:image" content="https://WeAreEnergy.coop/images/energy/logos/weare_logo.png">
+
+    <!-- Schema.org Organization Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "We Are Energy Co-operative",
+  "alternateName": "We Are Energy",
+  "url": "https://WeAreEnergy.coop",
+  "logo": "https://WeAreEnergy.coop/images/energy/logos/weare_logo.png",
+  "description": "Member-owned green energy co-operative offering solar panels and battery storage at no upfront cost through our revolutionary energy efficiency lease.",
+  "foundingDate": "2020",
+  "founders": [{
+    "@type": "Person",
+    "name": "Paul Phillips"
+  }],
+  "sameAs": [
+    "https://twitter.com/weareenergycoop",
+    "https://www.facebook.com/WeAreEnergy.coop",
+    "https://www.instagram.com/weareenergy.coop"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "all@weareenergy.coop",
+    "contactType": "Customer Service"
+  }
+}
+</script>
+
+
 
   </head>
   
@@ -131,7 +160,7 @@
   <!-- End Google Tag Manager (noscript) -->
  <!-- Fixed navbar - UPDATED TO BOOTSTRAP 5.2 -->
  <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
-  <div class="container-md">
+  <div class="container-fluid">
   <a class="navbar-brand" href="https://WeAreEnergy.coop">
     <img src="/images/energy/logos/weare_logo.png"  height="75px" alt="We Are Energy" title="We Are Energy Co-operative">
   </a>
@@ -293,6 +322,39 @@
         </div>
       </div>
     </div><br>
+      <!-- End 3 cards Red, Balck and Green -->
+       <!-- Social proof / testimonials -->
+      <!-- <section class="py-5" style="background-color: #373837;">
+  <div class="container">
+    <h2 class="card-title text-center:" style="color: #c0d726;">What Our Founding Members Say</h2>
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <div class="card h-100" style="background-color: #f1eee6;">
+          <div class="card-body">
+            <p class="card-text">"Finally, a way to go solar without the massive upfront cost. The 50% savings are real!"</p>
+            <footer class="blockquote-footer">Sarah M., London</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100" style="background-color: #f1eee6;">
+          <div class="card-body">
+            <p class="card-text">"Being part of a co-operative means I'm not just a customer - I'm an owner fighting climate change."</p>
+            <footer class="blockquote-footer">James T., Bristol</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100" style="background-color: #f1eee6;">
+          <div class="card-body">
+            <p class="card-text">"501 founding members strong and growing. This is the future of energy!"</p>
+            <footer class="blockquote-footer">Founding Member</footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
     <div class="pt-4 pb-3">
       <dd>
@@ -309,7 +371,7 @@
         <dd>Powering this service is our <b>member‑owned UK next‑generation solar factory,</b> so the panels we install on your roof are designed, made and fitted by the co‑operative you join – keeping more of the value and green jobs in our communities, and making sure everything we do is <strong>genuinely ethical.</strong></dd>
         <dd>We also partner with <strong>councils, housing associations and housing developers</strong> to reserve roofs and bring this no‑upfront‑cost lease to whole streets, estates and new developments. <p class="font-weight-bold font-italic">Please<a style="background-color: #f1eee6; color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="mailto:partnerships@weareenergy.coop?subject=Reserved Roofs Pilot" title="Contact Us">Contact Us</a>and we’ll arrange a conversation.</p></dd><br>
       </p>
-      <dd><p><a class="w-100 btn btn-lg btn-we" href="/about.html#mission" title="Learn More" role="button">LEARN MORE</a></p></dd>
+      <a class="btn btn-lg btn-we" href="/about.html#mission" title="Learn More" role="button">LEARN MORE</a>
       
       <!-- OLD PRICING SECTION AND COMPARISON TABLES - KEPT FOR REFERENCE TO REVERT IF NEEDED -->
       <!-- <h1 class="display-3" id="reasons" style="font-family: stencil; color:#c0d726" >NOW WITH MORE FLEXIBLE WAYS TO JOIN</h1> -->
@@ -439,6 +501,7 @@
   </div>
 </section>
 
+<!-- Registration form (full-bleed green) -->
 <section class="py-5" style="background-color: #c0d726">
     <div class="container">
       <div class="py-5 text-center">
@@ -453,15 +516,16 @@
       </div>
   
       <!-- Hidden iframe for redirect on successful submission -->
-     <!--  <script type="text/javascript">var submitted = false;</script>
+      <script type="text/javascript">var submitted = false;</script>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thankyou.html';}"></iframe>
-   -->
-      <!-- Simple loading indicator -->
-      <div id="loading" style="display:none; text-align:center; margin-top:1rem;">
-        Sending your details…
-      </div>
-   
-      <form id="form" method="POST" action="#" autocomplete="on" class="needs-validation" novalidate>
+  
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse" 
+            method="POST" 
+            target="hidden_iframe" 
+            onsubmit="submitted=true;" 
+            autocomplete="on" 
+            class="needs-validation" 
+            novalidate>
   
         <!-- Name -->
         <div class="row g-3">
@@ -469,7 +533,7 @@
             <label for="66386698" class="form-label">Your Full Name</label>
             <input id="66386698" type="text" name="entry.66386698" class="form-control"
                    autocomplete="name" placeholder="e.g. First-name Surname" required>
-            <div class="invalid-tooltip">Please type your full name.</div>
+            <div class="invalid-feedback">Please type your full name.</div>
           </div>
   
           <!-- Email -->
@@ -477,7 +541,7 @@
             <label for="413471257" class="form-label">Email Address</label>
             <input id="413471257" type="email" name="entry.413471257" class="form-control"
                    autocomplete="email" maxlength="50" placeholder="e.g. First.Last@email.com" required>
-            <div class="invalid-tooltip">Please provide a valid email address.</div>
+            <div class="invalid-feedback">Please provide a valid email address.</div>
           </div>
         </div>
   
@@ -487,85 +551,38 @@
             <label for="1199933740" class="form-label">Phone Number</label>
             <input id="1199933740" type="tel" name="entry.1199933740" class="form-control"
                    autocomplete="tel" maxlength="16" placeholder="e.g. 01234 567890" required>
-            <div class="invalid-tooltip">Please provide a valid phone number.</div>
+            <div class="invalid-feedback">Please provide a valid phone number.</div>
           </div>
   
           <div class="col-md-6 mb-3">
             <label for="799268612" class="form-label">Address</label>
             <input id="799268612" name="entry.799268612" class="form-control"
                    placeholder="e.g. 1 My Street, My Town, My City" required>
-            <div class="invalid-tooltip">Please provide a valid address.</div>
+            <div class="invalid-feedback">Please provide a valid address.</div>
           </div>
   
           <div class="col-md-3 mb-3">
             <label for="643330730" class="form-label">Post Code</label>
             <input id="643330730" type="text" name="entry.643330730" class="form-control"
                    placeholder="e.g. AB12 3CD" autocomplete="shipping postal-code" required>
-            <div class="invalid-tooltip">Please provide a valid post code.</div>
+            <div class="invalid-feedback">Please provide a valid post code.</div>
           </div>
-  
-         <!-- Old lease Length & Upfront contribution selection for reference -->  
-          <!-- <div class="col-auto">
-            <label for="1560061539">Please choose your preferred lease length and Upfront contribution</label>
-            <select id="1560061539" name="entry.786389054" class="form-select" required>
-              <option selected disabled value="Please choose">Please choose</option>
-              <option value="8 years &amp; Zero Upfront">8 years &amp; Zero Upfront</option>
-              <option value="6 years &amp; £2,500 Upfront">6 years &amp; £2,500 Upfront</option>
-              <option value="4 years &amp; £5,000 Upfront">4 years &amp; £5,000 Upfront</option>
-            </select>
-            <div class="invalid-tooltip">Please choose.</div>
-          </div> -->
         </div>
   
-        <!-- Hidden tracking fields (if used by your Google Form backend) -->
-        <input type="hidden" name="fvv" value="1">
-        <input type="hidden" name="fbzx" value="7197792357799296946">
-        <input type="hidden" name="pageHistory" value="0">
-  
-        <!-- Submit button with reCAPTCHA Enterprise v3 trigger -->
-        <button class="btn btn-we btn-l w-100 g-recaptcha" style="margin-top: 1.5rem;" type="button" value="REGISTER & #savetheplanet" id="sendBtn" title="Register and #savetheplanet" >REGISTER & #savetheplanet</button>
-        
-        <!-- data-sitekey="6LeUWf0UAAAAACfWmXDb075FeyjplDc82IttFDyA"
-        data-action="submit"
-        data-callback="onSubmit" -->
+        <!-- Submit button -->
+        <button class="btn btn-we btn-lg w-100" style="margin-top: 1.5rem;" type="submit" title="Register and #savetheplanet">REGISTER & #savetheplanet</button>
+      </form>
 
-    </form>
+      <p class="lead" style="padding-top: 1rem;">
+        By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
+      </p>
+      <p><small class="fw-bold fst-italic">This consent is not a condition of purchase.</small></p>
+      <p><small class="fw-bold fst-italic">For councils, housing associations and developers: If you would like to explore a reserved‑roofs pilot or programme for your residents or schemes, please <a style="background-color: #f1eee6; color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="mailto:partnerships@weareenergy.coop?subject=Reserved Roofs Pilot" title="Contact Us">Contact Us</a> and we'll arrange a conversation.</small></p>
+      
+    </div>
+</section>
 
-     <!-- Form validation script -->
-    <!-- <script>
-  (function () {
-    'use strict';
-    window.addEventListener('load', function () {
-      var forms = document.getElementsByClassName('needs-validation');
-      Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
-    </script> -->
 
-    <!-- reCAPTCHA submit callback -->
-    <!-- <script>
-  function onSubmit(token) {
-    document.getElementById("#form").requestSubmit();
-  }
-    </script> -->
-
-    <p class="lead" style="padding-top: 1rem;">
-    By clicking Register, you agree to be contacted on the details you have provided when we've launched our service in your area.
-    </p>
-    <p><small class="fw-bold fst-italic">This consent is not a condition of purchase.</small></p>
-    <p><small class="fw-bold fst-italic">For councils, housing associations and developers: If you would like to explore a reserved‑roofs pilot or programme for your residents or schemes, please <a style="background-color: #f1eee6; color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="mailto:partnerships@weareenergy.coop?subject=Reserved Roofs Pilot" title="Contact Us">Contact Us</a> and we’ll arrange a conversation.</small></p>
-    
-    
-  </div>
- </section>
 </main>
 
 <footer class="footer mt-auto py-3">
@@ -598,6 +615,25 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  'use strict';
+  window.addEventListener('load', function () {
+    var forms = document.getElementsByClassName('needs-validation');
+    Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
 <!-- Bootstrap JS Bundle (includes Popper) - BOOTSTRAP 5.3 ONLY -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -609,8 +645,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
-<script src="js/formscript.js"></script>
-<script src="js/webapi.js"></script>
+
 
 </body>
 </html>

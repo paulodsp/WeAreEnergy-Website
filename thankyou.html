@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Join the new greeen energy co-operative and fight climate change now">
+    <meta name="description" content="Thank you for registering with We Are Energy Co-operative. We'll contact you when we launch our no-upfront-cost solar and battery service in your area.">
     <meta name="author" content="We Are Energy - Paul Phillips">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>We Are Energy Coop- The green energy services co-operative fighting climate with no upfront cost.</title>
@@ -99,6 +99,47 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
     <!-- end favicon stuff -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://WeAreEnergy.coop/">
+    <meta property="og:title" content="We Are Energy Co-op - No Upfront Cost Solar & Battery">
+    <meta property="og:description" content="Join the green energy revolution. Get solar panels and battery storage at no upfront cost. Save 50% on energy bills.">
+    <meta property="og:image" content="https://WeAreEnergy.coop/images/energy/logos/weare_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://WeAreEnergy.coop/">
+    <meta property="twitter:title" content="We Are Energy Co-op - No Upfront Cost Solar & Battery">
+    <meta property="twitter:description" content="Join the green energy revolution. Get solar panels and battery storage at no upfront cost. Save 50% on energy bills.">
+    <meta property="twitter:image" content="https://WeAreEnergy.coop/images/energy/logos/weare_logo.png">
+
+    <!-- Schema.org Organization Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "We Are Energy Co-operative",
+  "alternateName": "We Are Energy",
+  "url": "https://WeAreEnergy.coop",
+  "logo": "https://WeAreEnergy.coop/images/energy/logos/weare_logo.png",
+  "description": "Member-owned green energy co-operative offering solar panels and battery storage at no upfront cost through our revolutionary energy efficiency lease.",
+  "foundingDate": "2020",
+  "founders": [{
+    "@type": "Person",
+    "name": "Paul Phillips"
+  }],
+  "sameAs": [
+    "https://twitter.com/weareenergycoop",
+    "https://www.facebook.com/WeAreEnergy.coop",
+    "https://www.instagram.com/weareenergy.coop"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "all@weareenergy.coop",
+    "contactType": "Customer Service"
+  }
+}
+</script>
 
 
   </head>
@@ -119,7 +160,7 @@
   <div class="collapse navbar-collapse" id="navbar-list">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#" alt="Home" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
+        <a class="nav-link" href="/index.html" alt="Home" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/about.html" alt="About Us" title="About Us Page">ABOUT US <span class="visually-hidden">(current)</span></a>
@@ -163,6 +204,41 @@
       <p style="margin-top: 1rem;">Please share with your friends and family & help make our world more caring, greener and fairer.<br>We'll be in touch as soon as we're ready to launch in your area.</p>
     </div>
   </section>
+
+  <!-- Add after the warming stripes section -->
+<section class="py-5" style="background-color: #f1eee6;">
+  <div class="container text-center">
+    <h2 class="display-4">Help Your Friends Save Too!</h2>
+    <p class="lead">For every friend who registers and joins We Are Energy, you'll both receive a <b style="color: #F26B5B;">£50 credit</b> on your first bill.</p>
+    
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card border-dark" style="background-color: #c0d726;">
+          <div class="card-body">
+            <h3>Your Unique Referral Link:</h3>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="referralLink" value="https://WeAreEnergy.coop?ref=YOUR_ID" readonly>
+              <button class="btn btn-we" type="button" onclick="copyReferralLink()">
+                <i class="bi bi-clipboard"></i> Copy Link
+              </button>
+            </div>
+            <p><small>Share this link via email, WhatsApp, or social media!</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function copyReferralLink() {
+  const referralLink = document.getElementById('referralLink');
+  referralLink.select();
+  navigator.clipboard.writeText(referralLink.value);
+  alert('Referral link copied! Share it with your friends.');
+}
+</script>
+
 </main>
   <footer class="footer mt-auto py-3">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -192,17 +268,19 @@
       <p style="font-size: 1.0rem;">Image credit thanks to <a class="btn-outline-success-we" style="background-color: #373837; padding: 0rem .5rem; border-radius: .3rem;" href="https://showyourstripes.info">Professor Ed Hawkins (University of Reading) 'Show Your Stripes'.</a></p>               
     </div>
   </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Optional JavaScript; choose one of the two! -->
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<!-- Bootstrap JS Bundle (includes Popper) - BOOTSTRAP 5.3 ONLY -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="js/formscript.js"></script>
-<script src="js/webapi.js"></script>
-<script>var submitted = false;</script>
+<!-- Google reCAPTCHA v3 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Custom JS if needed -->
+ <!-- jQuery is required for formscript.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   </body>
 </html>

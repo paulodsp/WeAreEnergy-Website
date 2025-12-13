@@ -187,3 +187,15 @@ bg4 {
   position: relative;
 }
 
+/* carousel.css - Update these URLs */
+.bg1 {
+  background-image: url("https://images.unsplash.com/photo-1470621178165-f1fb40c4401f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=75");
+}
+
+.bg2 {
+  background-image: url("https://images.unsplash.com/photo-1575372479398-dc8d24c4080f?ixlib=rb-1.2.1&q=75&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&fit=crop");
+}
+
+.bg3 {
+  background-image: url("https://images.unsplash.com/photo-1562445777-349ef2f31741?ixlib=rb-1.2.1&q=75&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&fit=crop");
+}

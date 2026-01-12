@@ -1,0 +1,166 @@
+/* We Are Energy - SAFE Scroll Animations */
+/* Content is VISIBLE by default - animations are optional enhancements */
+
+/* ========================================
+   1. SCROLL PROGRESS BAR - CORRECT POSITION
+   ======================================== */
+.scroll-progress {
+  position: fixed;
+  top: 3.5rem; /* Matches navbar height exactly */
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #c0d726 0%, #7ec845 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1029; /* Below navbar (1030) */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   2. TEXT HIGHLIGHT - VISIBLE BY DEFAULT, ANIMATES OPTIONALLY
+   ======================================== */
+.text-highlight {
+  position: relative;
+  display: inline-block;
+  /* Content visible by default - no opacity tricks */
+}
+
+/* Animation happens ONLY when JS adds .visible class */
+.text-highlight.animate {
+  background: linear-gradient(180deg, transparent 60%, #c0d726 60%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  animation: highlightWipe 1s ease-out forwards;
+}
+
+@keyframes highlightWipe {
+  to { 
+    background-size: 100% 100%; 
+  }
+}
+
+/* ========================================
+   3. STAT COUNTER - VISIBLE BY DEFAULT
+   ======================================== */
+.stat-counter {
+  display: inline-block;
+  font-weight: 700;
+  color: #F26B5B;
+  /* Always visible - no opacity: 0 nonsense */
+}
+
+/* Only when counting */
+.stat-counter.counting {
+  animation: counterGlow 0.5s ease-in-out;
+}
+
+@keyframes counterGlow {
+  0%, 100% { 
+    transform: scale(1); 
+    text-shadow: none;
+  }
+  50% { 
+    transform: scale(1.15); 
+    text-shadow: 0 0 20px rgba(242, 107, 91, 0.6);
+  }
+}
+
+/* ========================================
+   4. IMAGE REVEAL - NO TEXT OBSCURING
+   ======================================== */
+.image-reveal {
+  position: relative;
+  display: block;
+  margin-bottom: 2rem; /* Space to prevent text overlap */
+  /* Images visible by default */
+}
+
+.image-reveal img {
+  /* Fully visible by default - no opacity: 0 */
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Animation only when JS adds .animate class */
+.image-reveal.animate img {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(15px);
+  animation: imageReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes imageReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* NO overlay - was causing text obscuring */
+
+/* ========================================
+   5. CARD ANIMATIONS - VISIBLE BY DEFAULT
+   ======================================== */
+.card-group .card {
+  /* Fully visible by default */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation only when JS adds .animate class */
+.card-group .card.animate {
+  animation: cardBounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes cardBounceIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Stagger delays applied by JS */
+.card-group .card:nth-child(1).animate {
+  animation-delay: 0.1s;
+}
+
+.card-group .card:nth-child(2).animate {
+  animation-delay: 0.3s;
+}
+
+.card-group .card:nth-child(3).animate {
+  animation-delay: 0.5s;
+}
+
+/* ========================================
+   6. ACCESSIBILITY
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+}
+
+/* ========================================
+   7. MOBILE OPTIMISATIONS
+   ======================================== */
+@media (max-width: 768px) {
+  .scroll-progress {
+    height: 3px;
+  }
+}

@@ -241,7 +241,7 @@ In `css/scroll-animations.css`:
 
 ### Images Not Revealing
 
-1. Ensure images are wrapped in `<picture class="image-reveal">` tags
+1. Ensure images are wrapped in `< picture class="image-reveal" class="image-reveal">` tags
 2. Check image paths are correct
 3. Verify images are loading (check Network tab in DevTools)
 

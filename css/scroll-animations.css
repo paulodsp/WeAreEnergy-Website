@@ -164,7 +164,7 @@ html {
     transform: translateY(20px);
   }
   
-  /* Reduce motion for accessibility */
+  /* Reduce motion for accessibility */scroll
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

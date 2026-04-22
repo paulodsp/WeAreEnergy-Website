@@ -92,10 +92,10 @@
       <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
+            <a class="nav-link" href="/index.html" title="Energy Home Page">ENERGY</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about.html" title="About Us">ABOUT US</a>
+            <a class="nav-link" href="#" title="About Us">ABOUT US<span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/faqs.html" title="Frequently Asked Questions">FAQ'S</a>
@@ -109,7 +109,7 @@
 <main role="main">
 
   <section class="page-hero hero-about">
-    <div class="hero-photo" id="heroBg"></div>
+    <div class="hero-photo" id="heroVision"></div>
     <div class="hero-content">
       <span class="hero-kicker hero-kicker-charcoal reveal">Our Vision</span>
       <h1 class="hero-title reveal reveal-d1">
@@ -319,42 +319,48 @@
         <script>var submitted=false;</script>
         <iframe name="hiddeniframe" id="hiddeniframe" style="display:none;" onload="if(submitted){window.location='thankyou.html';}"></iframe>
 
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse"
-              method="POST"
-              target="hiddeniframe"
-              onsubmit="submitted=true;"
-              autocomplete="on"
-              class="needs-validation reveal"
-              novalidate>
+  <form id="registration-form"
+        autocomplete="on"
+        class="needs-validation reveal"
+        novalidate>
 
-          <div class="form-grid" style="margin-bottom:1rem;">
-            <div>
-              <label for="f-name">Your Full Name</label>
-              <input id="f-name" type="text" name="entry.66386698" autocomplete="name" placeholder="First-name Surname" required>
-            </div>
-            <div>
-              <label for="f-email">Email Address</label>
-              <input id="f-email" type="email" name="entry.413471257" autocomplete="email" maxlength="50" placeholder="first.last@email.com" required>
-            </div>
-          </div>
+    <div class="form-grid" style="margin-bottom:1rem;">
+      <div>
+        <label for="f-name">Your Full Name</label>
+        <input id="f-name" type="text" name="entry.66386698"
+              autocomplete="name" placeholder="First-name Surname" required>
+      </div>
+      <div>
+        <label for="f-email">Email Address</label>
+        <input id="f-email" type="email" name="entry.413471257"
+              autocomplete="email" maxlength="50"
+              placeholder="first.last@email.com" required>
+      </div>
+    </div>
 
-          <div class="form-grid-wide">
-            <div>
-              <label for="f-phone">Phone Number</label>
-              <input id="f-phone" type="tel" name="entry.1199933740" autocomplete="tel" maxlength="16" placeholder="01234 567890" required>
-            </div>
-            <div>
-              <label for="f-address">Address</label>
-              <input id="f-address" type="text" name="entry.799268612" placeholder="1 My Street, My Town, My City" required>
-            </div>
-            <div>
-              <label for="f-postcode">Post Code</label>
-              <input id="f-postcode" type="text" name="entry.643330730" autocomplete="postal-code" placeholder="AB12 3CD" required>
-            </div>
-          </div>
+    <div class="form-grid-wide">
+      <div>
+        <label for="f-phone">Phone Number</label>
+        <input id="f-phone" type="tel" name="entry.1199933740"
+              autocomplete="tel" maxlength="16"
+              placeholder="01234 567890" required>
+      </div>
+      <div>
+        <label for="f-address">Address</label>
+        <input id="f-address" type="text" name="entry.799268612"
+              placeholder="1 My Street, My Town, My City" required>
+      </div>
+      <div>
+        <label for="f-postcode">Post Code</label>
+        <input id="f-postcode" type="text" name="entry.643330730"
+              autocomplete="postal-code" placeholder="AB12 3CD" required>
+      </div>
+    </div>
 
-          <button type="submit" class="form-submit">Register &amp; SaveThePlanet</button>
-        </form>
+    <button type="submit" class="form-submit">
+      Register &amp; SaveThePlanet
+    </button> 
+  </form>
 
         <p class="form-legal">
           By clicking Register, you agree to be contacted on the details you have provided when we’ve launched our service in your area.
@@ -496,6 +502,45 @@
         this.classList.add('was-validated');
       });
     })();
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+      const form    = document.getElementById('registration-form');
+      const success = document.getElementById('form-success');
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyslRmMzWnnvldT10MUx1Unhp_PwqnbyyEFp5ly-M4XdYST0CblubGb2wgGne69XhQ_/exec';
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(function () {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      setTimeout(function () {
+        window.location.href = 'thankyou.html';
+      }, 2500);
+    })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'Register & SaveThePlanet';
+          alert('Sorry, something went wrong. Please try again.');
+        });
+      });
+    }());
   </script>
 
 </body>

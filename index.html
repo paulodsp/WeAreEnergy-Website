@@ -108,7 +108,7 @@
 <main role="main">
 
   <section class="page-hero hero-index">
-    <div class="hero-photo" id="heroBg"></div>
+    <div class="hero-photo" id="heroHome"></div>
     <div class="hero-content">
       <span class="hero-kicker reveal">Member-owned · No upfront cost · Est. 2020</span>
       <h1 class="hero-title reveal reveal-d1">
@@ -119,7 +119,7 @@
         #FaceTheEarthSystemsCollapse
       </p>
       <div class="hero-actions reveal reveal-d3">
-        <a href="#how-it-works" class="button button-chartreuse">How It Works</a>
+        <a href="#lease" class="button button-chartreuse">How It Works</a>
         <a href="#register" class="button button-ghost">Register Now</a>
       </div>
     </div>
@@ -172,10 +172,10 @@
     <div class="wrap">
       <div class="split split-feature">
         <div>
-          <p class="section-kicker reveal">How it works</p>
+          <p class="section-kicker reveal" id="how-it-works">How it works</p>
           <h2 class="feature-title reveal reveal-d1">The Energy <span class="feature-title-accent">Efficiency Lease</span></h2>
           <div class="cluster reveal reveal-d2">
-            <a href="about.html#mission" class="button button-charcoal">Learn More</a>
+            <a href="about.html#heroVision" class="button button-charcoal">Learn More</a>
             <a href="#register" class="button button-coral">Register Now &rsaquo;</a>
           </div>
         </div>
@@ -256,7 +256,7 @@
         <article class="card card-charcoal reveal reveal-d1">
           <h3 class="card-title">A Brighter Future for Our Planet</h3>
           <p class="card-text"><strong>Save 16 tonnes of CO₂</strong> and over <strong>£6,000</strong> in the first 10 years. The electricity you generate is <strong>FREE</strong> to use when your lease ends, for the rest of the life of the system.</p>
-          <a href="faqs.html" class="card-link">Find Out More &rsaquo;</a>
+          <a href="about.html" class="card-link">Find Out More About Us &rsaquo;</a>
         </article>
 
         <article class="card card-chartreuse reveal reveal-d2">
@@ -286,42 +286,56 @@
         <script>var submitted=false;</script>
         <iframe name="hiddeniframe" id="hiddeniframe" style="display:none;" onload="if(submitted){window.location='thankyou.html';}"></iframe>
 
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLScF2jcjMfcak-jVHneiFiLMDnUYS2jfTvWHXLbW42bUgPNbWA/formResponse"
-              method="POST"
-              target="hiddeniframe"
-              onsubmit="submitted=true;"
-              autocomplete="on"
-              class="needs-validation reveal"
-              novalidate>
+<form id="registration-form"
+      autocomplete="on"
+      class="needs-validation reveal"
+      novalidate>
 
-          <div class="form-grid" style="margin-bottom:1rem;">
-            <div>
-              <label for="f-name">Your Full Name</label>
-              <input id="f-name" type="text" name="entry.66386698" autocomplete="name" placeholder="First-name Surname" required>
-            </div>
-            <div>
-              <label for="f-email">Email Address</label>
-              <input id="f-email" type="email" name="entry.413471257" autocomplete="email" maxlength="50" placeholder="first.last@email.com" required>
-            </div>
-          </div>
+  <div class="form-grid" style="margin-bottom:1rem;">
+    <div>
+      <label for="f-name">Your Full Name</label>
+      <input id="f-name" type="text" name="entry.66386698"
+             autocomplete="name" placeholder="First-name Surname" required>
+    </div>
+    <div>
+      <label for="f-email">Email Address</label>
+      <input id="f-email" type="email" name="entry.413471257"
+             autocomplete="email" maxlength="50"
+             placeholder="first.last@email.com" required>
+    </div>
+  </div>
 
-          <div class="form-grid-wide">
-            <div>
-              <label for="f-phone">Phone Number</label>
-              <input id="f-phone" type="tel" name="entry.1199933740" autocomplete="tel" maxlength="16" placeholder="01234 567890" required>
-            </div>
-            <div>
-              <label for="f-address">Address</label>
-              <input id="f-address" type="text" name="entry.799268612" placeholder="1 My Street, My Town, My City" required>
-            </div>
-            <div>
-              <label for="f-postcode">Post Code</label>
-              <input id="f-postcode" type="text" name="entry.643330730" autocomplete="postal-code" placeholder="AB12 3CD" required>
-            </div>
-          </div>
+  <div class="form-grid-wide">
+    <div>
+      <label for="f-phone">Phone Number</label>
+      <input id="f-phone" type="tel" name="entry.1199933740"
+             autocomplete="tel" maxlength="16"
+             placeholder="01234 567890" required>
+    </div>
+    <div>
+      <label for="f-address">Address</label>
+      <input id="f-address" type="text" name="entry.799268612"
+             placeholder="1 My Street, My Town, My City" required>
+    </div>
+    <div>
+      <label for="f-postcode">Post Code</label>
+      <input id="f-postcode" type="text" name="entry.643330730"
+             autocomplete="postal-code" placeholder="AB12 3CD" required>
+    </div>
+  </div>
 
-          <button type="submit" class="form-submit">Register &amp; SaveThePlanet</button>
-        </form>
+  <button type="submit" class="form-submit">
+    Register &amp; SaveThePlanet
+  </button>
+
+</form>
+
+<div id="form-success" style="display:none; margin-top:1.5rem; text-align:center;">
+  <p class="lead" style="color:var(--charcoal);">
+    <strong>You're on the list.</strong><br>
+    We'll contact you when we launch in your area.
+  </p>
+</div>
 
         <p class="form-legal">
           By clicking Register, you agree to be contacted on the details you have provided when we’ve launched our service in your area.
@@ -463,6 +477,45 @@
         this.classList.add('was-validated');
       });
     })();
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+      const form    = document.getElementById('registration-form');
+      const success = document.getElementById('form-success');
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyslRmMzWnnvldT10MUx1Unhp_PwqnbyyEFp5ly-M4XdYST0CblubGb2wgGne69XhQ_/exec';
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(function () {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      setTimeout(function () {
+        window.location.href = 'thankyou.html';
+      }, 2500);
+    })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'Register & SaveThePlanet';
+          alert('Sorry, something went wrong. Please try again.');
+        });
+      });
+    }());
   </script>
 
 </body>

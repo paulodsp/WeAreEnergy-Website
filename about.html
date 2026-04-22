@@ -528,12 +528,19 @@
           body: new FormData(form)
         })
         .then(function () {
-      form.style.display = 'none';
-      success.style.display = 'block';
-      setTimeout(function () {
-        window.location.href = 'thankyou.html';
-      }, 2500);
-    })
+          // Generate referral code from name + timestamp
+          const name = document.getElementById('f-name').value.trim();
+          const initials = name.split(' ').map(w => w[0]).join('').toUpperCase();
+          const suffix = Date.now().toString(36).toUpperCase().slice(-4);
+          const refCode = 'WAE-' + initials + suffix;
+          localStorage.setItem('wae_ref_code', refCode);
+
+          form.style.display = 'none';
+          success.style.display = 'block';
+          setTimeout(function () {
+            window.location.href = 'thankyou.html';
+          }, 2500);
+        })
         .catch(function () {
           btn.disabled = false;
           btn.textContent = 'Register & SaveThePlanet';

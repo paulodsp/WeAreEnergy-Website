@@ -108,30 +108,29 @@
         <div class="stack-wide reveal reveal-d1">
           <p>Your registration is confirmed. We are expanding across the UK and will contact you when we are ready to launch in your area.</p>
           <p>In the meantime, help us grow the co-operative by sharing your referral link &mdash; the more members we have, the faster we can launch.</p>
-          <!-- <p><strong>Any questions?</strong> Read our <a href="faqs.html" class="link">FAQs</a> or contact us at <a href="mailto:all@weareenergy.coop" class="link">all@weareenergy.coop</a></p> -->
         </div>
       </div>
     </section>
 
     <!-- SHARE YOUR REFERRAL LINK -->
-    <section class="section section-chartreuse">
-      <div class="split split-story wrap">
-        <div class="reveal">
-          <span class="section-kicker">Help Us Grow</span>
-          <h2>Share &amp; Earn<br>&pound;50 Credit</h2>
-          <p>For every friend who registers and joins We Are Energy, you will <strong>both receive a &pound;50 credit</strong> on your first bill.</p>
-          
-        </div>
-        <div class="stack-wide reveal reveal-d1">
-          <span class="section-kicker">Your Unique Referral Link</span>
-          <h3><a href=https://WeAreEnergy.coop/?ref=YOURCODE>Your Unique Code</a></h3>
-          <p>Share via WhatsApp, email or social media - the more people who register, the faster we can launch in your area and across the UK.</p>
-          <div class="hero-actions">
-            <a href="#" class="button button-charcoal share-btn">Share Your Link</a>
-          </div>
-        </div>
+<section class="section section-chartreuse">
+  <div class="split split-story wrap">
+    <div class="reveal">
+      <span class="section-kicker">Help Us Grow</span>
+      <h2>Share &amp; Earn<br>&pound;50 Credit</h2>
+      <p>For every friend who registers and joins We Are Energy, you will <strong>both receive a &pound;50 credit</strong> on your first bill.</p>
+    </div>
+    <div class="stack-wide reveal reveal-d1">
+      <span class="section-kicker">Your Unique Referral Code</span>
+      <h3 id="ref-code">Generating…</h3>
+      <p>Share this code with friends via your favourite messaging system, email or on social media. The more people who register, the faster we can launch in your area and across the UK.</p>
+      <div class="hero-actions">
+        <button id="copy-btn" class="button button-charcoal" type="button">Copy Code</button>
+        <a href="#" class="button button-ghost share-btn">Share Your Link</a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- WHAT TO EXPECT -->
     <section class="section section-cream section-tight" id="what-to-expect">
@@ -199,27 +198,46 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  (function () {
-    'use strict';
-    const shareBtn = document.querySelector('.share-btn');
-    if (shareBtn) {
-      shareBtn.addEventListener('click', function () {
-        if (navigator.share) {
-          navigator.share({
-            title: 'We Are Energy Co-operative',
-            text: "I just signed up to join We Are Energy Co-operative. It Rocks and I think you\u2019ll love it too. Find out more and register here to act on #climatechange now and join the green energy revolution.",
-            url: 'https://WeAreEnergy.coop'
-          })
-          .then(function () { console.log('Thanks for sharing!'); })
-          .catch(function (error) { console.log("Couldn\u2019t share because of", error); });
-        } else {
-          navigator.clipboard.writeText('https://WeAreEnergy.coop');
-          alert("Our Web Address has been copied to your clipboard. Your browser doesn\u2019t support the Web Share API.");
-          console.log('Web share not supported on your browser at the moment');
-        }
+(function () {
+  var code    = localStorage.getItem('wae_ref_code') || '';
+  var shareUrl = code
+    ? 'https://WeAreEnergy.coop/?ref=' + code
+    : 'https://WeAreEnergy.coop';
+
+  /* Update the h3 referral code display */
+  var el = document.getElementById('ref-code');
+  if (el) el.textContent = code || 'WAE-MEMBER';
+
+  /* Copy button */
+  var copyBtn = document.getElementById('copy-btn');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    navigator.clipboard.writeText(code || 'WAE-MEMBER').then(function () {
+      copyBtn.textContent = 'Copied \u2713';
+      setTimeout(function () { copyBtn.textContent = 'Copy Code'; }, 2000);
+    });
+  });
+
+  /* Share button — uses Web Share API with full branded message */
+  var shareBtn = document.querySelector('.share-btn');
+  if (shareBtn) shareBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (navigator.share) {
+      navigator.share({
+        title: 'Join We Are Energy Co-operative',
+        text:  'I just registered with We Are Energy \u2014 solar panels and battery storage at no upfront cost. Join me using my referral code ' + (code || '') + ' and we both get \u00a350 credit.',
+        url:   shareUrl
+      });
+    } else {
+      /* Fallback for desktop — copy the full share text to clipboard */
+      navigator.clipboard.writeText(
+        'Join We Are Energy \u2014 solar panels and battery storage at no upfront cost. And 50% off your electricity bills! Register at ' + shareUrl
+      ).then(function () {
+        shareBtn.textContent = 'Link Copied \u2713';
+        setTimeout(function () { shareBtn.textContent = 'Share Your Link'; }, 2500);
       });
     }
-  }());
+  });
+}());
 </script>
 
   <script>
@@ -260,6 +278,20 @@
       });
     })();
   </script>
+<script>
+  (function () {
+  var code = localStorage.getItem('wae_ref_code');
+  var el = document.getElementById('ref-code');
+  var btn = document.getElementById('copy-btn');
+  if (el) el.textContent = code || 'WAE-MEMBER';
+  if (btn) btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(el.textContent).then(function () {
+      btn.textContent = 'Copied ✓';
+      setTimeout(function () { btn.textContent = 'Copy Code'; }, 2000);
+    });
+  });
+}());
+</script>
 
 </body>
 </html>

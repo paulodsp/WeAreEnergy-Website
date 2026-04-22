@@ -1,0 +1,196 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # We Are Energy \'97 Stage 2 Work: Priorities and Solutions\
+\
+Last updated: April 2026\
+Status: Pages published. This file tracks remaining improvements in priority order.\
+\
+---\
+\
+## Priority 1 \'97 Inline post-submit confirmation message\
+\
+**Problem:**\
+After form submission the user is redirected to `thankyou.html` via a\
+hidden iframe `onload` trigger. The original brief specified an inline\
+confirmation message on the same page without navigation.\
+\
+**Why it matters:**\
+On mobile a full-page redirect can feel like an error. An inline message\
+is faster, clearer and better UX. It also keeps the user on the page\
+where they can still share or explore.\
+\
+**Suggested solution:**\
+1. Remove the hidden iframe and `onload` redirect\
+2. Use the Fetch API to POST the form data to Google Forms asynchronously\
+3. On success, hide the form and show a hidden `<div>` with the message:\
+   *"You're on the list. We'll contact you when we launch in your area."*\
+4. Keep `thankyou.html` for direct URL visits and social sharing\
+\
+```javascript\
+// Outline approach\
+form.addEventListener('submit', async function(e) \{\
+  e.preventDefault();\
+  const data = new FormData(form);\
+  await fetch(form.action, \{ method: 'POST', body: data, mode: 'no-cors' \});\
+  form.style.display = 'none';\
+  document.getElementById('form-success').style.display = 'block';\
+\});\
+```\
+\
+**Effort:** Low \'97 approximately 20 lines replacing existing form script.\
+\
+---\
+\
+## Priority 2 \'97 Council and partner entry point\
+\
+**Problem:**\
+There is no clear route for councils, housing associations or developers\
+who arrive at the site after a conference, referral or search. The only\
+partner contact is a small `mailto:` link buried in the lease section.\
+\
+**Why it matters:**\
+Reserved Roofs MoUs from councils are critical signals of demand that\
+unlock the Phase 1 finance. A council officer who attended the National\
+Climate Conference and visits the site should find an obvious path to\
+a relevant conversation immediately.\
+\
+**Suggested solution:**\
+Add a short `section-charcoal` section below the registration form\
+on `index.html` with a distinct kicker ("For councils and landlords"),\
+a two-sentence explanation of the Reserved Roofs model, and a single\
+CTA button linking to `mailto:partnerships@weareenergy.coop`.\
+No new page required. Mirrors the small callout already in the lease\
+section points list but gives it proper visual weight.\
+\
+**Effort:** Low \'97 new HTML section, no new CSS needed.\
+\
+---\
+\
+## Priority 3 \'97 Social proof and traction signals\
+\
+**Problem:**\
+The site currently shows no evidence of real institutional engagement\
+or member demand in progress. For a site supporting a live fundraise\
+this is a missed opportunity.\
+\
+**Why it matters:**\
+The NWF pitch and conference presentation both cite council engagement\
+and member demand as the validation that makes the financial model\
+credible to funders. The site should reflect the same confidence.\
+\
+**Suggested solution:**\
+- Add one proof line near the registration form: *"Currently in discussion\
+  with councils on Reserved Roofs pilots."* (verify exact wording is\
+  accurate before publishing)\
+- Consider a live registration counter: *"XXX households have already\
+  registered"* \'97 requires either a Google Sheets / Apps Script integration\
+  or a manually updated figure\
+- Both can sit in the existing registration section without redesign\
+\
+**Effort:** Low for static copy. Medium for a live counter.\
+\
+---\
+\
+## Priority 4 \'97 Post-lease energy abundance story\
+\
+**Problem:**\
+The post-lease benefits \'97 free power for life, off-peak import only,\
+cooperative dividends from ~2037 (~\'a3281/year), the Energy Democracy Fund\
+\'97 are mentioned briefly in the lease section but do not have the visual\
+weight they deserve given they are central to the long-term mission.\
+\
+**Why it matters:**\
+"What happens after 7.75 years?" is the first question new visitors ask.\
+The answer (free energy, ownership, dividends) is the most powerful part\
+of the proposition and is currently undersold.\
+\
+**Suggested solution:**\
+Add a two-column split section on `index.html` after the lease explainer:\
+left column covers the lease years in brief; right column covers post-lease\
+abundance. Use the existing `.split`, `.points` and `.section-cream`\
+patterns \'97 no new CSS required.\
+\
+**Effort:** Low \'97 content and HTML only.\
+\
+---\
+\
+## Priority 5 \'97 Financial and impact proof strip on `about.html`\
+\
+**Problem:**\
+The about page makes no reference to the financial strength of the model\
+or the scale of the projected impact. A funder, journalist or policy\
+contact arriving at `about.html` finds no credibility numbers.\
+\
+**Why it matters:**\
+The implementation plan and NWF pitch book carry headline figures that\
+are genuinely strong: NPV \'a35.1bn (3.5% Green Book), IRR 15%, \'a3311bn\
+member savings, 2.7Mt CO\uc0\u8322  avoided, 50,000 jobs by 2050. None of these\
+appear on the public site.\
+\
+**Suggested solution:**\
+Add a four-stat strip on `about.html` using the existing `.section-data`\
+and `.stat-grid` patterns from `index.html`. Suggested four stats:\
+- \'a3311bn \'97 projected member savings to 2050\
+- 2.7Mt \'97 CO\uc0\u8322  avoided to 2050\
+- 50,000 \'97 jobs created by 2050\
+- 15% \'97 IRR (with footnote: "at commercial 8% discount rate")\
+\
+All figures are confirmed in the financial model and implementation plan.\
+\
+**Effort:** Low \'97 copy and paste of existing stat HTML pattern.\
+\
+---\
+\
+## Priority 6 \'97 Phase 1 timeline section\
+\
+**Problem:**\
+The site gives no sense of when installations begin or what the phases\
+are. Visitors have no way to understand the 2026\'962028 timeline without\
+reading the implementation plan.\
+\
+**Why it matters:**\
+Councils and funders need to understand the timeline to make commitments.\
+The conference presentation made this explicit: Reserved Roofs decisions\
+need to happen now so the factory finance can be unlocked.\
+\
+**Suggested solution:**\
+Add a simple three-step timeline strip on `about.html` or as a new\
+`#timeline` anchor section on `index.html`:\
+\
+| When | What |\
+|---|---|\
+| 2026 | Teesworks site secured. Phase 1 finance raised. |\
+| 2027 | Factory built and commissioned. First jobs and apprenticeships. |\
+| Late 2027 / Early 2028 | First 501 founding members connected. |\
+\
+Use the existing `.steps` CSS pattern from `we-v3.4-base.css` \'97\
+no new CSS required.\
+\
+**Effort:** Low \'97 content and HTML only.\
+\
+---\
+\
+## Future consideration \'97 dedicated partners / investors page\
+\
+Once Reserved Roofs conversations are more advanced and the NWF\
+engagement has progressed, consider a fourth public page (or a\
+password-protected one) that consolidates:\
+- The Reserved Roofs model explained for landlords\
+- The Phase 1 funding ask for patient capital contacts\
+- Links to the implementation plan executive summary and NWF pitch deck\
+  (or gated PDF downloads)\
+- A direct contact route for institutional enquiries\
+\
+This is not urgent for today's launch but becomes important as the\
+fundraise intensifies.\
+\
+---\
+\
+*Priority order reflects impact on the live fundraise and member\
+registration mission. All items 1\'966 can be completed without\
+redesign \'97 the CSS system already supports all of them.*}

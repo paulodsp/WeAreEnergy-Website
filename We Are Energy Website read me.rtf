@@ -1,0 +1,115 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+--- Site deployed on Github and via Cloudflare paul@the-sea.com\
+\
+## Brand rules \'97 do not change these\
+\
+### Fonts\
+| Use | Font |\
+|---|---|\
+| H1 headings | Oswald Stencil (local file), uppercase |\
+| H2, H4, buttons, labels | Oswald (Google CDN) |\
+| Body, paragraphs, captions | PT Serif (Google CDN) |\
+\
+### Colours \'97 exact hex values, never change\
+| Token | Hex | Used for |\
+|---|---|---|\
+| `--chartreuse` | `#c0d726` | Hero backgrounds, chartreuse sections, highlight wipes |\
+| `--coral` | `#F26B5B` | Stat counters, scroll progress bar, secondary buttons, accent links |\
+| `--charcoal` | `#373838` | Dark sections, navbar, primary buttons, body text |\
+| `--cream` | `#f1eee6` | Card backgrounds, default page background, cream sections |\
+\
+All soft/transparent variants are derived in `we-v3.4-base.css` and should\
+not be changed independently.\
+\
+---\
+\
+## How sections work\
+\
+Every content section uses a surface modifier class:\
+\
+```html\
+<section class="section section-cream">   <!-- cream background -->\
+<section class="section section-charcoal"> <!-- dark background, light text -->\
+<section class="section section-chartreuse"> <!-- chartreuse background -->\
+<section class="section">                 <!-- defaults to cream -->\
+```\
+\
+The CSS handles all text colour switching automatically when you change\
+the surface class. You do not need to add colour overrides manually.\
+\
+---\
+\
+## How scroll animations work\
+\
+Three things are wired up via inline JavaScript at the bottom of each page:\
+\
+**1. Reveal on scroll**\
+Add `class="reveal"` to any element. It fades up when scrolled into view.\
+Stagger children with `reveal-d1` through `reveal-d6`.\
+\
+```html\
+<h2 class="reveal">This fades in</h2>\
+<p class="reveal reveal-d2">This fades in slightly later</p>\
+```\
+\
+**2. Chartreuse highlight wipe**\
+Add `class="highlight"` to any inline `<span>`. A chartreuse underline\
+wipes across it when scrolled into view.\
+\
+```html\
+<p>The system is <span class="highlight">free to use</span> after the lease.</p>\
+```\
+\
+**3. Count-up stat counters**\
+Use the `.counter` span inside a `.stat-number` span. Set the target\
+number with `data-to`. For comma formatting add `data-fmt="comma"`.\
+\
+```html\
+<span class="stat-number">\
+  <span class="counter" data-to="6000" data-fmt="comma">6,000</span>\
+</span>\
+```\
+\
+---\
+\
+## How the registration form works\
+\
+The form posts to Google Forms via a hidden iframe and redirects to\
+`thankyou.html` on successful submission. The Google Forms action URL\
+is in the `<form action="...">` attribute on each page.\
+\
+**Do not change** the `name="entry.XXXXXXXX"` attributes on form inputs \'97\
+these are Google Forms field IDs and will break data collection if altered.\
+\
+---\
+\
+## Editing content\
+\
+- **Homepage copy** \'97 edit `index.html` directly\
+- **About page copy** \'97 edit `about.html` directly\
+- **FAQ questions and answers** \'97 edit the accordion items in `faqs.html`\
+- **Stat counter numbers** \'97 change `data-to="XXXX"` on the `.counter` spans\
+- **Colours** \'97 change token values in the `:root` block in `we-v3.4-base.css`\
+- **Fonts** \'97 do not change without a full brand review\
+\
+---\
+\
+## Deploying\
+\
+1. Commit changes to the `main` branch\
+2. GitHub Pages deploys automatically\
+3. Cloudflare caches clear within a few minutes\
+4. Hard refresh (`Cmd+Shift+R` / `Ctrl+Shift+R`) to see changes locally\
+\
+---\
+\
+## Questions\
+\
+Contact: paul@weareenergy.coop}

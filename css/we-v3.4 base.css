@@ -449,7 +449,7 @@ select {
   font-family: "PT Serif", serif;
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   line-height: 1.55;
-  color: var(--cream-soft);
+  color: var(--cream);
 }
 
 .hero-title-charcoal {
@@ -485,6 +485,7 @@ select {
 
 /* --- Thank You hero: purpose-built, image-led layout --- */
 .page-hero-thanks {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--charcoal);
@@ -524,6 +525,7 @@ select {
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2;
   text-transform: none;
   color: var(--cream-soft);
 }
@@ -908,6 +910,15 @@ select {
   text-transform: uppercase;
   color: var(--card-text-main);
 }
+
+.card .card-title-thankyou {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  color: var(--card-text-main);
+}
+
 .card .card-subtitle {
   flex-grow: 1;
   font-family: "Oswald Stencil", sans-serif;

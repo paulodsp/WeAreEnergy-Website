@@ -35,7 +35,6 @@ Single-source visual system: tokens, surfaces, components
   --charcoal-strong: rgba(55, 56, 56, 0.18);
 
   --cream-soft: rgba(241, 238, 230, 0.85);
-  --cream-dim: rgba(241, 238, 230, 0.50);
   --cream-line: rgba(241, 238, 230, 0.40);
 
   /* image overlays and highlights */
@@ -601,7 +600,7 @@ select {
   --surface-bg: var(--charcoal);
   --text-main: var(--cream);
   --text-soft: var(--cream-soft);
-  --text-dim: var(--cream-dim);
+  --text-dim: var(--cream-soft);
   --line-color: var(--cream-line);
   --line-strong: rgba(241, 238, 230, 0.24);
   --accent-color: var(--chartreuse);
@@ -792,7 +791,7 @@ select {
   font-family: "PT Serif", serif;
   font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--cream-dim);
+  color: var(--cream-soft);
 }
 
 /* =========================================================
@@ -1243,6 +1242,17 @@ select {
 .form-submit:hover {
   background: var(--coral);
   transform: translateY(-1px);
+}
+
+.form-success {
+  display: none;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.form-success .lead {
+  margin-bottom: 0;
+  color: var(--charcoal);
 }
 
 .form-legal {

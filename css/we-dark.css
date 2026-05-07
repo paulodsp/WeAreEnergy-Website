@@ -1802,11 +1802,6 @@ html[data-theme="dark"] .section-charcoal .accordion-button::after {
   filter: invert(1);
 }
 
-html[data-theme="dark"] #cooperative {
-  --surface-bg: var(--chartreuse);
-  background: var(--chartreuse);
-}
-
 html[data-theme="dark"] .section-chartreuse,
 html[data-theme="dark"] .register-block {
   --surface-bg:   var(--chartreuse);

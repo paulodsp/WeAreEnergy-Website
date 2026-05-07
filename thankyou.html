@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-  <link href="css/we-v3.4 base.css" rel="stylesheet">
+  <link href="css/we-dark.css" rel="stylesheet">
   <link href="css/scroll-animations-REFINED.css" rel="stylesheet">
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -64,6 +64,7 @@
           </li>
         </ul>
         <a class="btn btn-outline-success-we my-2 my-sm-0" href="/index.html#register" title="Join Us">JOIN US</a>
+        <button class="theme-toggle" type="button" data-theme-toggle="" aria-label="Switch to light mode" title="Switch to light mode"><span aria-hidden="true">☼</span></button>
       </div>
     </div>
   </nav>
@@ -123,7 +124,7 @@
 
         <div class="cluster reveal reveal-d4" style="justify-content:center; margin-top:1.5rem;">
           <button id="copy-code-btn" class="button button-chartreuse">Copy Code</button>
-          <button id="share-link-btn" class="button button-ghost">Share Your Link</button>
+          <button id="share-link-btn" class="button button-coral">Share Your Link</button>
         </div>
       </div>
     </section>
@@ -145,7 +146,7 @@
 
           <article class="card card-charcoal reveal reveal-d1">
             <h3 class="card-title-thankyou">2. Getting Ready</h3>
-            <p class="card-text">When we're ready for your installation, we'll be in touch to get you started.</p>
+            <p class="card-text">When we're ready for your installation, we'll contact you to get everything started.</p>
           </article>
 
           <article class="card card-coral reveal reveal-d2">
@@ -278,6 +279,30 @@
 
     }());
   </script>
-
+<script>
+(function(){
+  const root = document.documentElement;
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    const btn = document.querySelector('[data-theme-toggle]');
+    if(btn){
+      const next = theme === 'dark' ? 'light' : 'dark';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+      btn.setAttribute('title', 'Switch to ' + next + ' mode');
+      btn.innerHTML = theme === 'dark'
+        ? '<span aria-hidden="true">☼</span>'
+        : '<span aria-hidden="true">☾</span>';
+    }
+  }
+  applyTheme(media.matches ? 'dark' : 'light');
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('[data-theme-toggle]');
+    if(!btn) return;
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
 </body>
 </html>

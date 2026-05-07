@@ -1803,8 +1803,8 @@ html[data-theme="dark"] .section-charcoal .accordion-button::after {
 }
 
 html[data-theme="dark"] #cooperative {
-  --surface-bg: var(--charcoal);
-  background: var(--charcoal);
+  --surface-bg: var(--chartreuse);
+  background: var(--chartreuse);
 }
 
 html[data-theme="dark"] .section-chartreuse,

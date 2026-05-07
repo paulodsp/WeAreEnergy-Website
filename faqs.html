@@ -118,6 +118,7 @@
           <li class="nav-item"><a class="nav-link active" href="#" title="Frequently Asked Questions">FAQ&rsquo;S<span class="visually-hidden">(current)</span></a></li>
         </ul>
         <a class="btn btn-outline-success-we my-2 my-sm-0" href="index.html#register" title="Join Us">JOIN US</a>
+        <button class="theme-toggle" type="button" data-theme-toggle="" aria-label="Switch to light mode" title="Switch to light mode"><span aria-hidden="true">☼</span></button>
       </div>
     </div>
   </nav>
@@ -673,6 +674,30 @@
       });
     }());
   </script>
-
+  <script>
+(function(){
+  const root = document.documentElement;
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    const btn = document.querySelector('[data-theme-toggle]');
+    if(btn){
+      const next = theme === 'dark' ? 'light' : 'dark';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+      btn.setAttribute('title', 'Switch to ' + next + ' mode');
+      btn.innerHTML = theme === 'dark'
+        ? '<span aria-hidden="true">☼</span>'
+        : '<span aria-hidden="true">☾</span>';
+    }
+  }
+  applyTheme(media.matches ? 'dark' : 'light');
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('[data-theme-toggle]');
+    if(!btn) return;
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
 </body>
 </html>

@@ -534,5 +534,43 @@
   });
 })();
 </script>
+<script>
+(function(){
+  'use strict';
+  if (!('IntersectionObserver' in window)) return;
+  var counters = document.querySelectorAll('.counter');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-to'), 10);
+    if (isNaN(target)) return;
+    var duration = 2000;
+    var steps = 60;
+    var stepDuration = duration / steps;
+    var current = 0;
+    var increment = target / steps;
+    var timer = setInterval(function() {
+      current += increment;
+      if (current >= target) {
+        el.textContent = target.toLocaleString('en-GB');
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(current).toLocaleString('en-GB');
+      }
+    }, stepDuration);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function(el) { observer.observe(el); });
+})();
+</script>
 </body>
 </html>

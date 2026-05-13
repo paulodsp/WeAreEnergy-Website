@@ -62,6 +62,7 @@ Single-source visual system: tokens, surfaces, components
   --text-dim: var(--charcoal-soft);
   --line-color: var(--charcoal-line);
   --line-strong: var(--charcoal-strong);
+  --line-color-light: var(--cream-line);
   --accent-color: var(--coral);
   --link-color: var(--charcoal);
   --ghost-color: var(--cream);
@@ -178,6 +179,14 @@ select {
   max-width: 900px;
   margin: 0 auto;
 }
+
+/* Prevents hyphenated words from breaking across lines. Works with js script on each page. 
+  Automatically wraps all hyphenated words in a .no-split span. 
+  Uses TreeWalker to ensure HTML classes and attributes are NOT affected */
+.no-split {
+  white-space: nowrap;
+}
+
 
 .split {
   max-width: var(--site-max);
@@ -484,6 +493,12 @@ select {
     url("/images/murmuration.webp");
 }
 
+.hero-invest .hero-photo {
+  background-image:
+    linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 50%, var(--overlay-end) 90%),
+    url("/images/ben-elliott-CnFo0EScs9o-unsplash.jpg");
+}
+
 /* --- Thank You hero: purpose-built, image-led layout --- */
 .page-hero-thanks {
   position: relative;
@@ -696,12 +711,12 @@ select {
 
 .lead-title strong {
   color: var(--accent-color);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .lead-note {
   display: block;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   font-family: "PT Serif", serif;
   font-size: clamp(1rem, 1.9vw, 1.25rem);
   font-style: italic;
@@ -725,6 +740,12 @@ select {
 .link-pill-cream {
   background: var(--cream);
   color: var(--charcoal);
+}
+.figures-note {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 
@@ -813,9 +834,22 @@ select {
   border-bottom: 1px solid var(--line-color);
 }
 
+.point-cream {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  gap: 0 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line-color-light);
+}
+
 .point-bar {
   border-radius: 2px;
   background: var(--accent-color);
+}
+
+.point-bar-chartreuse {
+  border-radius: 2px;
+  background: var(--chartreuse);
 }
 
 .point-name {
@@ -841,9 +875,10 @@ select {
 ========================================================= */
 .cards {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.75rem;
   max-width: var(--site-max);
   margin: 0 auto;
+  margin-top: 3rem;
 }
 
 .cards-three {
@@ -852,7 +887,7 @@ select {
 
 .cards-two {
   grid-template-columns: repeat(2, 1fr);
-  max-width: 600px;
+  
 }
 
 .card {
@@ -918,6 +953,26 @@ select {
   font-weight: 300;
   line-height: 1.0;
   color: var(--card-text-main);
+}
+
+.card .card-title-invest {
+  margin-bottom: 0.35rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-text-main);
+}
+
+.card .card-title-invest-chartreuse {
+  margin-bottom: 0.35rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chartreuse);
 }
 
 .card .card-subtitle {
@@ -1328,6 +1383,10 @@ select {
   color: var(--text-dim);
 }
 
+.footer-label-spaced {
+  margin-top: 2rem;
+}
+
 .footer-links {
   list-style: none;
   padding: 0;
@@ -1469,8 +1528,89 @@ select {
   .hero-photo { transform: scale(1) !important; }
 }
 
+/* ===================== STICKY CTA ===================== */
+.sticky-cta {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.sticky-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sticky-cta.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sticky-cta-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--chartreuse);
+  color: var(--charcoal);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.1rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 12px var(--charcoal-strong);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.sticky-cta-link:hover,
+.sticky-cta-link:focus {
+  background: var(--charcoal);
+  color: var(--chartreuse);
+  box-shadow: 0 4px 18px var(--charcoal-soft);
+  outline: none;
+}
+
+.sticky-cta-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ─── Manual dark toggle ────────────────────────────────── */
+html[data-theme="dark"] .sticky-cta-link {
+  background: var(--chartreuse);
+  color: var(--charcoal);
+  box-shadow: 0 2px 12px var(--charcoal-strong);
+}
+
+html[data-theme="dark"] .sticky-cta-link:hover {
+  background: var(--cream);
+  color: var(--charcoal);
+}
+
+/* ─── OS dark preference ────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sticky-cta-link {
+    background: var(--chartreuse);
+    color: var(--charcoal);
+    box-shadow: 0 2px 12px var(--charcoal-strong);
+  }
+
+  :root:not([data-theme="light"]) .sticky-cta-link:hover {
+    background: var(--cream);
+    color: var(--charcoal);
+  }
+}
+
+
 /* =========================================================
-16. Dark mode — v5  (definitive)
+17. Dark mode — v5  (definitive)
 ─────────────────────────────────────────────────────────
 Built from full HTML + CSS audit. Every rule targets real
 class names confirmed in the HTML. No magic numbers in

@@ -7,5 +7,7 @@
 			"path": "../Portfolio"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "WeAreEnergy-Website"
+	}
 }

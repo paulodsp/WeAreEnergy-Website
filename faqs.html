@@ -117,7 +117,7 @@
           </li>
           <li class="nav-item"><a class="nav-link" href="about.html" title="About Us">ABOUT US</a>
           </li>
-          <li class="nav-item"><a class="nav-link active" href="#" title="Frequently Asked Questions">FAQ&rsquo;S<span class="visually-hidden">(current)</span></a>
+          <li class="nav-item"><a class="nav-link active" href="faqs.html" title="Frequently Asked Questions">FAQ&rsquo;S<span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/invest.html" title="Investors Page">INVEST</a>
@@ -708,5 +708,13 @@
   });
 })();
 </script>
+
+/* Closes hamburger nav bar on clicking anything in it to prevent it from staying open on mobile after a selection is made. */
+    <script>
+  document.querySelector('.navbar-collapse').addEventListener('click', function() {
+    this.classList.remove('show');
+  });
+</script>
+
 </body>
 </html>

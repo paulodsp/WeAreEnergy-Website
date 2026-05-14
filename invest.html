@@ -70,7 +70,7 @@
             <a class="nav-link" href="/faqs.html" title="Frequently Asked Questions">FAQ'S</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#" title="Investors Page">INVEST <span class="visually-hidden">(current)</span></a>
+            <a class="nav-link" href="/invest.html" title="Investors Page">INVEST <span class="visually-hidden">(current)</span></a>
           </li>
         </ul>
         <a class="btn btn-outline-success-we my-2 my-sm-0" href="/#register" title="Join Us">JOIN US</a>
@@ -85,11 +85,11 @@
   <section class="page-hero hero-invest">
     <div class="hero-photo loaded" id="heroInvest"></div>
     <div class="hero-content">
-      <span class="hero-kicker hero-kicker-cream hero-kicker-big reveal visible">Investment</span>
+      <span class="hero-kicker hero-kicker-cream hero-kicker-big reveal visible">Investment</span><span class="hero-kicker hero-kicker-cream no-orphan">founding phase: raising the capital and  members to begin installations across the UK</span>
       <h1 class="hero-title reveal reveal-d1 visible">
         Beyond Clean Energy<span>to Patient Capital.</span>
       </h1>
-      <p class="hero-text reveal reveal-d2 visible">When abundant, affordable energy meets community ownership, entirely new possibilities emerge. We Are Energy is not just building a factory, we are building the infrastructure for a future where the people who use it own it. We are seeking patient capital partners adn ehtical finance specialists who share that belief.</p>
+      <p class="hero-text reveal reveal-d2 visible">When abundant, affordable energy meets community ownership, entirely new possibilities emerge. We Are Energy is not just building a factory, we are building the infrastructure for a future where the people who use it own it. We are seeking patient capital partners and ethical finance specialists who share that belief.</p>
       <div class="hero-actions reveal reveal-d3 visible">
         <a href="#problem" class="button button-chartreuse">Learn more</a>
         <a href="#contact" class="button button-coral">Start a Conversation</a>
@@ -180,14 +180,14 @@
                 <div class="point-bar-chartreuse"></div>
                 <div>
                   <p class="card-title-invest-chartreuse">Their roofs</p>
-                  <p class="card-text">Use of their buildings' roofs for the system lifetime - the physical foundation of collective infrastructure.</p>
+                  <p class="card-text no-orphan">Use of their buildings' roofs for the system lifetime. The physical foundation of collective infrastructure.</p>
                 </div>
               </div>
               <div class="point-cream">
                 <div class="point-bar-chartreuse"></div>
                 <div>
                   <p class="card-title-invest-chartreuse">Energy bill payments</p>
-                  <p class="card-text">Members pay their bills for their electricity they use. These contracted cashflows underpin the co-operative’s debt service.</p>
+                  <p class="card-text">Members pay their bills for the electricity they use. These contracted cashflows underpin the co-operative’s debt service.</p>
                 </div>
               </div>
               <div class="point-cream">
@@ -201,7 +201,7 @@
                 <div class="point-bar-chartreuse"></div>
                 <div>
                   <p class="card-title-invest-chartreuse">Democratic voice</p>
-                  <p class="card-text">One member, one vote. Members participate equally in shaping the co-operative’s future</p>
+                  <p class="card-text">One member, one vote. Members participate equally in shaping the co-operative’s future.</p>
                 </div>
               </div>
             </div>
@@ -214,7 +214,7 @@
                 <div class="point-bar"></div>
                 <div>
                   <p class="card-title-invest">Zero upfront cost</p>
-                  <p class="card-text">Solar and battery system supplied and installed - at no cost to the member or building owner.</p>
+                  <p class="card-text">Solar and battery systems supplied and installed - at no cost to the member or building owner.</p>
                 </div>
               </div>
               <div class="point">
@@ -251,7 +251,7 @@
     <div class="wrap">
       <div class="lead">
         <span class="section-kicker reveal">The Co&#8209;operative Difference</span>
-        <h2 class="lead-title reveal reveal-d1">We start with people,<strong>not tools.</strong></h2>
+        <h2 class="lead-title reveal reveal-d1">We start with people,<strong><br>not tools.</strong></h2>
         <span class="lead-note reveal reveal-d2">The people who most need affordable energy should own the systems that provide it. That is our legal obligation as a registered co-operative society, not a marketing line.</span>
       </div>
 
@@ -292,7 +292,7 @@
           <div class="point-bar"></div>
           <div>
             <p class="point-name">Phase 1 · 2026–28 · Proving energy democracy works</p>
-            <p class="point-text">501 founding members. 120MW Tandem Perovskite factory at Teesworks Freeport. 91 direct jobs. First installations 2028.</p>
+            <p class="point-text">501 founding members. 120MW Tandem Perovskite solar factory in the North East. 91 direct jobs. First installations 2028.</p>
           </div>
         </div>
         <div class="point reveal reveal-d1">
@@ -361,7 +361,7 @@
           <h2 class="feature-title reveal reveal-d1">Made here<span class="feature-title-accent">Owned by everyone</span></h2>
         </div>
         <div>
-          <p class="reveal reveal-d2">Our Teesworks Freeport factory is the UK's first citizen-owned next-generation solar PV manufacturing facility. 70% local hiring and apprenticeships at each phase. Regional hub offices across the UK bringing installation, maintenance and member services to where our members live and work.</p>
+          <p class="reveal reveal-d2">Our factory will be the UK's first citizen-owned next-generation solar PV manufacturing facility. 70% local hiring and apprenticeships at each phase. Regional hub offices across the UK bringing installation, maintenance and member services to where our members live and work.</p>
           <div class="points reveal reveal-d3">
             <div class="point">
               <div class="point-bar"></div>
@@ -718,6 +718,15 @@ var cta = document.getElementById('stickyCta');
         }
       }, { passive: true });
     }</script>
+
+/* Closes hamburger nav bar on clicking anything in it to prevent it from staying open on mobile after a selection is made. */
+    <script>
+  document.querySelector('.navbar-collapse').addEventListener('click', function() {
+    this.classList.remove('show');
+  });
+</script>
+
+
 
 
 </body>

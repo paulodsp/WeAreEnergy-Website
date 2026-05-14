@@ -93,7 +93,7 @@
       <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
+            <a class="nav-link" href="index.html" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about.html" title="About Us">ABOUT US</a>
@@ -577,5 +577,13 @@
   counters.forEach(function(el) { observer.observe(el); });
 })();
 </script>
+
+/* Closes hamburger nav bar on clicking anything in it to prevent it from staying open on mobile after a selection is made. */
+    <script>
+  document.querySelector('.navbar-collapse').addEventListener('click', function() {
+    this.classList.remove('show');
+  });
+</script>
+
 </body>
 </html>

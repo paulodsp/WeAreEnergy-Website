@@ -118,6 +118,7 @@ select {
   font-family: "PT Serif", serif;
   font-size: 1.12rem;
   line-height: 1.62;
+  text-wrap: pretty;
 }
 
 h1,
@@ -132,6 +133,7 @@ label,
 summary {
   margin-top: 0;
   font-family: "Oswald", sans-serif;
+  text-wrap: balance;
 }
 
 h1 {
@@ -186,7 +188,9 @@ select {
 .no-split {
   white-space: nowrap;
 }
-
+ .no-orphan {
+  text-wrap: balance;
+ }
 
 .split {
   max-width: var(--site-max);
@@ -1510,6 +1514,9 @@ select {
   .footer-block {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+  .split {
+    gap: 2rem;
   }
 }
 

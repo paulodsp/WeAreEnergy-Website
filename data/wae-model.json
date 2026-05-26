@@ -1,0 +1,28 @@
+{
+  "_purpose": "WAE model rate. Stable. Changes only on deliberate model review.",
+  "_relationship_to_website": "When model is rerun, update model_outputs here AND page_stats in ofgem.json. Website reads ofgem.json only.",
+  "model_version": "March 2026",
+  "model_file": "WeAreEnergy Financial Model Tadem Only March 160326.xlsx",
+  "rate_basis": "Four-quarter backwards-looking weighted average, London Ofgem rates, blended to single unit rate including standing charge equivalent",
+  "quarters_used": [
+    { "label": "Q3 2025", "unit_rate_p": 27.03, "standing_charge_p_day": 53.80 },
+    { "label": "Q4 2025", "unit_rate_p": 25.63, "standing_charge_p_day": 46.06 },
+    { "label": "Q1 2026", "unit_rate_p": 27.00, "standing_charge_p_day": 47.11 },
+    { "label": "Q2 2026", "unit_rate_p": 24.90, "standing_charge_p_day": 44.83 }
+  ],
+  "weighted_average": {
+    "avg_unit_rate_p": 26.14,
+    "avg_standing_charge_p_day": 46.28,
+    "baseline_kwh": 2855,
+    "ofgem_blended_rate_p_per_kwh": 32.27,
+    "wae_rate_p_per_kwh": 16.14,
+    "wae_standing_charge": 0
+  },
+  "model_outputs": {
+    "residential_saving_10yr_gbp": 8325,
+    "residential_saving_25yr_gbp": 38189,
+    "residential_saving_10yr_rounded_published": 8300,
+    "residential_saving_25yr_rounded_published": 38000,
+    "_note": "PENDING: Years 9-25 post-lease savings methodology under review May 2026. Figures likely significantly underestimate savings. Update both this file and ofgem.json page_stats once Paul confirms corrected model figures."
+  }
+}

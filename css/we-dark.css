@@ -180,6 +180,13 @@ select {
 .stack-wide {
   max-width: 900px;
   margin: 0 auto;
+  margin-top:3rem;
+}
+
+.stack,
+.stack-centre {
+  margin-top:2rem;
+  text-align:center;
 }
 
 /* Prevents hyphenated words from breaking across lines. Works with js script on each page. 
@@ -212,6 +219,11 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 0.875rem;
+}
+
+.cluster-centre {
+  justify-content: center;
+  margin-top: 2.25rem;
 }
 
 .text-small {
@@ -310,6 +322,11 @@ select {
 .button-charcoal {
   background: var(--charcoal);
   color: var(--cream);
+}
+
+.button-cream {
+  background: var(--cream);
+  color: var(--charcoal);
 }
 
 .button-ghost {
@@ -503,6 +520,11 @@ select {
     url("/images/ben-elliott-CnFo0EScs9o-unsplash.jpg");
 }
 
+.hero-press .hero-photo {
+      background-image:
+        linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
+        url("/images/murmuration.webp");
+    }
 /* --- Thank You hero: purpose-built, image-led layout --- */
 .page-hero-thanks {
   position: relative;
@@ -519,7 +541,7 @@ select {
 .hero-stripes-img {
   display: block;
   width: 100%;
-  height: auto;  /* scales to its own aspect ratio — never cropped */
+  height: auto;  /* scales to its own aspect ratio - never cropped */
 }
 
 .page-hero-thanks .hero-content {
@@ -587,7 +609,11 @@ select {
   padding: var(--space-section-tight) 2rem;
 }
 
-
+.section,
+.section-tightest{
+  padding-top:1.5rem;
+  padding-bottom:1.5rem;
+}
 
 .section-cream {
   --surface-bg: var(--cream);
@@ -822,6 +848,220 @@ select {
   color: var(--cream-soft);
 }
 
+
+/* ----------------------------------------------------------
+   9a. Calculator - bill comparison block
+   Two columns: Ofgem rate | Our rate (50% of cap)
+   Used on calculator.html, index.html, faqs.html
+---------------------------------------------------------- */
+
+.calc-wrap {
+  max-width: 760px;
+  margin: 2.5rem auto 0;
+}
+
+.calc-big-number {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent-color);
+  margin-bottom: 0.2rem;
+}
+
+.calc-sub {
+  font-family: "PT Serif", serif;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.calc-sub strong {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-soft);
+}
+
+.calc-input-block {
+  border-top: 1px solid var(--line-color);
+  padding: 1.5rem 0 1.75rem;
+}
+
+.calc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--line-strong);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  border: 3px solid var(--surface-bg);
+  box-shadow: 0 0 0 2px var(--accent-color);
+  cursor: pointer;
+}
+
+.calc-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  border: 3px solid var(--surface-bg);
+  box-shadow: 0 0 0 2px var(--accent-color);
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .calc-range::-webkit-slider-thumb { width: 18px; height: 18px; }
+  .calc-range::-moz-range-thumb     { width: 18px; height: 18px; }
+}
+
+.calc-range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.calc-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.calc-preset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text-soft);
+  font-family: "Oswald", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.3;
+  transition: border-color 0.14s, color 0.14s, background 0.14s;
+}
+
+.calc-preset:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.calc-preset.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--surface-bg);
+}
+
+.calc-results {
+  border-top: 1px solid var(--line-color);
+  padding-top: 1.5rem;
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.calc-results-2 {
+  border-top: 1px solid var(--line-color);
+  padding-top: 1.5rem;
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 480px) {
+  .calc-results { grid-template-columns: repeat(3, 1fr); }
+  .calc-results-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+.calc-result {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-color);
+}
+
+@media (min-width: 480px) {
+  .calc-result {
+    padding: 0 1.25rem;
+    border-bottom: none;
+    border-right: 1px solid var(--line-color);
+  }
+  .calc-result:first-child { padding-left: 0; }
+  .calc-result:last-child  { border-right: none; padding-right: 0; }
+}
+
+.calc-result-value {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  color: var(--accent-color);
+}
+
+.calc-result-value.main { color: var(--text-main); }
+
+.calc-share-confirm         { display: none; }
+.calc-share-confirm.visible { display: block; }
+
+/* tight kicker variant — used inside calc blocks */
+.section-kicker--tight {
+  margin-bottom: 0.35rem;
+}
+
+/* kicker inside a result block */
+.calc-result .section-kicker {
+  margin-bottom: 0.35rem;
+}
+
+/* bordered note block — methodology and register panels */
+.calc-note {
+  padding-left: 1rem;
+  border-left: 3px solid var(--line-strong);
+}
+
+/* spacing between notes and between note and CTA */
+.calc-note + .calc-note  { margin-top: 1rem; }
+.calc-results + .calc-note { margin-top: 1.5rem; }
+.calc-wrap .cluster      { margin-top: 1.75rem; }
+
+/* chartreuse section — restore coral accent for calc elements */
+/* Year 1 saving value on chartreuse — use cream so it reads as highlighted against the green */
+.section-chartreuse .calc-result-value {
+  color: var(--charcoal);
+}
+.section-chartreuse .calc-result-value:not(.main) {
+  color: var(--cream);
+}
+
+/* mobile only — tighten vertical spacing */
+@media (max-width: 479px) {
+  .calc-input-block  { padding: 1rem 0 1.25rem; }
+  .calc-range-labels { margin-bottom: 1rem; }
+  .calc-results      { margin-top: 1.25rem; padding-top: 1rem; }
+}
+
+
+
+
 /* =========================================================
 10. Points
 ========================================================= */
@@ -887,6 +1127,11 @@ select {
 
 .cards-three {
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
+}
+
+.cards-tight {
+  margin-top:1.5rem;
 }
 
 .cards-two {
@@ -1128,7 +1373,7 @@ select {
 }
 
 /* 2. Bootstrap also sets background-color as a concrete property
-      on the button — the var override alone doesn't beat this */
+      on the button - the var override alone doesn't beat this */
 .section-charcoal .accordion-button,
 .section-cream .accordion-button,
 .section-chartreuse .accordion-button {
@@ -1204,6 +1449,8 @@ select {
   filter: invert(1);
 }
 
+
+
 /* =========================================================
 13. Register
 ========================================================= */
@@ -1254,6 +1501,7 @@ select {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
+  margin-bottom:1rem;
 }
 
 .form-grid-wide {
@@ -1320,6 +1568,9 @@ select {
   display: none;
   margin-top: 1.5rem;
   text-align: center;
+  display:none;
+  margin-top:1.5rem;
+  text-align:center;
 }
 
 .form-success .lead {
@@ -1385,6 +1636,7 @@ select {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-dim);
+  margin-top:2rem;
 }
 
 .footer-label-spaced {
@@ -1617,11 +1869,11 @@ html[data-theme="dark"] .sticky-cta-link:hover {
 
 
 /* =========================================================
-17. Dark mode — v5  (definitive)
+17. Dark mode - v5  (definitive)
 ─────────────────────────────────────────────────────────
 Built from full HTML + CSS audit. Every rule targets real
 class names confirmed in the HTML. No magic numbers in
-property values — all use var(--token).
+property values - all use var(--token).
 
 SURFACE MAPPING
   body                →  charcoal      #373838
@@ -1633,7 +1885,7 @@ SURFACE MAPPING
   .register-block     →  UNCHANGED     chartreuse #c0d726
   .footer-block       →  charcoal-dark #1e2120
 
-CARD MAPPING  (token approach — base .card rule picks up --card-bg)
+CARD MAPPING  (token approach - base .card rule picks up --card-bg)
   .card               →  --card-bg: charcoal  (default)
   .card-charcoal      →  --card-bg: charcoal-dark
   .card-coral         →  UNCHANGED  coral (explicitly restored)
@@ -1658,7 +1910,7 @@ TRIGGERS
 rgba() only appears in :root token definitions, nowhere else.
 ========================================================= */
 
-/* ─── New named tokens — always active ─────────────────── */
+/* ─── New named tokens - always active ─────────────────── */
 :root {
   color-scheme: light dark;
 
@@ -1672,7 +1924,7 @@ rgba() only appears in :root token definitions, nowhere else.
   --cream-on-dark-line:   rgba(241, 238, 230, 0.18);
   --cream-on-dark-strong: rgba(241, 238, 230, 0.28);
 
-  /* Hero overlay tokens — lightened versions for dark mode */
+  /* Hero overlay tokens - lightened versions for dark mode */
   --overlay-start-dark:   rgba(30, 33, 32, 0.06);
   --overlay-mid-dark:     rgba(30, 33, 32, 0.44);
   --overlay-end-dark:     rgba(30, 33, 32, 0.70);
@@ -1695,7 +1947,7 @@ rgba() only appears in :root token definitions, nowhere else.
 
 /* ─── Cream / default sections → charcoal ──────────────── */
 /* Targets class="section" and class="section section-cream"
-   section-tight is a padding modifier only — no bg change   */
+   section-tight is a padding modifier only - no bg change   */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .section,
   :root:not([data-theme="light"]) .section-cream {
@@ -1743,10 +1995,10 @@ rgba() only appears in :root token definitions, nowhere else.
   }
 }
 
-/* ─── Coop logo section — pinned to exact charcoal ─────── */
+/* ─── Coop logo section - pinned to exact charcoal ─────── */
 /* about.html #cooperative contains coop_spgr_slogan_en2.png
    which has #373838 baked into the image artwork.
-   No HTML change required — ID selector used here.          */
+   No HTML change required - ID selector used here.          */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) #cooperative {
     --surface-bg: var(--charcoal);
@@ -1754,7 +2006,7 @@ rgba() only appears in :root token definitions, nowhere else.
   }
 }
 
-/* ─── Chartreuse + register — explicitly protected ─────── */
+/* ─── Chartreuse + register - explicitly protected ─────── */
 /* These two are coupled in the base CSS rule.
    Explicitly re-declare here so they win the cascade over
    the .section override above for elements like
@@ -1799,7 +2051,7 @@ rgba() only appears in :root token definitions, nowhere else.
   }
 }
 
-/* ─── Cards — token-based (--card-bg, not background:) ─── */
+/* ─── Cards - token-based (--card-bg, not background:) ─── */
 /* Using the token approach means .card base rule
    "background: var(--card-bg)" picks changes up correctly.
    Variant-specific restores come AFTER the .card rule so
@@ -1822,7 +2074,7 @@ rgba() only appears in :root token definitions, nowhere else.
     border-color: var(--cream-on-dark-strong);
   }
 
-  /* Coral card — fully restored, no change from light mode */
+  /* Coral card - fully restored, no change from light mode */
   :root:not([data-theme="light"]) .card-coral {
     --card-bg:            var(--coral);
     --card-text-main:     var(--charcoal);
@@ -1834,7 +2086,7 @@ rgba() only appears in :root token definitions, nowhere else.
     border-color: transparent;
   }
 
-  /* Chartreuse card — fully restored, no change from light mode */
+  /* Chartreuse card - fully restored, no change from light mode */
   :root:not([data-theme="light"]) .card-chartreuse {
     --card-bg:            var(--chartreuse);
     --card-text-main:     var(--charcoal);
@@ -1847,7 +2099,7 @@ rgba() only appears in :root token definitions, nowhere else.
   }
 }
 
-/* ─── Hero overlays — lighter so images are not crushed ─── */
+/* ─── Hero overlays - lighter so images are not crushed ─── */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --overlay-start: var(--overlay-start-dark);

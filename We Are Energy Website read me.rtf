@@ -25,7 +25,7 @@
 | `--charcoal` | `#373838` | Dark sections, navbar, primary buttons, body text |\
 | `--cream` | `#f1eee6` | Card backgrounds, default page background, cream sections |\
 \
-All soft/transparent variants are derived in `we-v3.4-base.css` and should\
+All soft/transparent variants are derived in `we-dark.css` and should\
 not be changed independently.\
 \
 ---\
@@ -96,10 +96,47 @@ these are Google Forms field IDs and will break data collection if altered.\
 - **About page copy** \'97 edit `about.html` directly\
 - **FAQ questions and answers** \'97 edit the accordion items in `faqs.html`\
 - **Stat counter numbers** \'97 change `data-to="XXXX"` on the `.counter` spans\
-- **Colours** \'97 change token values in the `:root` block in `we-v3.4-base.css`\
+- **Colours** \'97 change token values in the `:root` block in `we-dark.css`\
 - **Fonts** \'97 do not change without a full brand review\
 \
 ---\
+
+## Data files -- single source of truth
+
+Two JSON files in the /data folder drive all savings figures on the site.
+The website reads from data/ofgem.json only.
+
+### Quarterly update (Ofgem price cap -- January, April, July, October)
+
+1. Go to ofgem.gov.uk and find the new GB average unit rate (p/kWh) and
+   standing charge (p/day).
+2. Open data/ofgem.json and update:
+   quarter, period, unit_rate_p, standing_charge_p_day,
+   annual_cap_gbp, source_url, updated, next_review.
+3. Do NOT change saving_10yr_gbp or saving_25yr_gbp here.
+   Those come from the financial model (see below).
+4. Commit and push. Cloudflare redeploys in under 60 seconds.
+
+### Model review (saving figures -- only when model is re-run)
+
+1. Take the residential 10-year and 25-year saving figures from the model.
+2. Update data/wae-model.json: residential_saving_10yr_gbp,
+   residential_saving_25yr_gbp, and the rounded _published equivalents.
+3. Update data/ofgem.json: page_stats.saving_10yr_gbp and saving_25yr_gbp
+   to match the rounded published figures.
+4. Push once. Calculator and all pages update automatically.
+
+Current published figures (May 2026 model):
+  10-year residential saving: £8,300
+  25-year residential saving: £38,000
+  Baseline usage: 2,855 kWh/year
+
+### Pages that display saving figures
+
+calculator.html        -- reads live from data/ofgem.json via fetch()
+index.html (compact)   -- reads live from data/ofgem.json via fetch()
+index.html (stat bar)  -- HARDCODED: update data-to values manually
+faqs.html              -- HARDCODED: search for "8,300" and "38,000"
 \
 ## Deploying\
 \

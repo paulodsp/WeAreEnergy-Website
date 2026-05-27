@@ -70,7 +70,7 @@ Single-source visual system: tokens, surfaces, components
 }
 
 /* =========================================================
-2. Base
+2. Base & Scroll animations
 ========================================================= */
 *,
 *::before,
@@ -80,6 +80,40 @@ Single-source visual system: tokens, surfaces, components
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ========================================
+   SCROLL PROGRESS BAR - VISIBLE & CORRECT POSITION
+   ======================================== */
+.scroll-progress {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--coral-soft),
+    var(--coral)
+  );
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1040; /* CHANGED: Above navbar so it's always visible */
+  box-shadow: 0 2px 8px var(--chartreuse-soft); /* More visible shadow */
+  pointer-events: none; /* Don't block clicks */
+}
+
+/* ========================================
+   Scroll MOBILE OPTIMISATIONS & Accessibility
+   ======================================== */
+@media (max-width: 768px) {
+  .scroll-progress {
+    height: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
 }
 
 body {
@@ -677,7 +711,8 @@ select {
 }
 
 .section-kicker,
-.register-kicker {
+.register-kicker,
+.section-kicker-tight {
   display: block;
   margin-bottom: 1.25rem;
   font-family: "Oswald", sans-serif;
@@ -1022,9 +1057,12 @@ select {
 .calc-share-confirm         { display: none; }
 .calc-share-confirm.visible { display: block; }
 
-/* tight kicker variant — used inside calc blocks */
-.section-kicker--tight {
+/* tight kicker variant — used in press stories */
+.section-kicker-tight {
   margin-bottom: 0.35rem;
+  font-weight: 700;
+  border-top: 3px solid var(--chartreuse);
+  padding-top: 0.75rem;
 }
 
 /* kicker inside a result block */

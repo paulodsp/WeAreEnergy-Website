@@ -8,9 +8,9 @@
   'use strict';
 
   var FALLBACK = {
-    unitRate:  24.90,
-    standing:  44.83,
-    period:    'Q2 2026',
+    unitRate:  26.11,
+    standing:  57.19,
+    period:    'Q3 2026',
     saving10:  8300,
     saving25:  38000,
     baseline:  2855

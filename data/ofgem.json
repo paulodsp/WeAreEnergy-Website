@@ -1,15 +1,15 @@
 {
   "_purpose": "Single source of truth for all website figures.",
-  "quarter": "Q2 2026",
-  "period": "April to June 2026",
+  "quarter": "Q3 2026",
+  "period": "July to September 2026",
   "source_url": "https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges",
-  "updated": "2026-04-01",
-  "next_review": "2026-07-01",
+  "updated": "2026-05-27",
+  "next_review": "2026-08-29",
 
   "gb_average": {
-    "unit_rate_p": 24.67,
-    "standing_charge_p_day": 57.21,
-    "annual_cap_gbp": 1641,
+    "unit_rate_p": 26.11,
+    "standing_charge_p_day": 57.19,
+    "annual_cap_gbp": 1862,
     "tdcv_kwh": 2700
   },
 

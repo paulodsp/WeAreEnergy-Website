@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/css/we-dark.css">
-  <link rel="stylesheet" href="/css/scroll-animations-REFINED.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -35,7 +34,7 @@
       <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html" title="Energy Home Page">ENERGY <span class="visually-hidden">(current)</span></a>
+            <a class="nav-link" href="index.html" title="Energy Home Page">ENERGY</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about.html" title="About Us">ABOUT US</a>
@@ -45,6 +44,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/invest.html" title="Investors Page">INVEST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/press.html" title="Press & Media Page">PRESS</a>
           </li>
         </ul>
         <a class="btn btn-outline-success-we my-2 my-sm-0" href="#register" title="Join Us">JOIN US</a>
@@ -134,8 +136,8 @@ Comment out or delete blocks marked OPTIONAL as needed.
     <span class="section-kicker">How these figures are calculated</span>
     <p class="text-small text-dim">
       <strong>Year 1</strong> is calculated from the current Ofgem GB average price cap
-      (<span id="methodPeriod">Q2 2026</span>: <span id="methodRate">24.67</span>p/kWh,
-      <span id="methodStanding">57.21</span>p/day) at our 50% price promise.
+      (<span data-field="period">Q3 2026</span>: <span data-field="unit_rate">26.11</span>p/kWh,
+<span data-field="standing">57.19</span>p/day) at our 50% price promise.
       <strong>10 and 25 year figures</strong> scale from our published estimates of
       £8,300 saved over 10 years and £38,000 over 25 years for a member
       using 2,855 kWh/year, assuming 2% annual bill inflation and 2.8% consumption growth.
@@ -188,7 +190,7 @@ Comment out or delete blocks marked OPTIONAL as needed.
       <div>
         <p class="footer-label">Contact</p>
         <ul class="footer-links">
-          <li><a href="mailto:all@weareenergy.coop">all@weareenergy.coop</a></li>
+          <li><a href="mailto:all@weareenergy.coop?subject=Hello">all@weareenergy.coop</a></li>
           <li><a href="https://WeAreEnergy.coop">WeAreEnergy.coop</a></li>
         </ul>
         <p class="footer-label">Image Credits</p>

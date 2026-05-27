@@ -170,9 +170,9 @@
        saving25 → page_stats.saving_25yr_gbp
   ---------------------------------------------------------- */
   var OFGEM_FALLBACK = {
-    period:   'Q2 2026',
-    unitRate:  24.90,
-    standing:  44.83,
+    period:   'Q3 2026',
+    unitRate:  26.11,
+    standing:  57.19,
     saving10:  8300,
     saving25:  38000
   };

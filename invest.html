@@ -33,7 +33,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
   <link href="css/we-dark.css" rel="stylesheet">
-  <link href="css/scroll-animations-REFINED.css" rel="stylesheet">
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -70,7 +69,10 @@
             <a class="nav-link" href="/faqs.html" title="Frequently Asked Questions">FAQ'S</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/invest.html" title="Investors Page">INVEST <span class="visually-hidden">(current)</span></a>
+            <a class="nav-link active" href="/invest.html" title="Investors Page">INVEST <span class="visually-hidden">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/press.html" title="Press & Media Page">PRESS</a>
           </li>
         </ul>
         <a class="btn btn-outline-success-we my-2 my-sm-0" href="/#register" title="Join Us">JOIN US</a>
@@ -131,7 +133,7 @@
     <!-- £10k UPFRONT COST -->
     <div class="stat reveal reveal-d2">
       <span class="stat-number">
-        £<span class="counter" data-to="10000">10,000</span>
+        £<span class="counter" data-to="10000" data-fmt="comma">10,000</span>
       </span>
       <span class="stat-text">Average upfront cost barrier</span>
     </div>
@@ -139,7 +141,7 @@
     <!-- £311bn SAVINGS -->
     <div class="stat reveal reveal-d3">
       <span class="stat-number">
-        £<span class="counter" data-to="311">311</span><span class="stat-unit">bn</span>
+        £<span class="counter" data-to="570">570</span><span class="stat-unit">bn</span>
       </span>
       <span class="stat-text">Projected member bill savings</span>
     </div>
@@ -172,7 +174,7 @@
           <span class="lead-note reveal reveal-d2 visible">This is not a product. It is a route to shared ownership in the energy transition. Members share their roofs and bill payments. In return, the co-operative delivers next-generation systems, maintains them for life, and generates additional revenues through a distributed virtual power plant, all of which flow back to members, not distant shareholders.</span>
         </div>
 
-        <div class="cards cards-two cards-invest reveal reveal-d3 visible">
+        <div class="cards cards-two reveal reveal-d3 visible">
           <article class="card card-charcoal">
             <h3 class="card-title">What Members Give</h3>
             <div class="points">
@@ -413,11 +415,11 @@
         <span class="stat-text">Direct jobs by end of Phase 1, 2028</span>
       </div>
       <div class="stat reveal reveal-d3">
-        <span class="stat-number"><span class="counter" data-to="4600">4,600</span><span class="stat-unit">+</span></span>
+        <span class="stat-number"><span class="counter" data-to="4600" data-fmt="comma">4,600</span><span class="stat-unit">+</span></span>
         <span class="stat-text">Jobs by 2035</span>
       </div>
       <div class="stat reveal reveal-d4">
-        <span class="stat-number"><span class="counter" data-to="52000">52,000</span><span class="stat-unit">+</span></span>
+        <span class="stat-number"><span class="counter" data-to="52000" data-fmt="comma">52,000</span><span class="stat-unit">+</span></span>
         <span class="stat-text">Direct jobs by 2050</span>
       </div>
       <div class="stat reveal reveal-d5">
@@ -510,7 +512,7 @@
       <div>
         <p class="footer-label">Contact</p>
         <ul class="footer-links">
-          <li><a href="mailto:partnerships@weareenergy.coop?subject=Investment Enquiry">partnerships@weareenergy.coop</a></li>
+          <li><a href="mailto:partnerships@weareenergy.coop?subject=Investment Enquiry">partnerships@WeAreEnergy.coop</a></li>
           <li><a href="https://WeAreEnergy.coop">WeAreEnergy.coop</a></li>
         </ul>
         <p class="footer-label footer-label-spaced">Image Credits</p>
@@ -525,177 +527,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-  (function () {
-    'use strict';
-    var yrEl = document.getElementById('yr');
-    if (yrEl) yrEl.textContent = new Date().getFullYear();
-
-    var bar = document.getElementById('scrollProgress');
-    if (bar) {
-      window.addEventListener('scroll', function () {
-        var s = document.documentElement;
-        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-        bar.style.width = pct + '%';
-      }, { passive: true });
-    }
-
-    if ('IntersectionObserver' in window) {
-      var ro = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(function (el) { ro.observe(el); });
-
-      var hp = document.getElementById('heroInvest');
-      if (hp) {
-        var img = new Image();
-        img.onload = function () { hp.classList.add('loaded'); };
-        var bg = window.getComputedStyle(hp).backgroundImage;
-        var m = bg.match(/url\(["\']?([^"\'\)]+)["\']?\)/);
-        if (m) img.src = m[1];
-        else hp.classList.add('loaded');
-      }
-
-      var hi = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('on'); hi.unobserve(e.target); }
-        });
-      }, { threshold: 0.5 });
-      document.querySelectorAll('.highlight').forEach(function (el) { hi.observe(el); });
-    }
-    })();
-  </script>
-
-
-  <script>
-  (function(){
-    var root = document.documentElement;
-    var media = window.matchMedia('(prefers-color-scheme: dark)');
-    function applyTheme(theme){
-      root.setAttribute('data-theme', theme);
-      var btn = document.querySelector('[data-theme-toggle]');
-      if(btn){
-        var next = theme === 'dark' ? 'light' : 'dark';
-        btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
-        btn.setAttribute('title', 'Switch to ' + next + ' mode');
-        btn.innerHTML = theme === 'dark'
-          ? '<span aria-hidden="true">&#9788;</span>'
-          : '<span aria-hidden="true">&#9790;</span>';
-      }
-    }
-    applyTheme(media.matches ? 'dark' : 'light');
-    document.addEventListener('click', function(e){
-      var btn = e.target.closest('[data-theme-toggle]');
-      if(!btn) return;
-      var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  })();
-  </script>
-
-  <script>
-  (function(){
-    'use strict';
-    if (!('IntersectionObserver' in window)) return;
-    var counters = document.querySelectorAll('.counter');
-    if (!counters.length) return;
-
-    function animateCounter(el) {
-      // FIX: Use parseFloat instead of parseInt to catch the .7
-      var dataTo = el.getAttribute('data-to');
-      var target = parseFloat(dataTo);
-      if (isNaN(target)) return;
-
-      // Check if the original string has a decimal point
-      var hasDecimal = dataTo.indexOf('.') !== -1;
-      
-      var duration = 2000, steps = 60;
-      var stepDuration = duration / steps;
-      var current = 0, increment = target / steps;
-
-      var timer = setInterval(function() {
-        current += increment;
-        if (current >= target) {
-          // Final state: use toLocaleString to handle commas in 10,000
-          // If it was a decimal, ensure it shows 1 decimal place at the end
-          el.textContent = hasDecimal ? target.toFixed(1) : target.toLocaleString('en-GB');
-          clearInterval(timer);
-        } else {
-          // While counting: show decimals only if the target is a decimal
-          if (hasDecimal) {
-            el.textContent = current.toFixed(1);
-          } else {
-            el.textContent = Math.floor(current).toLocaleString('en-GB');
-          }
-        }
-      }, stepDuration);
-    }
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function(el) { observer.observe(el); });
-  })();
-</script>
-
-<script>
-/**
- * Automatically wraps all hyphenated words in a .no-split span.
- * Uses TreeWalker to ensure HTML classes and attributes are NOT affected.
- */
-document.addEventListener("DOMContentLoaded", function() {
-  const hyphenRegex = /\b(\w+-\w+(?:-\w+)*)\b/g;
-  
-  // 1. Create a walker to find ONLY actual text humans see
-  const walker = document.createTreeWalker(
-    document.body, 
-    NodeFilter.SHOW_TEXT, 
-    {
-      acceptNode: function(node) {
-        // Skip text inside script or style tags
-        const parent = node.parentNode.tagName;
-        if (parent === 'SCRIPT' || parent === 'STYLE') return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    }, 
-    false
-  );
-
-  let node;
-  const nodesToReplace = [];
-
-  // 2. Map out the text nodes that have hyphens
-  while (node = walker.nextNode()) {
-    if (node.nodeValue && node.nodeValue.includes('-')) {
-      nodesToReplace.push(node);
-    }
-  }
-
-  // 3. Swap the plain text for the "protected" version
-  nodesToReplace.forEach(textNode => {
-    // Only proceed if the text actually matches a hyphenated word pattern
-    if (textNode.nodeValue.match(hyphenRegex)) {
-      const wrapper = document.createElement('span');
-      // Replace words with the wrapped version
-      wrapper.innerHTML = textNode.nodeValue.replace(hyphenRegex, '<span class="no-split">$1</span>');
-      
-      // Replace the old text node with our new wrapped version
-      if (textNode.parentNode) {
-        textNode.parentNode.replaceChild(wrapper, textNode);
-      }
-    }
-  });
-});
-</script>
-
 <!-- ===================== STICKY CTA ===================== -->
 <div class="sticky-cta" id="stickyCta" aria-label="Start a conversation">
   <a href="#contact" class="sticky-cta-link">
@@ -704,30 +535,11 @@ document.addEventListener("DOMContentLoaded", function() {
   </a>
 </div>
 
-<script>
-var cta = document.getElementById('stickyCta');
-    var contact = document.getElementById('contact');
-    if (cta && contact) {
-      document.addEventListener('scroll', function () {
-        var scrolled = document.documentElement.scrollTop;
-        var contactTop = contact.getBoundingClientRect().top + scrolled;
-        if (scrolled > 300 && scrolled < contactTop - 100) {
-          cta.classList.add('visible');
-        } else {
-          cta.classList.remove('visible');
-        }
-      }, { passive: true });
-    }</script>
+<!-- We Are Energy - wae.js Site-wide script. Load on every page before the body closing tag. Handles: theme, hero, scroll progress, reveal, highlight, counters, data-field hydration, nav close. Page-specific: calcs.js loaded additionally on calc pages. -->
+<script src="js/wae.js"></script>
 
-<!-- /* Closes hamburger nav bar on clicking anything in it to prevent it from staying open on mobile after a selection is made. */ -->
-<script>
-  document.querySelector('.navbar-collapse').addEventListener('click', function() {
-    this.classList.remove('show');
-  });
-</script>
-
-
-
+<!-- /* Full Calculator script */ -->
+<script src="js/calcs.js"></script>
 
 </body>
 </html>

@@ -126,7 +126,7 @@ Loaded on every page immediately before `</body>`. Handles:
 
 ### JavaScript — `calcs.js`
 
-Loaded on every page. Guards all execution with `if (document.getElementById('calc-slider'))` so it exits immediately on pages without a calculator. Handles the interactive savings calculator: slider input, preset buttons, live Ofgem rate fetching, Year 1 / 10-year / 25-year savings calculations, and share button behaviour.
+Loaded on every page. Always fetches `data/ofgem.json` — but `init()` checks for `#calc-slider` immediately with `if (!slider) return`, so all calculator logic is skipped cleanly on pages that don't have one. The JSON fetch itself is the only thing that runs on non-calculator pages.
 
 ---
 

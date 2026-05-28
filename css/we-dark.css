@@ -178,7 +178,7 @@ h1 {
 
 h2 {
   font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1.02;
+  line-height: 1.18;
 }
 
 h3 {
@@ -1602,7 +1602,7 @@ select {
   transform: translateY(-1px);
 }
 
-.form-success {
+#form-success {
   display: none;
   margin-top: 1.5rem;
   text-align: center;

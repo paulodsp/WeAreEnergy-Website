@@ -248,7 +248,7 @@
    Used on index and about pages.
    calcs.js handles #share-btn on calculator pages separately.
 ---------------------------------------------------------- */
-var pageShareBtn = document.querySelector('.page-share-btn');
+var pageShareBtn = document.getElementById('page-share-btn');
 if (pageShareBtn) {
   pageShareBtn.addEventListener('click', function () {
     var msg = 'I just signed up to join We Are Energy Co-operative. It Rocks and I think you\u2019ll love it too. Find out more and register here to act on #climatechange now and join the green energy revolution.';

@@ -1606,9 +1606,6 @@ select {
   display: none;
   margin-top: 1.5rem;
   text-align: center;
-  display:none;
-  margin-top:1.5rem;
-  text-align:center;
 }
 
 .form-success .lead {
@@ -1667,7 +1664,7 @@ select {
 }
 
 .footer-label {
-  margin-bottom: 1.125rem;
+  margin-bottom: 0.25rem;
   font-family: "Oswald", sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -1730,7 +1727,7 @@ select {
 
 .footer-base {
   max-width: var(--site-max);
-  margin: 3rem auto 0;
+  margin: 1rem auto 0;
   padding-top: 1.75rem;
   border-top: 1px solid var(--line-color);
   display: flex;
@@ -1852,7 +1849,7 @@ select {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--chartreuse);
+  background: var(--coral);
   color: var(--charcoal);
   font-family: 'Oswald', sans-serif;
   font-size: 0.85rem;
@@ -1862,6 +1859,7 @@ select {
   text-decoration: none;
   padding: 0.65rem 1.1rem;
   border-radius: 2rem;
+  border:var(--cream) 1px solid;
   box-shadow: 0 2px 12px var(--charcoal-strong);
   transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }

@@ -107,6 +107,7 @@ Section background classes: `.section-charcoal`, `.section-cream`, `.section-cha
 | Font | Source | Usage |
 |---|---|---|
 | Oswald | Google Fonts CDN | Headings, kickers, nav, buttons |
+| PT Serif | Google Fonts CDN | Body, Captions |
 | Oswald Stencil | `fonts/oswald-stencil.otf` | Hero display text only |
 | System sans-serif | Fallback only | Never used as primary |
 

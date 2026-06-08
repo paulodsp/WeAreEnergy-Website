@@ -162,7 +162,7 @@
        period      → quarter label e.g. "Q2 2026"
        unit_rate   → unit rate in p/kWh e.g. "24.90"
        standing    → standing charge p/day e.g. "44.83"
-       saving10    → 10-yr saving £ e.g. "8,300"
+       saving10    → 10-yr saving £ e.g. "8,900"
        saving25    → 25-yr saving £ e.g. "38,000"
 
      data-field-to maps a counter's data-to to a live figure:
@@ -173,7 +173,7 @@
     period:   'Q3 2026',
     unitRate:  26.11,
     standing:  57.19,
-    saving10:  8300,
+    saving10:  8900,
     saving25:  38000
   };
 

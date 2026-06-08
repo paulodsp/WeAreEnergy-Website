@@ -15,8 +15,21 @@
       <section class="mt-4">
         <h2>Key assumptions</h2>
         <ul>
-          <li>Ofgem price cap reference used: latest published value at time of calculation.</li>
+          <li>Ofgem price cap reference used: latest published GB average value at time of calculation.</li>
           <li>Household annual consumption estimate, generation profile and degradation.</li>
+        </ul>
+      </section>
+
+      <section class="mt-4">
+        <h2>Latest published assumptions</h2>
+        <ul>
+          <li>Source: <a href="https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges" target="_blank" rel="noopener">Ofgem price cap data</a>, updated <strong><span id="ofgem-updated">27 May 2026</span></strong> for <strong><span id="ofgem-quarter">Q3 2026</span></strong>.</li>
+          <li>GB average Ofgem unit rate: <strong><span id="ofgem-unit-rate">26.11</span>p/kWh</strong>; standing charge: <strong><span id="ofgem-standing-charge">57.19</span>p/day</strong>.</li>
+          <li>Model basis: four-quarter weighted London baseline, <strong><span id="wae-baseline">2,855</span> kWh/year</strong>, blended Ofgem rate <strong><span id="wae-blended-rate">32.27</span>p/kWh</strong>, WAE rate <strong><span id="wae-rate">16.14</span>p/kWh</strong>, WAE standing charge <strong><span id="wae-standing-charge">0</span>p/day</strong>.</li>
+          <li>Published savings use <strong><span id="wae-inflation">2</span>%</strong> annual bill inflation and <strong><span id="wae-growth">2.8</span>%</strong> annual consumption growth.</li>
+          <li>Published page figures: <strong>£<span id="ofgem-saving10">8,900</span></strong> saved over 10 years, <strong>£<span id="ofgem-saving25">38,000</span></strong> saved over 25 years, <strong><span id="ofgem-guarantee">25</span>-year</strong> system guarantee.</li>
+          <li>Carbon savings applied: <strong><span id="ofgem-co2-10">16</span></strong> tonnes CO₂e over 10 years and <strong><span id="ofgem-co2-25">22</span></strong> tonnes over 25 years.</li>
+          <li>These estimates apply to Great Britain only; they do not apply in Northern Ireland.</li>
         </ul>
       </section>
 
@@ -29,5 +42,58 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      (function () {
+        function byId(id) { return document.getElementById(id); }
+        function fmtNum(value) {
+          return typeof value === 'number'
+            ? value.toLocaleString('en-GB')
+            : value;
+        }
+        function fmtPct(value) {
+          return typeof value === 'number' ? value.toFixed(value % 1 ? 1 : 0) : value;
+        }
+
+        function setText(id, value) {
+          var el = byId(id);
+          if (!el || value === undefined || value === null) return;
+          el.textContent = value;
+        }
+
+        Promise.all([
+          fetch('../data/ofgem.json').then(function (r) { if (!r.ok) throw new Error('ofgem fetch'); return r.json(); }),
+          fetch('../data/wae-model.json').then(function (r) { if (!r.ok) throw new Error('wae fetch'); return r.json(); })
+        ])
+        .then(function (data) {
+          var ofgem = data[0];
+          var wae = data[1];
+
+          if (ofgem.updated) setText('ofgem-updated', ofgem.updated);
+          if (ofgem.quarter) setText('ofgem-quarter', ofgem.quarter);
+          if (ofgem.gb_average) {
+            setText('ofgem-unit-rate', fmtPct(ofgem.gb_average.unit_rate_p));
+            setText('ofgem-standing-charge', fmtPct(ofgem.gb_average.standing_charge_p_day));
+          }
+          if (wae.model_basis) {
+            setText('wae-baseline', fmtNum(wae.model_basis.baseline_kwh));
+            setText('wae-blended-rate', fmtPct(wae.model_basis.ofgem_blended_rate_p_per_kwh));
+            setText('wae-rate', fmtPct(wae.model_basis.wae_rate_p_per_kwh));
+            setText('wae-standing-charge', fmtPct(wae.model_basis.wae_standing_charge));
+            setText('wae-inflation', fmtPct(wae.model_basis.inflation_pct));
+            setText('wae-growth', fmtPct(wae.model_basis.consumption_growth_pct));
+          }
+          if (ofgem.page_stats) {
+            setText('ofgem-saving10', fmtNum(ofgem.page_stats.saving_10yr_gbp));
+            setText('ofgem-saving25', fmtNum(ofgem.page_stats.saving_25yr_gbp));
+            setText('ofgem-guarantee', fmtNum(ofgem.page_stats.system_guarantee_yrs));
+            setText('ofgem-co2-10', fmtPct(ofgem.page_stats.co2e_10yr_t));
+            setText('ofgem-co2-25', fmtPct(ofgem.page_stats.co2e_25yr_t));
+          }
+        })
+        .catch(function (err) {
+          console.warn('Customer savings summary: failed to load reference data', err);
+        });
+      }());
+    </script>
   </body>
 </html>

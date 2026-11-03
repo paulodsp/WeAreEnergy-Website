@@ -209,40 +209,42 @@
   <script>
     (function () {
       'use strict';
-
-      var code = localStorage.getItem('wae_ref_code');
+      var q = new URLSearchParams(window.location.search);
+      var fromUrl = (q.get('c') || '').toUpperCase();
+      var code = /^WAE-[A-Z0-9]{3,12}$/.test(fromUrl) ? fromUrl : '';
+      if (!code) { try { code = localStorage.getItem('wae_ref_code') || ''; } catch (err) {} }
+ 
       var display = document.getElementById('referral-code-display');
-      if (code && display) {
-        display.textContent = code;
-      } else if (display) {
-        display.textContent = 'Register to receive your code';
-      }
-
-      var baseUrl = 'https://WeAreEnergy.coop/?ref=';
-
-      document.getElementById('copy-code-btn').addEventListener('click', function () {
-        var text = code || '';
-        navigator.clipboard.writeText(text).then(function () {
-          var btn = document.getElementById('copy-code-btn');
-          btn.textContent = 'Copied!';
-          setTimeout(function () { btn.textContent = 'Copy Code'; }, 2000);
+      var copyBtn = document.getElementById('copy-code-btn');
+      var shareBtn = document.getElementById('share-link-btn');
+      display.textContent = code || 'Register to receive your code';
+      if (!code) { copyBtn.disabled = true; shareBtn.disabled = true; }
+ 
+      /* Friends land on the movement page. The code and campaign tags travel in the link. */
+      var shareUrl = 'https://WeAreEnergy.coop/future.html?ref=' + encodeURIComponent(code) +
+        '&utm_source=member&utm_medium=referral&utm_campaign=refer_a_friend';
+      var shareText = 'I have just joined We Are Energy, the member-owned co-operative bringing solar and batteries at zero upfront cost. Join me and we both earn £50 credit.';
+ 
+      function track(name) { (window.dataLayer = window.dataLayer || []).push({ event: name, ref_code: code }); }
+ 
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(code).then(function () {
+          track('wae_copy_code');
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy Code'; }, 2000);
         });
       });
-
-      document.getElementById('share-link-btn').addEventListener('click', function () {
-        var shareUrl = baseUrl + (code || '');
+ 
+      shareBtn.addEventListener('click', function () {
+        track('wae_share_link');
         if (navigator.share) {
-          navigator.share({
-            title: 'We Are Energy Co-operative',
-            text: 'I just registered with We Are Energy Co-operative - join me and we both earn £50 credit.',
-            url: shareUrl
-          });
+          navigator.share({ title: 'We Are Energy Co-operative', text: shareText, url: shareUrl }).catch(function () {});
         } else {
-          navigator.clipboard.writeText(shareUrl);
-          alert('Your referral link has been copied to your clipboard.');
+          navigator.clipboard.writeText(shareUrl).then(function () {
+            alert('Your referral link has been copied to your clipboard.');
+          });
         }
       });
-
     }());
   </script>
 

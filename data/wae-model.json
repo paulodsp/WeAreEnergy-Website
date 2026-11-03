@@ -19,9 +19,9 @@
     "wae_standing_charge": 0
   },
   "model_outputs": {
-    "residential_saving_10yr_gbp": 8900,
-    "residential_saving_25yr_gbp": 38189,
-    "residential_saving_10yr_rounded_published": 8300,
+    "residential_saving_10yr_gbp": 8800,
+    "residential_saving_25yr_gbp": 37700,
+    "residential_saving_10yr_rounded_published": 8800,
     "residential_saving_25yr_rounded_published": 38000,
     "_note": "PENDING: Years 9-25 post-lease savings methodology under review May 2026. Figures likely significantly underestimate savings. Update both this file and ofgem.json page_stats once Paul confirms corrected model figures."
   }

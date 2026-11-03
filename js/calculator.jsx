@@ -56,7 +56,7 @@ const WAE_BASELINE = {
 const PRESETS = [
   { label: "Studio / 1-bed",      sub: "~1,100 kWh/yr · Ofgem low",    kWh: 1100 },
   { label: "Small home",          sub: "~1,800 kWh/yr · Ofgem low",    kWh: 1800 },
-  { label: "Typical home",        sub: "~2,700 kWh/yr · Ofgem medium", kWh: 2700, highlight: true },
+  { label: "Typical home",        sub: "~2,700 kWh/yr · Ofgem medium", kWh: 2500, highlight: true },
   { label: "Larger home",         sub: "~4,100 kWh/yr · Ofgem high",   kWh: 4100 },
   { label: "All-electric / EV",   sub: "~5,500 kWh/yr · high usage",   kWh: 5500 },
 ];
@@ -126,7 +126,7 @@ const C = {
 ═══════════════════════════════════════════════════════════ */
 export default function Calculator() {
   // Default to Ofgem medium TDCV (2,700 kWh/yr)
-  const [kWh,    setKwh]    = useState(2700);
+  const [kWh,    setKwh]    = useState(2500);
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
 
@@ -297,14 +297,8 @@ export default function Calculator() {
           </div>
           <p style={{ fontFamily: "'PT Serif',serif", fontSize: "0.73rem", color: C.creamDim, lineHeight: 1.6, margin: 0 }}>
             <strong style={{ color: C.cream, fontFamily: "'Oswald',sans-serif", fontWeight: 500, letterSpacing: "0.03em" }}>Year 1</strong> is calculated directly from the current Ofgem electricity price cap
-            for London / South East ({OFGEM.period}: {OFGEM.unit_rate_pence}p/kWh + {OFGEM.standing_pence_day}p/day standing charge),
-            at We Are Energy's 50% price promise.{" "}
-            <strong style={{ color: C.cream, fontFamily: "'Oswald',sans-serif", fontWeight: 500, letterSpacing: "0.03em" }}>10 and 25-year figures</strong> scale from
-            We Are Energy's published estimate of £6,500 saved in 10 years and £20,000 over
-            25 years for a London customer using 2,855 kWh/year — assuming 2% annual bill
-            inflation and 2.8% annual consumption growth (source: We Are Energy FAQs). These
-            are illustrative estimates. Your actual savings will depend on your location, usage,
-            roof size, and future Ofgem cap levels.
+            for London / South East ({OFGEM.period}: {OFGEM.unit_rate_pence}p/kWh + {OFGEM.standing_pence_day}p/day standing charge), at We Are Energy's 50% price promise.{" "}
+            <strong style={{ color: C.cream, fontFamily: "'Oswald',sans-serif", fontWeight: 500, letterSpacing: "0.03em" }}>10 and 25-year figures</strong> scale from We Are Energy's published estimate of £8,800 saved in 10 years and £37,700 over 25 years for a London customer using 2,855 kWh/year — assuming 2% annual bill inflation and 2.8% annual consumption growth (source: We Are Energy FAQs). These are illustrative estimates. Your actual savings will depend on your location, usage, roof size, and future Ofgem cap levels.
           </p>
         </div>
 

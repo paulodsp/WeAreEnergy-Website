@@ -1,23 +1,23 @@
 {
   "_purpose": "Single source of truth for all website figures.",
-  "quarter": "Q3 2026",
-  "period": "July to September 2026",
+  "quarter": "Q4 2026",
+  "period": "October to December 2026",
   "source_url": "https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges",
-  "updated": "2026-05-27",
-  "next_review": "2026-08-29",
+  "updated": "2026-11-02",
+  "next_review": "2026-11-29",
 
   "gb_average": {
-    "unit_rate_p": 26.11,
-    "standing_charge_p_day": 57.19,
-    "annual_cap_gbp": 1862,
-    "tdcv_kwh": 2700
+    "unit_rate_p": 26.32,
+    "standing_charge_p_day": 54.83,
+    "annual_cap_gbp": 1723,
+    "tdcv_kwh": 2500
   },
 
   "model_basis": {
     "basis_label": "Four-quarter weighted London model baseline",
     "baseline_kwh": 2855,
-    "ofgem_blended_rate_p_per_kwh": 32.27,
-    "wae_rate_p_per_kwh": 16.14,
+    "ofgem_blended_rate_p_per_kwh": 31.95,
+    "wae_rate_p_per_kwh": 15.98,
     "inflation_pct": 2,
     "consumption_growth_pct": 2.8
   },
@@ -25,8 +25,8 @@
   "page_stats": {
     "upfront_cost": 0,
     "bill_saving_pct": 50,
-    "saving_10yr_gbp": 8900,
-    "saving_25yr_gbp": 38000,
+    "saving_10yr_gbp": 8800,
+    "saving_25yr_gbp": 37700,
     "system_guarantee_yrs": 25,
     "co2e_10yr_t": 16,
     "co2e_25yr_t": 22

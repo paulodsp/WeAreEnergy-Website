@@ -559,6 +559,14 @@ select {
         linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
         url("/images/murmuration.webp");
     }
+
+.hero-future .hero-photo {
+      background-image:
+        linear-gradient(250deg, var(--overlay-start) 15%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
+        url("/images/solar_roofs.jpg");
+        background-position: 90% 50%;
+    }
+
 /* --- Thank You hero: purpose-built, image-led layout --- */
 .page-hero-thanks {
   position: relative;
@@ -2361,3 +2369,56 @@ html[data-theme="light"] {
   opacity: 1;
   transform: none;
 }
+/* ==========================================================
+   We Are Energy System CSS v3.5 additions
+   Append to the end of we-dark.css.
+   1. Accessible label colour on coral buttons (all pages):
+      cream on coral is 2.58:1, charcoal-dark on coral is 5.43:1.
+   2. Building enquiry form card on future.html.
+   ========================================================== */
+
+.button-coral { color: var(--charcoal-dark); }
+
+.form-card { margin-top: 2.5rem; }
+.form-card .card-title,
+.form-card .card-text,
+.form-card label { color: var(--cream); }
+.form-card label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.form-card input:not([type="checkbox"]),
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--cream-on-dark-strong);
+  border-radius: var(--radius-small);
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: "PT Serif", serif;
+  font-size: 1rem;
+}
+.form-card textarea { min-height: 7rem; resize: vertical; }
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus { outline: 2px solid var(--chartreuse); outline-offset: 2px; }
+.form-card .form-consent { display: flex; gap: 0.75rem; align-items: flex-start; }
+.form-card .form-consent input { width: 1.1rem; height: 1.1rem; margin-top: 0.2rem; accent-color: var(--chartreuse); }
+.form-card .form-consent label {
+  margin: 0;
+  font-family: "PT Serif", serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.form-card .form-submit { background: var(--coral); color: var(--charcoal-dark); }
+.form-card .form-submit:hover { background: var(--chartreuse); }
+.form-card .form-legal { color: var(--cream); opacity: 0.8; }
+.form-card .form-legal a { color: var(--chartreuse); }

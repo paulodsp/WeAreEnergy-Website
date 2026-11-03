@@ -159,9 +159,9 @@
      so animated counters reflect live data.
 
      Supported data-field values:
-       period      → quarter label e.g. "Q2 2026"
-       unit_rate   → unit rate in p/kWh e.g. "24.90"
-       standing    → standing charge p/day e.g. "44.83"
+       period      → quarter label e.g. "Q4 2026"
+       unit_rate   → unit rate in p/kWh e.g. "26.32"
+       standing    → standing charge p/day e.g. "54.83"
        saving10    → 10-yr saving £ e.g. "8,900"
        saving25    → 25-yr saving £ e.g. "38,000"
 
@@ -170,11 +170,11 @@
        saving25 → page_stats.saving_25yr_gbp
   ---------------------------------------------------------- */
   var OFGEM_FALLBACK = {
-    period:   'Q3 2026',
-    unitRate:  26.11,
-    standing:  57.19,
-    saving10:  8900,
-    saving25:  38000
+    period:   'Q4 2026',
+    unitRate:  26.32,
+    standing:  54.83,
+    saving10:  8810,
+    saving25:  37791
   };
 
   function hydrateFields(d) {
@@ -216,7 +216,7 @@
     };
   }
 
-  fetch('data/ofgem.json')
+  fetch('data/ofgem.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
     .then(function (raw) { hydrateFields(normalise(raw)); })
     .catch(function () { hydrateFields(OFGEM_FALLBACK); });

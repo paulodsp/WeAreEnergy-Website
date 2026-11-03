@@ -157,11 +157,11 @@
           <span class="stat-text">Off energy bills for 8 years</span>
         </div>
         <div class="stat reveal reveal-d2">
-          <span class="stat-number">£<span class="counter" data-to="8900" data-fmt="comma">8,900</span></span>
+          <span class="stat-number">£<span class="counter" data-to="8800" data-fmt="comma">8,800</span></span>
           <span class="stat-text">Saved in first 10 years</span>
         </div>
         <div class="stat reveal">
-          <span class="stat-number">£<span class="counter" data-to="38000" data-fmt="comma">38,000</span></span>
+          <span class="stat-number">£<span class="counter" data-to="37700" data-fmt="comma">37,700</span></span>
           <span class="stat-text">Saved over 25 years</span>
         </div>
         <div class="stat reveal reveal-d1">
@@ -247,7 +247,7 @@
               </p>
             </div>
           </div>
-        </div>
+        </div><!-- /points -->
       </div><!-- /split -->
     </div><!-- /wrap -->
     </section>
@@ -269,7 +269,7 @@ Comment out or delete blocks marked OPTIONAL as needed.
 
     <span class="section-kicker">Annual electricity use</span>
 
-    <div class="calc-big-number" id="calc-display" data-current="2700">2,700 kWh</div>
+    <div class="calc-big-number" id="calc-display" data-current="2500">2,700 kWh</div>
 
     <div class="container-text-centre calc-input-block">
       <div class="row justify-content-md-center">
@@ -287,7 +287,7 @@ Comment out or delete blocks marked OPTIONAL as needed.
     </div>
 
     <input type="range" class="calc-range" id="calc-slider"
-           min="800" max="15000" step="50" value="2700"
+           min="800" max="15000" step="50" value="2500"
            aria-label="Annual electricity use in kWh per year">
 
     <div class="calc-range-labels">
@@ -299,7 +299,7 @@ Comment out or delete blocks marked OPTIONAL as needed.
     <div class="calc-presets">
       <button class="calc-preset" data-kwh="1100">Studio / 1 bed</button>
       <button class="calc-preset" data-kwh="1800">Small home</button>
-      <button class="calc-preset active" data-kwh="2700">Typical home</button>
+      <button class="calc-preset active" data-kwh="2500">Typical home</button>
       <button class="calc-preset" data-kwh="4100">Larger home</button>
       <button class="calc-preset" data-kwh="10000">All electric. Heat pump & EV</button>
     </div>
@@ -316,13 +316,13 @@ Comment out or delete blocks marked OPTIONAL as needed.
 
     <div class="calc-result">
       <p class="section-kicker">10 year saving</p>
-      <div class="calc-result-value main" id="calc-y10">£8,300</div>
+      <div class="calc-result-value main" id="calc-y10">£8,800</div>
       <p class="text-small text-dim">Including 2 years free generation</p>
     </div>
 
     <div class="calc-result">
       <p class="section-kicker">25 year saving</p>
-      <div class="calc-result-value main" id="calc-y25">£38,000</div>
+      <div class="calc-result-value main" id="calc-y25">£37,700</div>
       <p class="text-small text-dim">25 year system guarantee</p>
     </div>
 
@@ -333,10 +333,10 @@ Comment out or delete blocks marked OPTIONAL as needed.
     <span class="section-kicker">How these figures are calculated</span>
     <p class="text-small text-dim">
       <strong>Year 1</strong> is calculated from the current Ofgem GB average price cap
-      (<span data-field="period">Q3 2026</span>: <span data-field="unit_rate">26.11</span>p/kWh,
-<span data-field="standing">57.19</span>p/day) at our 50% price promise.
+      (<span data-field="period">Q4 2026</span>: <span data-field="unit_rate">26.32</span>p/kWh,
+<span data-field="standing">54.83</span>p/day) at our 50% price promise.
       <strong>10 and 25 year figures</strong> scale from our published estimates of
-      £8,300 saved over 10 years and £38,000 over 25 years for a member
+      £8,800 saved over 10 years and £37,700 over 25 years for a member
       using 2,855 kWh/year, assuming 2% annual bill inflation and 2.8% consumption growth.
       Actual savings depend on your location, usage, roof and future Ofgem cap levels.
     </p>
@@ -444,6 +444,14 @@ Comment out or delete blocks marked OPTIONAL as needed.
     </div>
   </div>
 
+  <input type="hidden" name="own_ref_code" id="reg-own-code">
+  <input type="hidden" name="referred_by" id="reg-referred-by">
+  <input type="hidden" name="utm_source" id="reg-utm-source">
+  <input type="hidden" name="utm_medium" id="reg-utm-medium">
+  <input type="hidden" name="utm_campaign" id="reg-utm-campaign">
+  <input type="hidden" name="utm_content" id="reg-utm-content">
+  <input type="hidden" name="landing_page" id="reg-landing-page">
+
   <button type="submit" class="form-submit">
     Register & SaveThePlanet
   </button>
@@ -515,52 +523,16 @@ Comment out or delete blocks marked OPTIONAL as needed.
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- ===================== STICKY CTA ===================== -->
+<div class="sticky-cta" id="stickyCta" aria-label="Register your interest">
+  <a href="#register" class="sticky-cta-link" title="Register your interest in the co-operative">
+    <span class="sticky-cta-label">Register now</span>
+    <span class="sticky-cta-arrow" aria-hidden="true">↓</span>
+  </a>
+</div>
+
 <!-- Form Submission Script -->
-  <script>
-    (function () {
-      'use strict';
-      const form    = document.getElementById('registration-form');
-      const success = document.getElementById('form-success');
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyslRmMzWnnvldT10MUx1Unhp_PwqnbyyEFp5ly-M4XdYST0CblubGb2wgGne69XhQ_/exec';
-
-      if (!form) return;
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-        const btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(function () {
-          // Generate referral code from name + timestamp
-          const name = document.getElementById('f-name').value.trim();
-          const initials = name.split(' ').map(w => w[0]).join('').toUpperCase();
-          const suffix = Date.now().toString(36).toUpperCase().slice(-4);
-          const refCode = 'WAE-' + initials + suffix;
-          localStorage.setItem('wae_ref_code', refCode);
-
-          form.style.display = 'none';
-          success.style.display = 'block';
-          setTimeout(function () {
-            window.location.href = 'thankyou.html';
-          }, 2500);
-        })
-        .catch(function () {
-          btn.disabled = false;
-          btn.textContent = 'Register & SaveThePlanet';
-          alert('Sorry, something went wrong. Please try again.');
-        });
-      });
-    }());
-  </script>
+  <script src="js/wae-forms.js"></script>
 
 <!-- We Are Energy - wae.js Site-wide script. Load on every page before the body closing tag. Handles: theme, hero, scroll progress, reveal, highlight, counters, data-field hydration, nav close. Page-specific: calcs.js loaded additionally on calc pages. -->
 <script src="js/wae.js"></script>

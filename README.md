@@ -166,9 +166,9 @@ Make sure both are updated together each quarter, and that they agree with each 
 To use one anywhere on a page:
 
 ```html
-Current quarter: <span data-field="period">Q3 2026</span>
-Unit rate: <span data-field="unit_rate">26.11</span>p/kWh
-Standing charge: <span data-field="standing">57.19</span>p/day
+Current quarter: <span data-field="period">Q4 2026</span>
+Unit rate: <span data-field="unit_rate">26.32</span>p/kWh
+Standing charge: <span data-field="standing">54.83</span>p/day
 ```
 
 The text content between the tags is the **fallback** — shown before the JSON loads, and if the fetch ever fails. Always set it to the current correct value so the page is never blank or wrong even for a fraction of a second.
@@ -189,7 +189,7 @@ Ofgem announces new price cap rates roughly six weeks before each quarter starts
 
 Source: [Ofgem price cap unit rates and standing charges](https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges)
 
-You need three numbers: unit rate (p/kWh), standing charge (p/day), and the annual cap (£). Use the **GB average** figures.
+You need three or four numbers depending if the Typical Domestic Consumption Values (TDCV) has been changed - it has been slowoly decling as consumers use less energy each year - search for TDCV as Ofgem to check and change the "tdcv+kWh" value below: unit rate (p/kWh), standing charge (p/day), and the annual cap (£). Use the **GB average** figures. TDCV enter any new TDCV level in kWh
 
 ---
 
@@ -199,16 +199,16 @@ Edit the `quarter`, `updated`, `next_review`, and `gb_average` fields. The `peri
 
 ```json
 {
-  "quarter": "Q3 2026",
-  "period": "July to September 2026",
+  "quarter": "Q4 2026",
+  "period": "Ocotber to December 2026",
   "source_url": "https://www.ofgem.gov.uk/...",
-  "updated": "2026-07-01",
-  "next_review": "2026-10-01",
+  "updated": "2026-09-01",
+  "next_review": "2026-12-01",
   "gb_average": {
     "unit_rate_p": [NEW UNIT RATE],
     "standing_charge_p_day": [NEW STANDING CHARGE],
     "annual_cap_gbp": [NEW ANNUAL CAP],
-    "tdcv_kwh": 2700
+    "tdcv_kwh": 2500
   }
 }
 ```
@@ -258,10 +258,10 @@ Every `data-field` span has an inline fallback value — the text between the ta
 
 ```html
 <!-- Old -->
-<span data-field="unit_rate">24.67</span>p/kWh
+<span data-field="unit_rate">26.11</span>p/kWh
 
 <!-- New -->
-<span data-field="unit_rate">26.11</span>p/kWh
+<span data-field="unit_rate">26.32</span>p/kWh
 ```
 
 Pages that currently carry methodology notes with these values: `index.html`, `calculator.html`, `faqs.html`. Check all of them.

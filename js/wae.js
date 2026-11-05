@@ -2,7 +2,7 @@
    We Are Energy - wae.js
    Site-wide script. Load on every page before </body>.
    Handles: theme, hero, scroll progress, reveal, highlight,
-            counters, data-field hydration, nav close.
+            counters, data-fact hydration, nav close.
    Page-specific: calcs.js loaded additionally on calc pages.
    ========================================================== */
 
@@ -104,15 +104,13 @@
   /* ----------------------------------------------------------
      7. COUNTER ANIMATION
      Targets: .counter[data-to]
-     Options: data-fmt="comma"  → formats with toLocaleString
-              data-field-to="saving10" → value overridden by
-              ofgem.json after hydration (see section 8)
-     Animates on first intersection. Handles decimals.
+     Formats: comma, dec1, fix2, gbp, pct, etc.
+     Animates on intersection.
   ---------------------------------------------------------- */
   function animateCounter(el) {
     var target  = parseFloat(el.getAttribute('data-to'));
-    var useComma = el.getAttribute('data-fmt') === 'comma';
-    var isDecimal = (target % 1 !== 0);
+    var fmt     = el.getAttribute('data-fmt');
+    var isDecimal = (target % 1 !== 0) || fmt === 'dec1';
     if (isNaN(target)) return;
 
     var duration = 1800;
@@ -123,19 +121,27 @@
       var p    = Math.min((ts - t0) / duration, 1);
       var ease = 1 - Math.pow(1 - p, 3);
       var val  = target * ease;
-      if (isDecimal) {
+
+      if (fmt === 'comma' || fmt === 'comma_plus') {
+        el.textContent = Math.round(val).toLocaleString('en-GB') + (fmt === 'comma_plus' ? '+' : '');
+      } else if (isDecimal) {
         el.textContent = val.toFixed(1);
-      } else if (useComma) {
-        el.textContent = Math.round(val).toLocaleString('en-GB');
       } else {
         el.textContent = Math.round(val);
       }
-      if (p < 1) requestAnimationFrame(step);
-      else {
-        /* settle on exact final value */
-        el.textContent = isDecimal ? target.toFixed(1)
-                       : useComma  ? target.toLocaleString('en-GB')
-                       : target;
+
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        /* Settle on exact final value with formatting */
+        if (fmt === 'comma' || fmt === 'comma_plus') {
+          el.textContent = target.toLocaleString('en-GB') + (fmt === 'comma_plus' ? '+' : '');
+        } else if (isDecimal) {
+          el.textContent = target.toFixed(1);
+        } else {
+          el.textContent = target;
+        }
+        el.classList.add('counted');
       }
     })(performance.now());
   }
@@ -152,74 +158,69 @@
 
 
   /* ----------------------------------------------------------
-     8. OFGEM DATA HYDRATION
+     8. OFGEM SINGLE SOURCE OF TRUTH HYDRATION
      Fetches data/ofgem.json once.
-     Populates every [data-field] element on the page.
-     Overwrites data-to on counters with data-field-to attribute
-     so animated counters reflect live data.
-
-     Supported data-field values:
-       period      → quarter label e.g. "Q4 2026"
-       unit_rate   → unit rate in p/kWh e.g. "26.32"
-       standing    → standing charge p/day e.g. "54.83"
-       saving10    → 10-yr saving £ e.g. "8,900"
-       saving25    → 25-yr saving £ e.g. "38,000"
-
-     data-field-to maps a counter's data-to to a live figure:
-       saving10 → page_stats.saving_10yr_gbp
-       saving25 → page_stats.saving_25yr_gbp
+     Hydrates both static inline [data-fact] spans and
+     animated counter targets (.counter[data-fact-to]).
   ---------------------------------------------------------- */
-  var OFGEM_FALLBACK = {
-    period:   'Q4 2026',
-    unitRate:  26.32,
-    standing:  54.83,
-    saving10:  8810,
-    saving25:  37791
-  };
+  function getValByPath(obj, path) {
+    if (!obj || !path) return undefined;
+    return path.split('.').reduce(function (o, key) {
+      return (o && o[key] !== undefined) ? o[key] : undefined;
+    }, obj);
+  }
 
-  function hydrateFields(d) {
-    var map = {
-      period:    d.period,
-      unit_rate: d.unitRate.toFixed(2),
-      standing:  d.standing.toFixed(2),
-      saving10:  d.saving10.toLocaleString('en-GB'),
-      saving25:  d.saving25.toLocaleString('en-GB')
-    };
-    /* populate [data-field] spans */
-    document.querySelectorAll('[data-field]').forEach(function (el) {
-      var key = el.getAttribute('data-field');
-      if (map[key] !== undefined) el.textContent = map[key];
+  function formatFactValue(val, fmt) {
+    if (val === undefined || val === null) return '';
+    if (fmt === 'gbp') return '£' + Math.round(val).toLocaleString('en-GB');
+    if (fmt === 'pct') return val + '%';
+    if (fmt === 'comma') return Number(val).toLocaleString('en-GB');
+    if (fmt === 'comma_plus') return Number(val).toLocaleString('en-GB') + '+';
+    if (fmt === 'mw') return val + 'MW';
+    if (fmt === 'gw') return val + 'GW';
+    if (fmt === 'gw_plus') return val + 'GW+';
+    if (fmt === 'mtco2') return val + ' MtCO₂e';
+    if (fmt === 'gbpm') return '£' + val + 'm';
+    if (fmt === 'gbpbn') return '£' + val + 'bn';
+    if (fmt === 'dec1') return Number(val).toFixed(1);
+    return val;
+  }
+
+  function hydrateFacts(data) {
+    if (!data) return;
+    window.WAE_FACTS = data;
+
+    // 1. Hydrate Counter Target Attributes (data-fact-to)
+    document.querySelectorAll('.counter[data-fact-to]').forEach(function (el) {
+      var path = el.getAttribute('data-fact-to');
+      var val  = getValByPath(data, path);
+      if (val !== undefined) {
+        el.setAttribute('data-to', val);
+        if (!el.classList.contains('counted')) {
+          var fmt = el.getAttribute('data-fmt');
+          el.textContent = (fmt === 'comma' || fmt === 'comma_plus')
+            ? Number(val).toLocaleString('en-GB') + (fmt === 'comma_plus' ? '+' : '')
+            : val;
+        }
+      }
     });
-    /* update data-to on counters that reference live figures */
-    var fieldToMap = { saving10: d.saving10, saving25: d.saving25 };
-    document.querySelectorAll('.counter[data-field-to]').forEach(function (el) {
-      var key = el.getAttribute('data-field-to');
-      if (fieldToMap[key] !== undefined) {
-        el.setAttribute('data-to', fieldToMap[key]);
-        /* update visible fallback text too */
-        var useComma = el.getAttribute('data-fmt') === 'comma';
-        el.textContent = useComma
-          ? fieldToMap[key].toLocaleString('en-GB')
-          : fieldToMap[key];
+
+    // 2. Hydrate Inline Prose Spans (data-fact)
+    document.querySelectorAll('[data-fact]').forEach(function (el) {
+      if (el.closest('.counter')) return; // Avoid clashing with counter parent
+      var path = el.getAttribute('data-fact');
+      var val  = getValByPath(data, path);
+      if (val !== undefined) {
+        var fmt = el.getAttribute('data-fmt');
+        el.textContent = formatFactValue(val, fmt);
       }
     });
   }
 
-  function normalise(raw) {
-    /* accept both ofgem.json shapes */
-    return {
-      period:   raw.quarter || OFGEM_FALLBACK.period,
-      unitRate: (raw.gb_average && raw.gb_average.unit_rate_p) || OFGEM_FALLBACK.unitRate,
-      standing: (raw.gb_average && raw.gb_average.standing_charge_p_day) || OFGEM_FALLBACK.standing,
-      saving10: (raw.page_stats && raw.page_stats.saving_10yr_gbp)  || OFGEM_FALLBACK.saving10,
-      saving25: (raw.page_stats && raw.page_stats.saving_25yr_gbp)  || OFGEM_FALLBACK.saving25
-    };
-  }
-
   fetch('data/ofgem.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-    .then(function (raw) { hydrateFields(normalise(raw)); })
-    .catch(function () { hydrateFields(OFGEM_FALLBACK); });
+    .then(function (raw) { hydrateFacts(raw); })
+    .catch(function (err) { console.warn('WAE Facts hydration fallback skipped:', err); });
 
 
   /* ----------------------------------------------------------
@@ -243,45 +244,44 @@
       this.classList.add('was-validated');
     });
   }
-/* ----------------------------------------------------------
-   11. GENERIC PAGE SHARE  (.page-share-btn)
-   Used on index and about pages.
-   calcs.js handles #share-btn on calculator pages separately.
----------------------------------------------------------- */
-var pageShareBtn = document.getElementById('page-share-btn');
-if (pageShareBtn) {
-  pageShareBtn.addEventListener('click', function () {
-    var msg = 'I just signed up to join We Are Energy Co-operative. It\u2019s amazing and I think you\u2019ll love it too. Find out more and register here to act on #climatechange now and join the green energy revolution.';
-    if (navigator.share) {
-      navigator.share({
-        title: 'We Are Energy Co-operative',
-        text: msg,
-        url: 'https://WeAreEnergy.coop'
-      });
-    } else {
-      navigator.clipboard.writeText('https://WeAreEnergy.coop');
-      alert('Our Web Address has been copied to your clipboard. Your browser doesn\u2019t support the Web Share API.');
-    }
-  });
-}
 
 
-/* ----------------------------------------------------------
-   12. STICKY CTA
-   Shows after a short scroll on pages that include #stickyCta.
----------------------------------------------------------- */
-var stickyCta = document.getElementById('stickyCta');
-if (stickyCta) {
-  function updateStickyCta() {
-    var show = window.scrollY > 320;
-    stickyCta.classList.toggle('visible', show);
-    stickyCta.classList.toggle('hidden', !show);
+  /* ----------------------------------------------------------
+     11. GENERIC PAGE SHARE  (.page-share-btn)
+  ---------------------------------------------------------- */
+  var pageShareBtn = document.getElementById('page-share-btn');
+  if (pageShareBtn) {
+    pageShareBtn.addEventListener('click', function () {
+      var msg = 'I just signed up to join We Are Energy Co-operative. It\u2019s amazing and I think you\u2019ll love it too. Find out more and register here to act on #climatechange now and join the green energy revolution.';
+      if (navigator.share) {
+        navigator.share({
+          title: 'We Are Energy Co-operative',
+          text: msg,
+          url: 'https://WeAreEnergy.coop'
+        });
+      } else {
+        navigator.clipboard.writeText('https://WeAreEnergy.coop');
+        alert('Our Web Address has been copied to your clipboard. Your browser doesn\u2019t support the Web Share API.');
+      }
+    });
   }
 
-  window.addEventListener('scroll', updateStickyCta, { passive: true });
-  window.addEventListener('resize', updateStickyCta);
-  window.addEventListener('load', updateStickyCta);
-  updateStickyCta();
-}
+
+  /* ----------------------------------------------------------
+     12. STICKY CTA
+  ---------------------------------------------------------- */
+  var stickyCta = document.getElementById('stickyCta');
+  if (stickyCta) {
+    function updateStickyCta() {
+      var show = window.scrollY > 320;
+      stickyCta.classList.toggle('visible', show);
+      stickyCta.classList.toggle('hidden', !show);
+    }
+
+    window.addEventListener('scroll', updateStickyCta, { passive: true });
+    window.addEventListener('resize', updateStickyCta);
+    window.addEventListener('load', updateStickyCta);
+    updateStickyCta();
+  }
 
 })();

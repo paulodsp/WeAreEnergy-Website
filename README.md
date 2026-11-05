@@ -147,7 +147,7 @@ The hydration system works by finding HTML elements that carry a `data-field` at
 Both scripts read the `quarter` field for the period label displayed on screen — **not** the `period` field. The `period` field is human-readable context for whoever is editing the file; it does not appear on the website.
 
 ```json
-"quarter": "Q3 2026",        ← this is what appears on the website
+"quarter": "Q4 2026",        ← this is what appears on the website
 "period": "July to September 2026"   ← this is for your reference only
 ```
 
@@ -157,11 +157,11 @@ Make sure both are updated together each quarter, and that they agree with each 
 
 | Attribute | What it shows on the page | Example |
 |---|---|---|
-| `period` | Current quarter label | Q3 2026 |
+| `period` | Current quarter label | Q4 2026 |
 | `unit_rate` | Unit rate in p/kWh | 26.11 |
 | `standing` | Standing charge in p/day | 57.19 |
-| `saving10` | 10-year saving in £ | 8,300 |
-| `saving25` | 25-year saving in £ | 38,000 |
+| `saving10` | 10-year saving in £ | 8,800 |
+| `saving25` | 25-year saving in £ | 38,700 |
 
 To use one anywhere on a page:
 
@@ -224,22 +224,22 @@ This is easy to forget, but matters. If the JSON fetch ever fails — a network 
 In `js/wae.js` (section 8):
 ```javascript
 var OFGEM_FALLBACK = {
-  period:   'Q3 2026',
-  unitRate:  26.11,      // ← new unit rate
-  standing:  57.19,      // ← new standing charge
-  saving10:  8300,
-  saving25:  38000
+  period:   'Q4 2026',
+  unitRate:  26.32,      // ← new unit rate
+  standing:  54.83,      // ← new standing charge
+  saving10:  8800,
+  saving25:  38700
 };
 ```
 
 In `js/calcs.js` (top of file):
 ```javascript
 var FALLBACK = {
-  unitRate:  26.11,      // ← new unit rate
-  standing:  57.19,      // ← new standing charge
-  period:    'Q3 2026',
-  saving10:  8300,
-  saving25:  38000,
+  unitRate:  26.32,      // ← new unit rate
+  standing:  54.83,      // ← new standing charge
+  period:    'Q4 2026',
+  saving10:  8800,
+  saving25:  38700,
   baseline:  2855
 };
 ```
@@ -282,7 +282,7 @@ Do a **hard reload** (`Cmd+Shift+R` / `Ctrl+Shift+R`) to bypass any cached JSON 
 
 - Calculator shows the correct new unit rate and standing charge in the methodology note
 - Year 1 saving recalculates correctly when you move the slider
-- Quarter label (e.g. "Q3 2026") appears wherever it should on the page
+- Quarter label (e.g. "Q4 2026") appears wherever it should on the page
 - No console errors
 
 ---
@@ -377,9 +377,9 @@ Add `.reveal` to any element to fade it in on scroll. Optional stagger delays:
 To display a live Ofgem figure anywhere on a page, use a `data-field` attribute — never an `id` alone:
 
 ```html
-Current quarter: <span data-field="period">Q3 2026</span>
-Unit rate: <span data-field="unit_rate">26.11</span>p/kWh
-Standing charge: <span data-field="standing">57.19</span>p/day
+Current quarter: <span data-field="period">4 2026</span>
+Unit rate: <span data-field="unit_rate">26.32</span>p/kWh
+Standing charge: <span data-field="standing">54.83</span>p/day
 ```
 
 The text content between the tags is the fallback shown before the JSON loads. Always set it to the current correct value. See the Data & Figures section for the full list of supported field names and the quarterly update process.

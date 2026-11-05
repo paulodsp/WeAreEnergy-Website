@@ -12,20 +12,20 @@
     standing:  54.83,
     period:    'Q4 2026',
     saving10:  8800,
-    saving25:  37700,
+    saving25:  37800,
     baseline:  2855
   };
 
-  fetch('data/ofgem.json')
+  fetch('data/ofgem.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
     .then(function (raw) {
       init({
-        unitRate: raw.gb_average.unit_rate_p,
-        standing: raw.gb_average.standing_charge_p_day,
-        period:   raw.quarter,
-        saving10: raw.page_stats.saving_10yr_gbp,
-        saving25: raw.page_stats.saving_25yr_gbp,
-        baseline: 2855
+        unitRate: (raw.ofgem_gb_average && raw.ofgem_gb_average.unit_rate_p) || FALLBACK.unitRate,
+        standing: (raw.ofgem_gb_average && raw.ofgem_gb_average.standing_charge_p_day) || FALLBACK.standing,
+        period:   (raw.ofgem_gb_average && raw.ofgem_gb_average.quarter) || FALLBACK.period,
+        saving10: (raw.page_stats && raw.page_stats.saving_10yr_gbp) || FALLBACK.saving10,
+        saving25: (raw.page_stats && raw.page_stats.saving_25yr_gbp) || FALLBACK.saving25,
+        baseline: (raw.wae_model_basis && raw.wae_model_basis.baseline_kwh) || FALLBACK.baseline
       });
     })
     .catch(function () { init(FALLBACK); });
@@ -121,7 +121,7 @@
                 + ' \u2014 solar and battery storage at no upfront cost.'
                 + ' weareenergy.coop #ClimateEmergency #EnergyDemocracy';
         if (navigator.share) {
-          navigator.share({ title: 'My We Are Energy savings estimate', text: msg, url: 'https://WeAreEnergy.coop' })
+          navigator.share({ title: 'My We Are Energy savings estimate', text: msg, url: '[https://WeAreEnergy.coop](https://WeAreEnergy.coop)' })
             .then(function () { if (shareConfirm) shareConfirm.hidden = false; });
         } else {
           navigator.clipboard.writeText(msg).then(function () {

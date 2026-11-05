@@ -5,24 +5,24 @@
   "model_file": "WeAreEnergy Financial Model Tadem Only March 160326.xlsx",
   "rate_basis": "Four-quarter backwards-looking weighted average, London Ofgem rates, blended to single unit rate including standing charge equivalent",
   "quarters_used": [
-    { "label": "Q3 2025", "unit_rate_p": 27.03, "standing_charge_p_day": 53.80 },
-    { "label": "Q4 2025", "unit_rate_p": 25.63, "standing_charge_p_day": 46.06 },
-    { "label": "Q1 2026", "unit_rate_p": 27.00, "standing_charge_p_day": 47.11 },
-    { "label": "Q2 2026", "unit_rate_p": 24.90, "standing_charge_p_day": 44.83 }
+    { "label": "Q1 2026", "unit_rate_p": 27.94, "standing_charge_p_day": 41.01 },
+    { "label": "Q2 2026", "unit_rate_p": 24.91, "standing_charge_p_day": 44.82 },
+    { "label": "Q3 2026", "unit_rate_p": 26.35, "standing_charge_p_day": 44.78 },
+    { "label": "Q4 2026", "unit_rate_p": 26.60, "standing_charge_p_day": 42.92 }
   ],
   "weighted_average": {
-    "avg_unit_rate_p": 26.14,
-    "avg_standing_charge_p_day": 46.28,
+    "avg_unit_rate_p": 26.45,
+    "avg_standing_charge_p_day": 43.405,
     "baseline_kwh": 2855,
-    "ofgem_blended_rate_p_per_kwh": 32.27,
-    "wae_rate_p_per_kwh": 16.14,
+    "ofgem_blended_rate_p_per_kwh": 32.00,
+    "wae_rate_p_per_kwh": 16.00,
     "wae_standing_charge": 0
   },
   "model_outputs": {
-    "residential_saving_10yr_gbp": 8800,
-    "residential_saving_25yr_gbp": 37700,
+    "residential_saving_10yr_gbp": 8823,
+    "residential_saving_25yr_gbp": 37848,
     "residential_saving_10yr_rounded_published": 8800,
-    "residential_saving_25yr_rounded_published": 38000,
+    "residential_saving_25yr_rounded_published": 37800,
     "_note": "PENDING: Years 9-25 post-lease savings methodology under review May 2026. Figures likely significantly underestimate savings. Update both this file and ofgem.json page_stats once Paul confirms corrected model figures."
   }
 }

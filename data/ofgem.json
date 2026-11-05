@@ -1,23 +1,33 @@
 {
   "_purpose": "Single source of truth for all website figures.",
-  "quarter": "Q4 2026",
-  "period": "October to December 2026",
-  "source_url": "https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges",
-  "updated": "2026-11-02",
-  "next_review": "2026-11-29",
+  "_relationship_to_wae_model": "When model is rerun, update model_outputs in wae-model.json AND page_stats here. Website reads ofgem.json only.",
+  "model_version": "November 2026",
+  "model_file": "We Are Energy Financial Model Tadem Only November 031126.xlsx",
+
+  "meta": {
+    "updated": "2026-11-03",
+    "next_review": "2026-11-29",
+    "ofgem_updated": "2026-11-02"
+  },
 
   "gb_average": {
+    "quarter": "Q4 2026",
+    "period": "October to December 2026",
+    "source_url": "https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges",
     "unit_rate_p": 26.32,
     "standing_charge_p_day": 54.83,
     "annual_cap_gbp": 1723,
-    "tdcv_kwh": 2500
+    "tdcv_kwh": 2500,
+    "vat_electricity_pct": 0,
+    "vat_note": "No VAT on electricity from 1 October 2026 to 31 March 2027"
   },
 
   "model_basis": {
     "basis_label": "Four-quarter weighted London model baseline",
+    "basis-calculation": "((AVERAGE(0.2794,0.2491,0.2635,0.266)×2855)+(AVERAGE(0.411,0.4482,0.4478,0.4292)×365))÷2855",
     "baseline_kwh": 2855,
-    "ofgem_blended_rate_p_per_kwh": 31.95,
-    "wae_rate_p_per_kwh": 15.98,
+    "ofgem_blended_rate_p_per_kwh": 32.00,
+    "wae_rate_p_per_kwh": 16.00,
     "inflation_pct": 2,
     "consumption_growth_pct": 2.8
   },
@@ -26,15 +36,74 @@
     "upfront_cost": 0,
     "bill_saving_pct": 50,
     "saving_10yr_gbp": 8800,
-    "saving_25yr_gbp": 37700,
+    "saving_25yr_gbp": 37800,
     "system_guarantee_yrs": 25,
+    "term_years": 8,
+    "referral_credit_gbp": 50,
     "co2e_10yr_t": 16,
     "co2e_25yr_t": 22
   },
+
+  "savings": {
+    "baseline_kwh": 2855,
+    "ten_year_gbp": 8800,
+    "twenty_five_year_gbp": 37800,
+    "inflation_pct": 2,
+    "consumption_growth_pct": 2.8
+  },
+
+  "impact": {
+    "co2e_10yr_t": 2,
+    "co2e_25yr_t": 4
+  },
+
+  "programme": {
+    "phase1_mw": 120,
+    "phase2_gw": 1.2,
+    "phase3_gw": 4,
+    "phase4_gw": 5,
+    "members_2030": 6385,
+    "members_2035": 412458,
+    "wholesale_2035": 105000,
+    "total_2051_m": 12.5,
+    "members_2051_m": 7.1,
+    "wholesale_2051_m": 5.4,
+    "jobs_2028": 91,
+    "jobs_2035": 3252,
+    "jobs_2051": 40212,
+    "apprenticeships_per_year": 45,
+    "apprenticeships_phase2": 28,
+    "local_hiring_pct": 70,
+    "solar_demand_pct": 70,
+    "solar_penetration_pct": 6,
+    "untapped_pct": 94,
+    "upfront_barrier_gbp": 10000,
+    "dividend_pot_2038_m": 265,
+    "shared_roof_units": 60
+  },
+
+  "value": {
+    "bill_savings_bn": 570,
+    "co2e_mt": 2.7,
+    "network_savings_bn": 18,
+    "social_carbon_bn": 0.55
+  },
+
 
   "notes": {
     "year1_label": "Based on current GB average Ofgem cap",
     "long_term_label": "Scaled from published model outputs for 2,855 kWh/year",
     "ni_disclaimer": "These estimates are based on Great Britain Ofgem rates and do not apply to Northern Ireland."
+  },
+
+  "audit": {
+    "model_recorded": "WeAreEnergy Financial Model Tadem Only November 031126.xlsx (November 2026)",
+    "rate_basis": "Four-quarter backwards-looking weighted average, London Ofgem rates, blended to one unit rate including the standing charge equivalent",
+    "savings_exact_reported": {
+      "ten_year_gbp": 8823,
+      "twenty_five_year_gbp": 37848
+    },
+    "rounding_rule": "Published savings are rounded down to the nearest £100",
+    "note": "Re-run reported on 4 November 2026."
   }
 }

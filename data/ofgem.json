@@ -10,7 +10,7 @@
     "ofgem_updated": "2026-11-02"
   },
 
-  "gb_average": {
+  "ofgem_gb_average": {
     "quarter": "Q4 2026",
     "period": "October to December 2026",
     "source_url": "https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges",
@@ -22,7 +22,7 @@
     "vat_note": "No VAT on electricity from 1 October 2026 to 31 March 2027"
   },
 
-  "model_basis": {
+  "wae_model_basis": {
     "basis_label": "Four-quarter weighted London model baseline",
     "basis-calculation": "((AVERAGE(0.2794,0.2491,0.2635,0.266)×2855)+(AVERAGE(0.411,0.4482,0.4478,0.4292)×365))÷2855",
     "baseline_kwh": 2855,

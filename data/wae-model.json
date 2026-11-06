@@ -1,7 +1,7 @@
 {
   "_purpose": "WAE model rate. Stable. Changes only on deliberate model review.",
   "_relationship_to_website": "When model is rerun, update model_outputs here AND page_stats in ofgem.json. Website reads ofgem.json only.",
-  "model_version": "March 2026",
+  "model_version": "November2026",
   "model_file": "WeAreEnergy Financial Model Tadem Only March 160326.xlsx",
   "rate_basis": "Four-quarter backwards-looking weighted average, London Ofgem rates, blended to single unit rate including standing charge equivalent",
   "quarters_used": [

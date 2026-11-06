@@ -183,6 +183,7 @@
     if (fmt === 'gbpm') return '£' + val + 'm';
     if (fmt === 'gbpbn') return '£' + val + 'bn';
     if (fmt === 'dec1') return Number(val).toFixed(1);
+    if (fmt === 'm') return val + ' million';
     return val;
   }
 

@@ -115,11 +115,11 @@ Comment out or delete blocks marked OPTIONAL as needed.
 <span class="section-kicker">How these figures are calculated</span>
 <p class="text-small text-dim">
 <strong>Year 1</strong> is calculated from the current Ofgem GB average price cap
-      (<span data-field="period">Q4 2026</span>: <span data-field="unit_rate">26.32</span>p/kWh,
-<span data-field="standing">54.83</span>p/day) at our <span data-fact="page_stats.bill_saving_pct" data-fmt="pct">50%</span> price promise.
+      (<span data-fact="quarter">Q4 2026</span>: <span data-fact="unit_rate_p">26.32</span>p/kWh,
+<span data-fact="standing_charge_p_day">54.83</span>p/day) at our <span data-fact="page_stats.bill_saving_pct" data-fmt="pct">50%</span> price promise.
       <strong>10 and 25 year figures</strong> scale from our published estimates of
-      <span data-field="saving10">£8,800</span> saved over 10 years and <span data-field="saving25">£38,800</span> over <span data-field="saving25-years">25</span> years for a member
-      using <span data-field="baseline">2,855</span> kWh/year, assuming <span data-field="inflation">2%</span> annual bill inflation and <span data-field="consumption-growth">2.8%</span> consumption growth.
+      <span data-fact="saving_10yr_gbp">£8,800</span> saved over 10 years and <span data-fact="saving_25yr_gbp">£38,800</span> over 25 years for a member
+      using <span data-fact="baseline_kwh">2,855</span> kWh/year, assuming <span data-fact="inflation_pct">2%</span> annual bill inflation and <span data-fact="consumption_growth_pct">2.8%</span> consumption growth.
       Actual savings depend on your location, usage, roof and future Ofgem cap levels.
     </p>
 </div>
@@ -180,7 +180,7 @@ Comment out or delete blocks marked OPTIONAL as needed.
 </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<!-- We Are Energy - wae.js Site-wide script. Load on every page before the body closing tag. Handles: theme, hero, scroll progress, reveal, highlight, counters, data-field hydration, nav close. Page-specific: calcs.js loaded additionally on calc pages. -->
+<!-- We Are Energy - wae.js Site-wide script. Load on every page before the body closing tag. Handles: theme, hero, scroll progress, reveal, highlight, counters, data-fact hydration, nav close. Page-specific: calcs.js loaded additionally on calc pages. -->
 <script src="js/wae.js"></script>
 <!-- /* Full Calculator script */ -->
 <script src="js/calcs.js"></script>

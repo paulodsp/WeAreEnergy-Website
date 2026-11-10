@@ -1,1845 +1,428 @@
-/* =========================================================
-WE ARE ENERGY
-System CSS v3.4 base
-Shared stylesheet for Index, About, FAQs and Thank You
-Single-source visual system: tokens, surfaces, components
-========================================================= */
+/* ==========================================================
+   WE ARE ENERGY - WE-DARK.CSS (ITCSS Architecture)
+   Single Source of Truth for Site-Wide Styles
+   ========================================================== */
 
-/* =========================================================
-1. Fonts and tokens
-========================================================= */
-@font-face {
-  font-family: "Oswald Stencil";
-  src: url("/fonts/OswaldStencil-Bold.woff2") format("woff2"),
-       url("/fonts/OswaldStencil-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* ----------------------------------------------------------
+   LAYER 1: SETTINGS & DESIGN TOKENS
+   ---------------------------------------------------------- */
 :root {
-  /* brand */
+  /* Global Palette */
   --chartreuse: #c0d726;
-  --coral: #f26b5b;
   --charcoal: #373838;
   --cream: #f1eee6;
-
-  /* support */
-  --chartreuse-soft: rgba(192, 215, 38, 0.55);
-  --chartreuse-line: rgba(192, 215, 38, 0.14);
-
-  --coral-soft: rgba(242, 107, 91, 0.55);
-
-  --charcoal-soft: rgba(55, 56, 56, 0.85);
-  --charcoal-line: rgba(55, 56, 56, 0.12);
-  --charcoal-strong: rgba(55, 56, 56, 0.18);
-
-  --cream-soft: rgba(241, 238, 230, 0.85);
-  --cream-line: rgba(241, 238, 230, 0.40);
-
-  /* image overlays and highlights */
-  --overlay-start: rgba(55, 56, 56, 0.08);
-  --overlay-mid: rgba(55, 56, 56, 0.55);
-  --overlay-end: rgba(55, 56, 56, 0.88);
-  --highlight: rgba(192, 215, 38, 0.48);
-
-  /* shared layout */
-  --progress: var(--chartreuse);
-  --site-max: 1100px;
-  --site-wide: 1200px;
-  --hero-max: 820px;
-  --space-section: clamp(4.75rem, 9vw, 8rem);
-  --space-section-tight: clamp(3.5rem, 7vw, 5.5rem);
-  --radius-small: 2px;
-  --radius-medium: 4px;
-  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --nav-height: 99px;
-
-  /* semantic surface defaults */
-  --surface-bg: var(--cream);
-  --text-main: var(--charcoal);
-  --text-soft: var(--charcoal-soft);
-  --text-dim: var(--charcoal-soft);
-  --line-color: var(--charcoal-line);
-  --line-strong: var(--charcoal-strong);
-  --line-color-light: var(--cream-line);
-  --accent-color: var(--coral);
-  --link-color: var(--charcoal);
-  --ghost-color: var(--cream);
-  --ghost-line: var(--cream-line);
+  --coral: #F26B5B;
+  
+  /* Typography */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'PT Serif', serif;
+  --font-display: 'Oswald Stencil', 'Oswald', sans-serif;
 }
 
-/* =========================================================
-2. Base & Scroll animations
-========================================================= */
-*,
-*::before,
-*::after {
+[data-theme="dark"] {
+  --bg-surface-main: var(--charcoal);
+  --bg-surface-card: #2b2c2c;
+  --text-main: var(--cream);
+  --text-soft: #d1cecb;
+  --line-color: rgba(192, 215, 38, 0.25);
+  --accent-primary: var(--chartreuse);
+  --nav-bg: rgba(55, 56, 56, 0.95);
+}
+
+[data-theme="light"] {
+  --bg-surface-main: var(--cream);
+  --bg-surface-card: #ffffff;
+  --text-main: var(--charcoal);
+  --text-soft: #575858;
+  --line-color: rgba(55, 56, 56, 0.15);
+  --accent-primary: var(--charcoal);
+  --nav-bg: rgba(241, 238, 230, 0.95);
+}
+
+/* ----------------------------------------------------------
+   LAYER 2: GENERIC & ELEMENTS
+   ---------------------------------------------------------- */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* ========================================
-   SCROLL PROGRESS BAR - VISIBLE & CORRECT POSITION
-   ======================================== */
-.scroll-progress {
-  position: fixed;
-  top: var(--nav-height);
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--coral-soft),
-    var(--coral)
-  );
-  transform-origin: left;
-  transform: scaleX(0);
-  z-index: 1040; /* CHANGED: Above navbar so it's always visible */
-  box-shadow: 0 2px 8px var(--chartreuse-soft); /* More visible shadow */
-  pointer-events: none; /* Don't block clicks */
-}
-
-/* ========================================
-   Scroll MOBILE OPTIMISATIONS & Accessibility
-   ======================================== */
-@media (max-width: 768px) {
-  .scroll-progress {
-    height: 3px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-progress { display: none; }
-}
-
 body {
+  background-color: var(--bg-surface-main);
+  color: var(--text-main);
+  font-family: var(--font-body);
   margin: 0;
-  padding-top: var(--nav-height);
-  background: var(--cream);
-  color: var(--charcoal);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  padding: 0;
+  transition: background-color 200ms ease, color 200ms ease;
+  overflow-x: hidden;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-svg {
-  display: block;
-}
-
-iframe {
-  border: 0;
+h1, h2, h3, h4, h5, h6, .nav-link, .button, .btn {
+  font-family: var(--font-heading);
 }
 
 a {
-  color: inherit;
+  color: var(--accent-primary);
+  text-decoration: underline;
 }
 
-p,
-dd,
-li,
-input,
-textarea,
-select {
-  font-family: "PT Serif", serif;
-  font-size: 1.12rem;
-  line-height: 1.62;
-  text-wrap: pretty;
+a:hover {
+  opacity: 0.85;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-.btn,
-label,
-summary {
-  margin-top: 0;
-  font-family: "Oswald", sans-serif;
-  text-wrap: balance;
+/* Global Focus Restoration (Accessibility) */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
 }
 
-h1 {
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-h2 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1.18;
-}
-
-h3 {
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  line-height: 1.18;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-/* =========================================================
-3. Layout and utilities
-========================================================= */
-.wrap {
-  max-width: var(--site-max);
-  margin: 0 auto;
-}
-
-.wrap-wide {
-  max-width: var(--site-wide);
-  margin: 0 auto;
-}
-
-.stack {
-  max-width: 820px;
-  margin: 0 auto;
-}
-
-.stack-wide {
-  max-width: 900px;
-  margin: 0 auto;
-  margin-top:3rem;
-}
-
-.stack,
-.stack-centre {
-  margin-top:2rem;
-  text-align:center;
-}
-
-/* Prevents hyphenated words from breaking across lines. Works with js script on each page. 
-  Automatically wraps all hyphenated words in a .no-split span. 
-  Uses TreeWalker to ensure HTML classes and attributes are NOT affected */
-.no-split {
-  white-space: nowrap;
-}
- .no-orphan {
-  text-wrap: balance;
- }
-
-.split {
-  max-width: var(--site-max);
-  margin: 0 auto;
-  display: grid;
-  gap: 4rem;
-  align-items: start;
-}
-
-.split-story {
-  grid-template-columns: minmax(240px, 1fr) minmax(0, 1.4fr);
-}
-
-.split-feature {
-  grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
-}
-
-.cluster {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.875rem;
-}
-
-.cluster-centre {
-  justify-content: center;
-  margin-top: 2.25rem;
-}
-
-.text-small {
-  font-size: 0.82rem;
-  line-height: 1.4;
-}
-
-.text-soft {
-  color: var(--text-soft);
-}
-
-.text-dim {
-  color: var(--text-dim);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-d1 { transition-delay: 0.10s; }
-.reveal-d2 { transition-delay: 0.22s; }
-.reveal-d3 { transition-delay: 0.36s; }
-.reveal-d4 { transition-delay: 0.50s; }
-.reveal-d5 { transition-delay: 0.64s; }
-.reveal-d6 { transition-delay: 0.78s; }
-
-.highlight {
-  display: inline;
-  background: linear-gradient(180deg, transparent 62%, var(--highlight) 62%);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  transition: background-size 1.2s var(--ease);
-}
-
-.highlight.on {
-  background-size: 100% 120%;
-}
-
-
-/* Split sections: headings and kickers are always left-aligned */
-.split .section-kicker,
-.split h2,
-.split h3 {
-  text-align: left;
-}
-
-
-.img-constrained {
-  display: block;
-  max-width: 320px;
-  width: 100%;
-  height: auto;
-  
-}
-
-/* =========================================================
-4. Buttons
-========================================================= */
-.button {
-  display: inline-block;
-  padding: 0.85rem 1.75rem;
-  border: none;
-  border-radius: var(--radius-small);
-  text-decoration: none;
-  cursor: pointer;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  transition: opacity 0.2s, transform 0.15s, background-color 0.2s, color 0.2s, border-color 0.2s;
-}
-
-.button:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
-}
-
-.button-chartreuse {
-  background: var(--chartreuse);
-  color: var(--charcoal);
-}
-
-.button-coral {
-  background: var(--coral);
-  color: var(--cream);
-}
-
-.button-charcoal {
-  background: var(--charcoal);
-  color: var(--cream);
-}
-
-.button-cream {
-  background: var(--cream);
-  color: var(--charcoal);
-}
-
-.button-ghost {
-  padding: calc(0.85rem - 1.5px) calc(1.75rem - 1.5px);
-  background: transparent;
-  color: var(--ghost-color);
-  border: 1.5px solid var(--ghost-line);
-}
-
-.button-ghost:hover {
-  border-color: currentColor;
-}
-
-.button-link {
-  font-family: "Oswald", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-/* =========================================================
-5. Header and nav
-========================================================= */
-.bg-primary {
-  background-color: var(--charcoal) !important;
-}
-
+/* ----------------------------------------------------------
+   LAYER 3: BOOTSTRAP 5.3.8 OVERRIDES (Variable-First)
+   ---------------------------------------------------------- */
 .navbar {
-  min-height: var(--nav-height);
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
+  background-color: var(--nav-bg) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-color);
+  transition: background-color 200ms ease;
 }
 
-.navbar-nav .nav-item,
-.navbar-nav .nav-link {
-  font-family: "Oswald", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.1;
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-main);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.navbar-brand img {
-  height: 75px;
-  width: auto;
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--chartreuse);
 }
 
-.navbar-brand {
-  margin-left: 1.5rem;
+.accordion {
+  --bs-accordion-bg: var(--bg-surface-card);
+  --bs-accordion-color: var(--text-main);
+  --bs-accordion-border-color: var(--line-color);
+  --bs-accordion-btn-color: var(--text-main);
+  --bs-accordion-btn-bg: var(--bg-surface-card);
+  --bs-accordion-active-color: var(--text-main);
+  --bs-accordion-active-bg: var(--bg-surface-card);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(192, 215, 38, 0.25);
+  margin-bottom: 1rem;
 }
 
-.navbar-collapse {
-  margin-right: 1.5rem;
+.accordion-item {
+  border-color: var(--line-color);
 }
 
-.btn-outline-success-we {
-  color: var(--coral);
-  border-color: var(--coral);
+.accordion-button:not(.collapsed) {
+  box-shadow: inset 0 -1px 0 var(--line-color);
 }
 
-.btn-outline-success-we:hover {
+.card {
+  --bs-card-bg: var(--bg-surface-card);
+  --bs-card-color: var(--text-main);
+  --bs-card-border-color: var(--line-color);
+  border: 1px solid var(--line-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ----------------------------------------------------------
+   LAYER 4: COMPONENTS
+   ---------------------------------------------------------- */
+/* Layout Wrappers & Sections */
+.wrap {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-tight {
+  padding: 2.5rem 0;
+}
+
+.section-tightest {
+  padding: 1rem 0;
+}
+
+.section-charcoal {
+  background-color: var(--charcoal);
   color: var(--cream);
+}
+
+.section-cream {
+  background-color: var(--cream);
+  color: var(--charcoal);
+}
+
+.section-chartreuse {
   background-color: var(--chartreuse);
-  border-color: var(--cream);
+  color: var(--charcoal);
 }
 
-.btn-outline-success-we:focus,
-.btn-outline-success-we.focus {
-  box-shadow: 0 0 0 0.2rem rgba(242, 107, 91, 0.5);
+/* Typography & Kickers */
+.section-kicker, .hero-kicker {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--accent-primary);
 }
 
-/* =========================================================
-6. Hero
-========================================================= */
+.section-chartreuse .section-kicker {
+  color: var(--charcoal);
+}
 
-/* --- Standard hero (index, about, faqs) --- */
+.lead-title {
+  font-size: 2.5rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.lead-note {
+  font-size: 1.15rem;
+  color: var(--text-soft);
+  max-width: 720px;
+}
+
+/* Hero Components */
 .page-hero {
   position: relative;
+  min-height: 520px;
   display: flex;
-  align-items: flex-end;
-  min-height: min(94vh, 720px);
+  align-items: center;
+  padding: 7rem 1.5rem 4rem;
+  background-color: var(--charcoal);
+  color: var(--cream);
   overflow: hidden;
 }
 
 .hero-photo {
   position: absolute;
   inset: 0;
-  transform: scale(1.04);
-  transition: transform 12s var(--ease);
   background-size: cover;
-  background-position: center 35%;
-  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 800ms ease-in-out;
 }
 
 .hero-photo.loaded {
-  transform: scale(1);
+  opacity: 0.35;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: var(--hero-max);
-  padding: 0 2rem 2rem;
-}
-
-.hero-kicker {
-  display: block;
-  margin-bottom: 1.0rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--chartreuse);
-}
-
-.hero-kicker-cream  { color: var(--cream); }
-.hero-kicker-charcoal {
-  color: var(--charcoal);
-}
-.hero-kicker-big {
-  font-size: 1.5rem;
+  max-width: 760px;
 }
 
 .hero-title {
-  margin-bottom: 1.25rem;
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1;
+  font-size: 3.5rem;
+  line-height: 1.05;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.75px var(--cream);
-  color: var(--chartreuse);
+  margin-bottom: 1.25rem;
 }
 
 .hero-title span {
+  color: var(--chartreuse);
   display: block;
-  margin-top: 0.4rem;
-  font-family: "PT Serif", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  text-transform: none;
-  color: var(--cream-soft);
 }
 
 .hero-text {
-  max-width: 460px;
-  margin-bottom: 1rem;
-  font-family: "PT Serif", serif;
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  line-height: 1.55;
-  color: var(--cream);
-}
-
-.hero-title-charcoal {
-  color: var(--charcoal);
-  -webkit-text-stroke: 0px;
-}
-
-.hero-text-charcoal { color: var(--charcoal-soft); }
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.875rem;
-}
-
-.hero-index .hero-photo {
-  background-image:
-    linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
-    url("/images/flowers-index.webp");
-}
-
-.hero-about .hero-photo {
-  background-image:
-    linear-gradient(170deg, var(--overlay-start) 40%, var(--overlay-mid) 85%, var(--overlay-end) 100%),
-    url("/images/laurentiu-iordache-poppies-flipped.heic");
-}
-
-.hero-faqs .hero-photo {
-  background-image:
-    linear-gradient(170deg, var(--overlay-start) 40%, var(--overlay-mid) 85%, var(--overlay-end) 100%),
-    url("/images/murmuration.webp");
-}
-
-.hero-invest .hero-photo {
-  background-image:
-    linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 50%, var(--overlay-end) 90%),
-    url("/images/ben-elliott-CnFo0EScs9o-unsplash.jpg");
-}
-
-.hero-press .hero-photo {
-      background-image:
-        linear-gradient(170deg, var(--overlay-start) 0%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
-        url("/images/murmuration.webp");
-    }
-
-.hero-future .hero-photo {
-      background-image:
-        linear-gradient(250deg, var(--overlay-start) 15%, var(--overlay-mid) 55%, var(--overlay-end) 100%),
-        url("/images/solar_roofs.jpg");
-        background-position: 90% 50%;
-    }
-
-/* --- Thank You hero: purpose-built, image-led layout --- */
-.page-hero-thanks {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--charcoal);
-}
-
-.hero-stripes {
-  width: 100%;
-  line-height: 0; /* removes inline-block gap below img */
-}
-
-.hero-stripes-img {
-  display: block;
-  width: 100%;
-  height: auto;  /* scales to its own aspect ratio - never cropped */
-}
-
-.page-hero-thanks .hero-content {
-  padding: 2.5rem 2rem 3rem;
-  background: var(--charcoal);
-}
-
-.hero-title-thankyou {
-  margin-bottom: 1.25rem;
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-  -webkit-text-stroke: 0.5px var(--charcoal);
-  color: var(--chartreuse);
-}
-
-.hero-title-thankyou span {
-  display: block;
-  margin-top: 0.4rem;
-  font-family: "PT Serif", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.2;
-  text-transform: none;
-  color: var(--cream-soft);
-}
-
-.hero-text-thankyou {
-  max-width: 560px;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
-  font-family: "PT Serif", serif;
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  line-height: 1.55;
-  color: var(--cream-soft);
+  color: #d1cecb;
 }
 
-/* =========================================================
-7. Surfaces
-========================================================= */
-.section,
-.register-block,
-.footer-block {
-  --surface-bg: var(--cream);
-  --text-main: var(--charcoal);
-  --text-soft: var(--charcoal-soft);
-  --text-dim: var(--charcoal-soft);
-  --line-color: var(--charcoal-line);
-  --line-strong: var(--charcoal-strong);
-  --accent-color: var(--coral);
-  --link-color: var(--charcoal);
-  --ghost-color: var(--cream);
-  --ghost-line: var(--cream-line);
-}
-
-.section {
-  padding: var(--space-section) 2rem;
-  background: var(--surface-bg);
-  color: var(--text-main);
-}
-
-.section-tight {
-  padding: var(--space-section-tight) 2rem;
-}
-
-.section,
-.section-tightest{
-  padding-top:1.5rem;
-  padding-bottom:1.5rem;
-}
-
-.section-cream {
-  --surface-bg: var(--cream);
-  --text-main: var(--charcoal);
-  --text-soft: var(--charcoal-soft);
-  --text-dim: var(--charcoal-soft);
-  --line-color: var(--charcoal-line);
-  --line-strong: var(--charcoal-strong);
-  --accent-color: var(--chartreuse);
-  --link-color: var(--charcoal);
-  --ghost-color: var(--cream);
-  --ghost-line: var(--cream-line);
-}
-
-.section-chartreuse,
-.register-block {
-  --surface-bg: var(--chartreuse);
-  --text-main: var(--charcoal);
-  --text-soft: var(--charcoal-soft);
-  --text-dim: var(--charcoal-soft);
-  --line-color: var(--charcoal-strong);
-  --line-strong: var(--charcoal);
-  --accent-color: var(--charcoal);
-  --link-color: var(--charcoal);
-  --ghost-color: var(--charcoal);
-  --ghost-line: var(--charcoal-strong);
-}
-
-.section-charcoal,
-.section-data,
-.footer-block {
-  --surface-bg: var(--charcoal);
-  --text-main: var(--cream);
-  --text-soft: var(--cream-soft);
-  --text-dim: var(--cream-soft);
-  --line-color: var(--cream-line);
-  --line-strong: rgba(241, 238, 230, 0.24);
-  --accent-color: var(--chartreuse);
-  --link-color: var(--chartreuse);
-  --ghost-color: var(--cream);
-  --ghost-line: var(--cream-line);
-}
-
-.section-charcoal,
-.section-data,
-.footer-block,
-.register-block {
-  background: var(--surface-bg);
-  color: var(--text-main);
-}
-
-.section-charcoal .accordion-button::after {
-  filter: invert(1);
-}
-
-
-.section-data {
-  border-top: 1px solid var(--chartreuse-line);
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.section-kicker,
-.register-kicker,
-.section-kicker-tight {
-  display: block;
-  margin-bottom: 1.25rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.section h1,
-.section h2,
-.section h3,
-.section h4,
-.section h5,
-.section h6,
-.register-block h1,
-.register-block h2,
-.register-block h3,
-.register-block h4,
-.register-block h5,
-.register-block h6,
-.footer-block h1,
-.footer-block h2,
-.footer-block h3,
-.footer-block h4,
-.footer-block h5,
-.footer-block h6 {
-  color: var(--text-main);
-}
-
-.section p,
-.section li,
-.section dd,
-.register-block p,
-.register-block li,
-.footer-block p {
-  color: var(--text-soft);
-}
-
-/* =========================================================
-8. Lead copy
-========================================================= */
-.lead {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.lead-title {
-  max-width: 900px;
-  margin: 0 auto;
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.22;
-  letter-spacing: 0.015em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-.lead-title strong {
-  color: var(--accent-color);
-  font-weight: 500;
-}
-
-.lead-note {
-  display: block;
-  margin-top: 3rem;
-  font-family: "PT Serif", serif;
-  font-size: clamp(1rem, 1.9vw, 1.25rem);
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--text-soft);
-}
-
-.link-pill-chartreuse,
-.link-pill-cream {
+/* Buttons */
+.button, .btn-outline-success-we {
   display: inline-block;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  text-decoration: none;
-}
-
-.link-pill-chartreuse {
-  background: var(--chartreuse);
-  color: var(--charcoal);
-}
-
-.link-pill-cream {
-  background: var(--cream);
-  color: var(--charcoal);
-}
-.figures-note {
-  font-size: 0.8rem;
-  opacity: 0.6;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-
-/* =========================================================
-8b. Feature titles (stencil outline treatment)
-========================================================= */
-.feature-title {
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  font-size: clamp(2.3rem, 5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.05;
+  font-family: var(--font-heading);
   text-transform: uppercase;
-  -webkit-text-stroke: 0.5px var(--text-soft);
-  color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.button-chartreuse, .btn-outline-success-we {
+  background-color: var(--chartreuse);
+  color: var(--charcoal) !important;
+  border-color: var(--chartreuse);
+}
+
+.button-chartreuse:hover, .btn-outline-success-we:hover {
+  background-color: #d4ea32;
+  border-color: #d4ea32;
+}
+
+.button-charcoal {
+  background-color: var(--charcoal);
+  color: var(--cream);
+  border-color: var(--cream);
+}
+
+.button-charcoal:hover {
+  background-color: #4a4b4b;
+}
+
+/* Theme Toggle Control */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--line-color);
+  color: var(--text-main);
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Calculator Component */
+.calc-input-block {
   margin-bottom: 1.5rem;
-}
-
-.feature-title-accent {
-  display: block;
-  -webkit-text-stroke: 0.5px var(--text-soft);
-  color: var(--accent-color);
-}
-
-/* =========================================================
-9. Stats
-========================================================= */
-.stat-grid {
-  max-width: var(--site-wide);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.stat {
-  padding: 3rem 1.25rem;
-  text-align: center;
-  border-right: 1px solid var(--chartreuse-line);
-}
-
-.stat:last-child {
-  border-right: none;
-}
-
-.stat-number,
-.stat-unit {
-  color: var(--coral);
-}
-
-.stat-number {
-  display: block;
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.stat-unit {
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 700;
-}
-
-.stat-text {
-  display: block;
-  margin-top: 0.5rem;
-  font-family: "PT Serif", serif;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--cream-soft);
-}
-
-
-/* ----------------------------------------------------------
-   9a. Calculator - bill comparison block
-   Two columns: Ofgem rate | Our rate (50% of cap)
-   Used on calculator.html, index.html, faqs.html
----------------------------------------------------------- */
-
-.calc-wrap {
-  max-width: 760px;
-  margin: 2.5rem auto 0;
 }
 
 .calc-big-number {
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-family: var(--font-heading);
+  font-size: 3rem;
   font-weight: 700;
-  line-height: 1;
-  color: var(--accent-color);
-  margin-bottom: 0.2rem;
-}
-
-.calc-sub {
-  font-family: "PT Serif", serif;
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-}
-
-.calc-sub strong {
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-soft);
-}
-
-.calc-input-block {
-  border-top: 1px solid var(--line-color);
-  padding: 1.5rem 0 1.75rem;
+  color: var(--chartreuse);
+  font-variant-numeric: tabular-nums;
+  margin: 0.5rem 0;
 }
 
 .calc-range {
-  -webkit-appearance: none;
-  appearance: none;
   width: 100%;
-  height: 4px;
-  background: var(--line-strong);
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.calc-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  border: 3px solid var(--surface-bg);
-  box-shadow: 0 0 0 2px var(--accent-color);
-  cursor: pointer;
-}
-
-.calc-range::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  border: 3px solid var(--surface-bg);
-  box-shadow: 0 0 0 2px var(--accent-color);
-  cursor: pointer;
-}
-
-@media (max-width: 600px) {
-  .calc-range::-webkit-slider-thumb { width: 18px; height: 18px; }
-  .calc-range::-moz-range-thumb     { width: 18px; height: 18px; }
-}
-
-.calc-range-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
+  accent-color: var(--chartreuse);
+  margin: 1rem 0;
 }
 
 .calc-presets {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .calc-preset {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.05rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 99px;
-  border: 1px solid var(--line-strong);
   background: transparent;
-  color: var(--text-soft);
-  font-family: "Oswald", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  border: 1px solid var(--line-color);
+  color: var(--text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
   cursor: pointer;
-  line-height: 1.3;
-  transition: border-color 0.14s, color 0.14s, background 0.14s;
-}
-
-.calc-preset:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
 }
 
 .calc-preset.active {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: var(--surface-bg);
+  background-color: var(--chartreuse);
+  color: var(--charcoal);
+  border-color: var(--chartreuse);
 }
 
 .calc-results {
-  border-top: 1px solid var(--line-color);
-  padding-top: 1.5rem;
-  margin-top: 1.75rem;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-.calc-results-2 {
-  border-top: 1px solid var(--line-color);
-  padding-top: 1.5rem;
-  margin-top: 1.75rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-
-@media (min-width: 480px) {
-  .calc-results { grid-template-columns: repeat(3, 1fr); }
-  .calc-results-2 { grid-template-columns: repeat(2, 1fr); }
-}
-
-.calc-result {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--line-color);
-}
-
-@media (min-width: 480px) {
-  .calc-result {
-    padding: 0 1.25rem;
-    border-bottom: none;
-    border-right: 1px solid var(--line-color);
-  }
-  .calc-result:first-child { padding-left: 0; }
-  .calc-result:last-child  { border-right: none; padding-right: 0; }
-}
-
-.calc-result-value {
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-  color: var(--accent-color);
-}
-
-.calc-result-value.main { color: var(--text-main); }
-
-.calc-share-confirm         { display: none; }
-.calc-share-confirm.visible { display: block; }
-
-/* tight kicker variant — used in press stories */
-.section-kicker-tight {
-  margin-bottom: 0.35rem;
-  font-weight: 700;
-  border-top: 3px solid var(--chartreuse);
-  padding-top: 0.75rem;
-}
-
-/* kicker inside a result block */
-.calc-result .section-kicker {
-  margin-bottom: 0.35rem;
-}
-
-/* bordered note block — methodology and register panels */
-.calc-note {
-  padding-left: 1rem;
-  border-left: 3px solid var(--line-strong);
-}
-
-/* spacing between notes and between note and CTA */
-.calc-note + .calc-note  { margin-top: 1rem; }
-.calc-results + .calc-note { margin-top: 1.5rem; }
-.calc-wrap .cluster      { margin-top: 1.75rem; }
-
-/* chartreuse section — restore coral accent for calc elements */
-/* Year 1 saving value on chartreuse — use cream so it reads as highlighted against the green */
-.section-chartreuse .calc-result-value {
-  color: var(--charcoal);
-}
-.section-chartreuse .calc-result-value:not(.main) {
-  color: var(--cream);
-}
-
-/* mobile only — tighten vertical spacing */
-@media (max-width: 479px) {
-  .calc-input-block  { padding: 1rem 0 1.25rem; }
-  .calc-range-labels { margin-bottom: 1rem; }
-  .calc-results      { margin-top: 1.25rem; padding-top: 1rem; }
-}
-
-
-
-
-/* =========================================================
-10. Points
-========================================================= */
-.points {
-  display: grid;
-  gap: 0;
-}
-
-.point {
-  display: grid;
-  grid-template-columns: 3px 1fr;
-  gap: 0 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line-color);
-}
-
-.point-cream {
-  display: grid;
-  grid-template-columns: 3px 1fr;
-  gap: 0 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line-color-light);
-}
-
-.point-bar {
-  border-radius: 2px;
-  background: var(--accent-color);
-}
-
-.point-bar-chartreuse {
-  border-radius: 2px;
-  background: var(--chartreuse);
-}
-
-.point-name {
-  margin-bottom: 0.35rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-.point-text {
-  margin: 0;
-  font-family: "PT Serif", serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-}
-
-/* =========================================================
-11. Cards
-========================================================= */
-.cards {
-  display: grid;
-  gap: 1.75rem;
-  max-width: var(--site-max);
-  margin: 0 auto;
-  margin-top: 3rem;
-}
-
-.cards-three {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
-.cards-tight {
-  margin-top:1.5rem;
-}
-
-.cards-two {
-  grid-template-columns: repeat(2, 1fr);
-  
-}
-
-.card {
-  --card-bg: var(--cream);
-  --card-text-main: var(--charcoal);
-  --card-text-subtitle: var(--charcoal);
-  --card-text-soft: var(--charcoal-soft);
-  --card-accent: var(--charcoal);
-  --card-link-bg: var(--charcoal);
-  --card-link-text: var(--cream);
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  padding: 2rem 1.875rem;
-  border-radius: var(--radius-medium);
-  background: var(--card-bg);
-  color: var(--card-text-main);
-}
-
-.card-charcoal {
-  --card-bg: var(--charcoal);
-  --card-text-main: var(--cream);
-  --card-text-subtitle: var(--chartreuse);
-  --card-text-soft: var(--cream-soft);
-  --card-accent: var(--chartreuse);
-  --card-link-bg: var(--coral);
-  --card-link-text: var(--cream);
-}
-
-.card-coral {
-  --card-bg: var(--coral);
-  --card-text-main: var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft: var(--cream);
-  --card-accent: var(--chartreuse);
-  --card-link-bg: var(--charcoal);
-  --card-link-text: var(--cream);
-}
-
-.card-chartreuse {
-  --card-bg: var(--chartreuse);
-  --card-text-main: var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft: var(--charcoal-soft);
-  --card-accent: var(--charcoal);
-  --card-link-bg: var(--charcoal);
-  --card-link-text: var(--cream);
-}
-
-.card .card-title {
-  font-family: "Oswald", sans-serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.2;
-  text-transform: uppercase;
-  color: var(--card-text-main);
-}
-
-.card .card-title-thankyou {
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.0;
-  color: var(--card-text-main);
-}
-
-.card .card-title-invest {
-  margin-bottom: 0.35rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--card-text-main);
-}
-
-.card .card-title-invest-chartreuse {
-  margin-bottom: 0.35rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.calc-result-value {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
   color: var(--chartreuse);
+  font-variant-numeric: tabular-nums;
 }
 
-.card .card-subtitle {
-  flex-grow: 1;
-  font-family: "Oswald Stencil", sans-serif;
-  font-size: 1.8rem;
-  line-height: 0.35;
-  color: var(--card-text-subtitle);
+.calc-result-value.main {
+  color: var(--coral);
 }
 
-.card .card-text {
-  flex-grow: 1;
-  font-family: "PT Serif", serif;
-  font-size: 1.0rem;
-  line-height: 1.6;
-  color: var(--card-text-soft);
-  margin-top: 1.0rem;
-}
-
-.card .card-text card-subtitle strong {
-  font-weight: 700;
-  color: var(--card-accent);
-}
-
-.card .card-link {
-  display: block;
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border-radius: var(--radius-small);
-  text-align: center;
-  text-decoration: none;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: opacity 0.2s;
-  background: var(--card-link-bg);
-  color: var(--card-link-text);
-}
-
-.card .card-link:hover {
-  opacity: 0.8;
-}
-
-.card-image {
-  margin-bottom: 1.25rem;
-  opacity: 0.9;
-  width:auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 250px;
-  object-fit: contain;
-}
-
-/* =========================================================
-12. FAQs and steps
-========================================================= */
-.faq-jump {
-  border-top: 1px solid var(--line-color);
-  border-bottom: 1px solid var(--line-color);
-}
-
-.faq-list {
-  border-top: 1px solid var(--line-color);
-}
-
-.faq-item,
-.faq-row {
-  border-bottom: 1px solid var(--line-color);
-}
-
-.faq-item {
-  padding: 1.5rem 0;
-}
-
-.faq-question {
-  margin-bottom: 0.5rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-.faq-answer {
-  color: var(--text-soft);
-}
-
-.faq-answer p:last-child,
-.faq-answer ul:last-child,
-.faq-answer ol:last-child {
-  margin-bottom: 0;
-}
-
-.faq-answer ul,
-.faq-answer ol {
-  padding-left: 1.2rem;
-}
-
-.faq-number {
-  font-family: "Oswald", sans-serif;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
-
-.steps {
-  display: grid;
-  gap: 1rem;
-}
-
-.step {
-  padding: 1.5rem;
-  border: 1px solid var(--line-color);
-  border-radius: var(--radius-medium);
-  background: var(--surface-bg);
-}
-
-.step-number {
-  display: inline-block;
-  margin-bottom: 0.625rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
-
-/* 1. Override Bootstrap's own .accordion rule by going one level
-      deeper: .section-X .accordion beats Bootstrap's .accordion */
-.section-charcoal .accordion,
-.section-cream .accordion,
-.section-chartreuse .accordion {
-  --bs-accordion-color:               var(--text-main);
-  --bs-accordion-bg:                  transparent;
-  --bs-accordion-border-color:        var(--line-color);
-  --bs-accordion-border-radius:       0;
-  --bs-accordion-inner-border-radius: 0;
-  --bs-accordion-btn-color:           var(--text-main);
-  --bs-accordion-btn-bg:              transparent;
-  --bs-accordion-active-color:        var(--text-main);
-  --bs-accordion-active-bg:           transparent;
-  --bs-accordion-btn-focus-box-shadow: none;
-}
-
-/* 2. Bootstrap also sets background-color as a concrete property
-      on the button - the var override alone doesn't beat this */
-.section-charcoal .accordion-button,
-.section-cream .accordion-button,
-.section-chartreuse .accordion-button {
-  background-color: transparent;
-  color: var(--text-main);
-  box-shadow: none;
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  /* Remove Bootstrap's default padding; use border spacing instead */
-  padding: 1.25rem 2rem 1.25rem 0;
-}
-
-.section-charcoal .accordion-button:not(.collapsed),
-.section-cream .accordion-button:not(.collapsed),
-.section-chartreuse .accordion-button:not(.collapsed) {
-  background-color: transparent;
-  color: var(--text-main);
-  box-shadow: none;
-}
-
-.section-charcoal .accordion-button:focus,
-.section-cream .accordion-button:focus,
-.section-chartreuse .accordion-button:focus {
-  box-shadow: none;
-  outline: none;
-}
-
-/* 3. Accordion items: transparent background, surface token border */
-.section-charcoal .accordion-item,
-.section-cream .accordion-item,
-.section-chartreuse .accordion-item {
-  background-color: transparent;
-  color: var(--text-main);
-  border: none;
-  border-bottom: 1px solid var(--line-color);
-}
-
-/* Top border on the whole accordion (above Q1) */
-.section-charcoal .accordion,
-.section-cream .accordion,
-.section-chartreuse .accordion {
-  border-top: 1px solid var(--line-color);
-}
-
-/* 4. Answer body: space below question, soft text from surface token */
-.section-charcoal .accordion-body,
-.section-cream .accordion-body,
-.section-chartreuse .accordion-body {
-  padding: 0 2rem 1.75rem 0;
-  color: var(--text-soft);
-}
-
-/* Tighten paragraph spacing inside answers */
-.section-charcoal .accordion-body p,
-.section-cream .accordion-body p,
-.section-chartreuse .accordion-body p {
-  margin-bottom: 0.75rem;
-}
-
-.section-charcoal .accordion-body p:last-child,
-.section-cream .accordion-body p:last-child,
-.section-chartreuse .accordion-body p:last-child,
-.section-charcoal .accordion-body ul:last-child,
-.section-cream .accordion-body ul:last-child,
-.section-chartreuse .accordion-body ul:last-child {
-  margin-bottom: 0;
-}
-
-/* 5. Charcoal section only: invert the Bootstrap chevron SVG to light */
-.section-charcoal .accordion-button::after {
-  filter: invert(1);
-}
-
-
-
-/* =========================================================
-13. Register
-========================================================= */
+/* Form Styles */
 .register-block {
-  padding: var(--space-section) 2rem;
+  background-color: var(--charcoal);
+  color: var(--cream);
+  padding: 4.5rem 1.5rem;
 }
 
 .register-inner {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
-}
-
-.register-title {
-  margin-bottom: 0.625rem;
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-.register-text {
-  margin-bottom: 0.75rem;
-  font-family: "PT Serif", serif;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: var(--text-soft);
-}
-
-.referral-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2.25rem;
-  padding: 0.45rem 1rem;
-  border-radius: 99px;
-  background: var(--charcoal);
-  color: var(--chartreuse);
-  font-family: "Oswald", sans-serif;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .form-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
 }
 
-.form-grid-wide {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr 2fr 1fr;
-}
-
-.register-block label {
-  display: block;
-  margin-bottom: 0.375rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-.register-block input {
+.form-grid-wide input,
+.form-grid input {
   width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--radius-small);
-  outline: none;
-  background: var(--cream);
-  color: var(--charcoal);
-  font-family: "PT Serif", serif;
-  font-size: 1rem;
-  transition: border-color 0.2s;
+  padding: 0.75rem 1rem;
+  background-color: #2b2c2c;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--cream);
+  border-radius: 4px;
+  margin-top: 0.25rem;
 }
 
-.register-block input:focus {
-  border-color: var(--charcoal);
-}
-
-.register-block input::placeholder {
-  color: var(--charcoal-soft);
+.form-grid-wide label,
+.form-grid label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  color: #d1cecb;
 }
 
 .form-submit {
   width: 100%;
-  margin-top: 1.125rem;
-  padding: 1.1rem;
+  background-color: var(--chartreuse);
+  color: var(--charcoal);
   border: none;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  background: var(--charcoal);
-  color: var(--cream);
-  font-family: "Oswald", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   text-transform: uppercase;
-  transition: background 0.2s, transform 0.15s;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  cursor: pointer;
 }
 
 .form-submit:hover {
-  background: var(--coral);
-  transform: translateY(-1px);
+  background-color: #d4ea32;
 }
 
-#form-success {
-  display: none;
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.form-success .lead {
-  margin-bottom: 0;
-  color: var(--charcoal);
-}
-
-.form-legal {
-  margin-top: 1rem;
-  font-family: "PT Serif", serif;
-  font-size: 0.78rem;
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--text-soft);
-}
-
-.form-legal a {
-  color: var(--link-color);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* =========================================================
-14. Footer
-========================================================= */
-.footer-block {
-  padding: 4rem 2rem 3rem;
-}
-
-.footer-grid {
-  max-width: var(--site-max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
-}
-
-.footer-title {
-  margin-bottom: 0.75rem;
-  font-family: "Oswald Stencil", "Oswald", sans-serif;
-  font-size: 1.1rem;
-  color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.footer-text {
-  font-family: "PT Serif", serif;
-  font-size: 0.8rem;
-  line-height: 1.65;
-  color: var(--text-dim);
-}
-
-.footer-text a {
-  color: var(--link-color);
-}
-
-.footer-label {
-  margin-bottom: 0.25rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-top:2rem;
-}
-
-.footer-label-spaced {
-  margin-top: 2rem;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.footer-links a {
-  font-family: "PT Serif", serif;
-  font-size: 0.88rem;
-  text-decoration: none;
-  color: var(--text-soft);
-  transition: color 0.2s;
-}
-
-.footer-links a:hover {
-  color: var(--accent-color);
-}
-
-.footer-social {
-  display: flex;
-  gap: 0.875rem;
-  margin-top: 1.125rem;
-}
-
-.social-link {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line-color);
-  border-radius: var(--radius-small);
-  text-decoration: none;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-dim);
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.social-link:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
-
-.footer-base {
-  max-width: var(--site-max);
-  margin: 1rem auto 0;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--line-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.footer-copy {
-  font-family: "Oswald", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.footer-reg {
-  font-family: "Oswald", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
-
-/* =========================================================
-15. Responsive
-========================================================= */
-@media (max-width: 960px) {
-  .split,
-  .split-story,
-  .split-feature,
-  .footer-grid,
-  .form-grid,
-  .form-grid-wide {
-    grid-template-columns: 1fr;
-  }
-
-  .cards-three,
-  .cards-two {
-    grid-template-columns: 1fr;
-  }
-
-  .stat-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .stat:nth-child(3)     { border-right: none; }
-  .stat:nth-child(n + 4) { border-top: 1px solid var(--chartreuse-line); }
-}
-
-@media (max-width: 600px) {
-  .hero-title {
-    font-size: clamp(2.8rem, 12vw, 4.5rem);
-  }
-
-  .stat-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stat:nth-child(2) { border-right: none; }
-}
-
-@media (max-width: 420px) {
-  .hero-content,
-  .section,
-  .section-tight,
-  .register-block,
-  .footer-block {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-  .split {
-    gap: 2rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-
-  .reveal,
-  .hero-photo,
-  .highlight,
-  .button,
-  .form-submit {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  .hero-photo { transform: scale(1) !important; }
-}
-
-/* ===================== STICKY CTA ===================== */
+/* Sticky CTA */
 .sticky-cta {
   position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  z-index: 900;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
   opacity: 0;
-  transform: translateY(0.5rem);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  transform: translateY(20px);
   pointer-events: none;
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 
 .sticky-cta.visible {
@@ -1848,577 +431,132 @@ select {
   pointer-events: auto;
 }
 
-.sticky-cta.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .sticky-cta-link {
+  background-color: var(--chartreuse);
+  color: var(--charcoal) !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--coral);
-  color: var(--charcoal);
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.65rem 1.1rem;
-  border-radius: 2rem;
-  border:var(--cream) 1px solid;
-  box-shadow: 0 2px 12px var(--charcoal-strong);
-  transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.sticky-cta-link:hover,
-.sticky-cta-link:focus {
-  background: var(--charcoal);
-  color: var(--chartreuse);
-  box-shadow: 0 4px 18px var(--charcoal-soft);
-  outline: none;
-}
-
-.sticky-cta-arrow {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-/* ─── Manual dark toggle ────────────────────────────────── */
-html[data-theme="dark"] .sticky-cta-link {
-  background: var(--chartreuse);
-  color: var(--charcoal);
-  box-shadow: 0 2px 12px var(--charcoal-strong);
-}
-
-html[data-theme="dark"] .sticky-cta-link:hover {
-  background: var(--cream);
-  color: var(--charcoal);
-}
-
-/* ─── OS dark preference ────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .sticky-cta-link {
-    background: var(--chartreuse);
-    color: var(--charcoal);
-    box-shadow: 0 2px 12px var(--charcoal-strong);
-  }
-
-  :root:not([data-theme="light"]) .sticky-cta-link:hover {
-    background: var(--cream);
-    color: var(--charcoal);
-  }
-}
-
-
-/* =========================================================
-17. Dark mode - v5  (definitive)
-─────────────────────────────────────────────────────────
-Built from full HTML + CSS audit. Every rule targets real
-class names confirmed in the HTML. No magic numbers in
-property values - all use var(--token).
-
-SURFACE MAPPING
-  body                →  charcoal      #373838
-  .section            →  charcoal      #373838  (default sections)
-  .section-cream      →  charcoal      #373838
-  .section-charcoal   →  charcoal-dark #1e2120
-  .section-data       →  charcoal-dark #1e2120  (shares charcoal tokens)
-  .section-chartreuse →  UNCHANGED     chartreuse #c0d726
-  .register-block     →  UNCHANGED     chartreuse #c0d726
-  .footer-block       →  charcoal-dark #1e2120
-
-CARD MAPPING  (token approach - base .card rule picks up --card-bg)
-  .card               →  --card-bg: charcoal  (default)
-  .card-charcoal      →  --card-bg: charcoal-dark
-  .card-coral         →  UNCHANGED  coral (explicitly restored)
-  .card-chartreuse    →  UNCHANGED  chartreuse (explicitly restored)
-
-SPECIAL CASES
-  .page-hero-thanks .hero-content  background: transparent
-    (base CSS hardcodes background: var(--charcoal) here;
-     parent .page-hero-thanks.section-charcoal is charcoal-dark
-     in dark mode, so hero-content must go transparent to match)
-  #cooperative (about.html coop logo section)
-     Pinned to var(--charcoal) because image artwork has
-     #373838 charcoal baked into it. No HTML change needed.
-     Supply new dark image to switch this later.
-
-TRIGGERS
-  Auto:   @media (prefers-color-scheme: dark) with
-          :root:not([data-theme="light"]) guard
-  Manual: html[data-theme="dark"] (set by optional toggle)
-  Reset:  html[data-theme="light"] colour-scheme: light
-
-rgba() only appears in :root token definitions, nowhere else.
-========================================================= */
-
-/* ─── New named tokens - always active ─────────────────── */
-:root {
-  color-scheme: light dark;
-
-  /* One new dark surface anchor */
-  --charcoal-dark:        #1e2120;
-
-  /* Cream text family for use on dark surfaces */
-  --cream-on-dark:        var(--cream);
-  --cream-on-dark-soft:   rgba(241, 238, 230, 0.82);
-  --cream-on-dark-dim:    rgba(241, 238, 230, 0.58);
-  --cream-on-dark-line:   rgba(241, 238, 230, 0.18);
-  --cream-on-dark-strong: rgba(241, 238, 230, 0.28);
-
-  /* Hero overlay tokens - lightened versions for dark mode */
-  --overlay-start-dark:   rgba(30, 33, 32, 0.06);
-  --overlay-mid-dark:     rgba(30, 33, 32, 0.44);
-  --overlay-end-dark:     rgba(30, 33, 32, 0.70);
-}
-
-
-/* ═══════════════════════════════════════════════════════════
-   DARK MODE  ·  MEDIA QUERY  (OS auto-preference)
-   Guard :root:not([data-theme="light"]) ensures user's
-   manual "stay light" choice is always respected.
-═══════════════════════════════════════════════════════════ */
-
-/* ─── Body ──────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body {
-    background: var(--charcoal);
-    color: var(--cream-on-dark);
-  }
-}
-
-/* ─── Cream / default sections → charcoal ──────────────── */
-/* Targets class="section" and class="section section-cream"
-   section-tight is a padding modifier only - no bg change   */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .section,
-  :root:not([data-theme="light"]) .section-cream {
-    --surface-bg:   var(--charcoal);
-    --text-main:    var(--cream-on-dark);
-    --text-soft:    var(--cream-on-dark-soft);
-    --text-dim:     var(--cream-on-dark-dim);
-    --line-color:   var(--cream-on-dark-line);
-    --line-strong:  var(--cream-on-dark-strong);
-    --accent-color: var(--chartreuse);
-    --link-color:   var(--cream-on-dark);
-    --ghost-color:  var(--cream);
-    --ghost-line:   var(--cream-on-dark-strong);
-    background: var(--charcoal);
-    color: var(--cream-on-dark);
-  }
-  /* Accordion chevron must be light on now-dark cream sections */
-  :root:not([data-theme="light"]) .section-cream .accordion-button::after {
-    filter: invert(1);
-  }
-}
-
-/* ─── Charcoal sections / data / footer → charcoal-dark ─── */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .section-charcoal,
-  :root:not([data-theme="light"]) .section-data,
-  :root:not([data-theme="light"]) .footer-block {
-    --surface-bg:   var(--charcoal-dark);
-    --text-main:    var(--cream-on-dark);
-    --text-soft:    var(--cream-on-dark-soft);
-    --text-dim:     var(--cream-on-dark-dim);
-    --line-color:   var(--cream-on-dark-line);
-    --line-strong:  var(--cream-on-dark-strong);
-    --accent-color: var(--chartreuse);
-    --link-color:   var(--chartreuse);
-    --ghost-color:  var(--cream);
-    --ghost-line:   var(--cream-on-dark-strong);
-    background: var(--charcoal-dark);
-    color: var(--cream-on-dark);
-  }
-  /* Charcoal section accordion chevron already inverted in base CSS;
-     keep it here for dark-mode specificity safety */
-  :root:not([data-theme="light"]) .section-charcoal .accordion-button::after {
-    filter: invert(1);
-  }
-}
-
-/* ─── Coop logo section - pinned to exact charcoal ─────── */
-/* about.html #cooperative contains coop_spgr_slogan_en2.png
-   which has #373838 baked into the image artwork.
-   No HTML change required - ID selector used here.          */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) #cooperative {
-    --surface-bg: var(--charcoal);
-    background: var(--charcoal);
-  }
-}
-
-/* ─── Chartreuse + register - explicitly protected ─────── */
-/* These two are coupled in the base CSS rule.
-   Explicitly re-declare here so they win the cascade over
-   the .section override above for elements like
-   class="section section-chartreuse".                       */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .section-chartreuse,
-  :root:not([data-theme="light"]) .register-block {
-    --surface-bg:   var(--chartreuse);
-    --text-main:    var(--charcoal);
-    --text-soft:    var(--charcoal-soft);
-    --text-dim:     var(--charcoal-soft);
-    --line-color:   var(--charcoal-line);
-    --line-strong:  var(--charcoal-strong);
-    --accent-color: var(--charcoal);
-    --link-color:   var(--charcoal);
-    --ghost-color:  var(--charcoal);
-    --ghost-line:   var(--charcoal-strong);
-    background: var(--chartreuse);
-    color: var(--charcoal);
-  }
-  /* Form inputs inside register block stay light-on-chartreuse */
-  :root:not([data-theme="light"]) .register-block input {
-    background: var(--cream);
-    color: var(--charcoal);
-    border-color: var(--charcoal-strong);
-  }
-  :root:not([data-theme="light"]) .register-block input::placeholder {
-    color: var(--charcoal-soft);
-  }
-  /* Submit button: charcoal bg on chartreuse form */
-  :root:not([data-theme="light"]) .form-submit {
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-  :root:not([data-theme="light"]) .form-submit:hover {
-    background: var(--coral);
-  }
-  /* Referral pill inside register: charcoal-dark bg + chartreuse text */
-  :root:not([data-theme="light"]) .referral-pill {
-    background: var(--charcoal-dark);
-    color: var(--chartreuse);
-  }
-}
-
-/* ─── Cards - token-based (--card-bg, not background:) ─── */
-/* Using the token approach means .card base rule
-   "background: var(--card-bg)" picks changes up correctly.
-   Variant-specific restores come AFTER the .card rule so
-   coral and chartreuse cards are never accidentally overridden. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .card {
-    --card-bg:            var(--charcoal);
-    --card-text-main:     var(--cream-on-dark);
-    --card-text-subtitle: var(--chartreuse);
-    --card-text-soft:     var(--cream-on-dark-soft);
-    --card-accent:        var(--chartreuse);
-    --card-link-bg:       var(--coral);
-    --card-link-text:     var(--cream);
-    border: 1px solid var(--cream-on-dark-line);
-  }
-
-  /* Charcoal card → charcoal-dark for depth against charcoal section */
-  :root:not([data-theme="light"]) .card-charcoal {
-    --card-bg: var(--charcoal-dark);
-    border-color: var(--cream-on-dark-strong);
-  }
-
-  /* Coral card - fully restored, no change from light mode */
-  :root:not([data-theme="light"]) .card-coral {
-    --card-bg:            var(--coral);
-    --card-text-main:     var(--charcoal);
-    --card-text-subtitle: var(--cream);
-    --card-text-soft:     var(--cream);
-    --card-accent:        var(--chartreuse);
-    --card-link-bg:       var(--charcoal);
-    --card-link-text:     var(--cream);
-    border-color: transparent;
-  }
-
-  /* Chartreuse card - fully restored, no change from light mode */
-  :root:not([data-theme="light"]) .card-chartreuse {
-    --card-bg:            var(--chartreuse);
-    --card-text-main:     var(--charcoal);
-    --card-text-subtitle: var(--cream);
-    --card-text-soft:     var(--charcoal-soft);
-    --card-accent:        var(--charcoal);
-    --card-link-bg:       var(--charcoal);
-    --card-link-text:     var(--cream);
-    border-color: transparent;
-  }
-}
-
-/* ─── Hero overlays - lighter so images are not crushed ─── */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --overlay-start: var(--overlay-start-dark);
-    --overlay-mid:   var(--overlay-mid-dark);
-    --overlay-end:   var(--overlay-end-dark);
-  }
-
-  /* Hero italic subtitle span: full cream not cream-soft */
-  :root:not([data-theme="light"]) .hero-title span {
-    color: var(--cream);
-  }
-
-  /* Thank-you hero-content: base CSS hardcodes background: var(--charcoal)
-     on this element. In dark mode the parent section becomes charcoal-dark,
-     so this must go transparent to match. Without this fix a visible
-     two-tone split appears between the stripes image and the text block. */
-  :root:not([data-theme="light"]) .page-hero-thanks .hero-content {
-    background: transparent;
-  }
-
-  /* Thank-you hero text stays readable on charcoal-dark bg */
-  :root:not([data-theme="light"]) .hero-title-thankyou span,
-  :root:not([data-theme="light"]) .hero-text-thankyou {
-    color: var(--cream-on-dark-soft);
-  }
-}
-
-/* ─── Misc components ───────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .social-link {
-    border-color: var(--cream-on-dark-line);
-    color: var(--cream-on-dark-dim);
-  }
-  :root:not([data-theme="light"]) .social-link:hover {
-    border-color: var(--chartreuse);
-    color: var(--chartreuse);
-  }
-  :root:not([data-theme="light"]) .footer-base {
-    border-top-color: var(--cream-on-dark-line);
-  }
-  :root:not([data-theme="light"]) .lead-title strong {
-    color: var(--chartreuse);
-  }
-  :root:not([data-theme="light"]) .highlight {
-    background-image: linear-gradient(
-      180deg, transparent 62%, var(--highlight) 62%
-    );
-  }
-}
-
-
-/* ═══════════════════════════════════════════════════════════
-   DARK MODE  ·  MANUAL TOGGLE  [data-theme="dark"]
-   Mirrors every rule above exactly.
-   Add html[data-theme="dark"] via the optional JS toggle.
-═══════════════════════════════════════════════════════════ */
-
-html[data-theme="dark"] body {
-  background: var(--charcoal);
-  color: var(--cream-on-dark);
-}
-
-html[data-theme="dark"] .section,
-html[data-theme="dark"] .section-cream {
-  --surface-bg:   var(--charcoal);
-  --text-main:    var(--cream-on-dark);
-  --text-soft:    var(--cream-on-dark-soft);
-  --text-dim:     var(--cream-on-dark-dim);
-  --line-color:   var(--cream-on-dark-line);
-  --line-strong:  var(--cream-on-dark-strong);
-  --accent-color: var(--chartreuse);
-  --link-color:   var(--cream-on-dark);
-  --ghost-color:  var(--cream);
-  --ghost-line:   var(--cream-on-dark-strong);
-  background: var(--charcoal);
-  color: var(--cream-on-dark);
-}
-html[data-theme="dark"] .section-cream .accordion-button::after {
-  filter: invert(1);
-}
-
-html[data-theme="dark"] .section-charcoal,
-html[data-theme="dark"] .section-data,
-html[data-theme="dark"] .footer-block {
-  --surface-bg:   var(--charcoal-dark);
-  --text-main:    var(--cream-on-dark);
-  --text-soft:    var(--cream-on-dark-soft);
-  --text-dim:     var(--cream-on-dark-dim);
-  --line-color:   var(--cream-on-dark-line);
-  --line-strong:  var(--cream-on-dark-strong);
-  --accent-color: var(--chartreuse);
-  --link-color:   var(--chartreuse);
-  --ghost-color:  var(--cream);
-  --ghost-line:   var(--cream-on-dark-strong);
-  background: var(--charcoal-dark);
-  color: var(--cream-on-dark);
-}
-html[data-theme="dark"] .section-charcoal .accordion-button::after {
-  filter: invert(1);
-}
-
-html[data-theme="dark"] .section-chartreuse,
-html[data-theme="dark"] .register-block {
-  --surface-bg:   var(--chartreuse);
-  --text-main:    var(--charcoal);
-  --text-soft:    var(--charcoal-soft);
-  --text-dim:     var(--charcoal-soft);
-  --line-color:   var(--charcoal-line);
-  --line-strong:  var(--charcoal-strong);
-  --accent-color: var(--charcoal);
-  --link-color:   var(--charcoal);
-  --ghost-color:  var(--charcoal);
-  --ghost-line:   var(--charcoal-strong);
-  background: var(--chartreuse);
-  color: var(--charcoal);
-}
-html[data-theme="dark"] .register-block input {
-  background: var(--cream);
-  color: var(--charcoal);
-  border-color: var(--charcoal-strong);
-}
-html[data-theme="dark"] .register-block input::placeholder {
-  color: var(--charcoal-soft);
-}
-html[data-theme="dark"] .form-submit {
-  background: var(--charcoal);
+/* Footer */
+.footer-block {
+  background-color: #1a1b1b;
   color: var(--cream);
-}
-html[data-theme="dark"] .form-submit:hover {
-  background: var(--coral);
-}
-html[data-theme="dark"] .referral-pill {
-  background: var(--charcoal-dark);
-  color: var(--chartreuse);
+  padding: 4rem 1.5rem 2rem;
+  border-top: 1px solid var(--line-color);
 }
 
-html[data-theme="dark"] .card {
-  --card-bg:            var(--charcoal);
-  --card-text-main:     var(--cream-on-dark);
-  --card-text-subtitle: var(--chartreuse);
-  --card-text-soft:     var(--cream-on-dark-soft);
-  --card-accent:        var(--chartreuse);
-  --card-link-bg:       var(--coral);
-  --card-link-text:     var(--cream);
-  border: 1px solid var(--cream-on-dark-line);
-}
-html[data-theme="dark"] .card-charcoal {
-  --card-bg: var(--charcoal-dark);
-  border-color: var(--cream-on-dark-strong);
-}
-html[data-theme="dark"] .card-coral {
-  --card-bg:            var(--coral);
-  --card-text-main:     var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft:     var(--cream);
-  --card-accent:        var(--chartreuse);
-  --card-link-bg:       var(--charcoal);
-  --card-link-text:     var(--cream);
-  border-color: transparent;
-}
-html[data-theme="dark"] .card-chartreuse {
-  --card-bg:            var(--chartreuse);
-  --card-text-main:     var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft:     var(--charcoal-soft);
-  --card-accent:        var(--charcoal);
-  --card-link-bg:       var(--charcoal);
-  --card-link-text:     var(--cream);
-  border-color: transparent;
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  max-width: 1140px;
+  margin: 0 auto 3rem;
 }
 
-html[data-theme="dark"] {
-  --overlay-start: var(--overlay-start-dark);
-  --overlay-mid:   var(--overlay-mid-dark);
-  --overlay-end:   var(--overlay-end-dark);
-}
-html[data-theme="dark"] .hero-title span { color: var(--cream); }
-html[data-theme="dark"] .page-hero-thanks .hero-content { background: transparent; }
-html[data-theme="dark"] .hero-title-thankyou span,
-html[data-theme="dark"] .hero-text-thankyou { color: var(--cream-on-dark-soft); }
-
-html[data-theme="dark"] .social-link {
-  border-color: var(--cream-on-dark-line);
-  color: var(--cream-on-dark-dim);
-}
-html[data-theme="dark"] .social-link:hover {
-  border-color: var(--chartreuse);
-  color: var(--chartreuse);
-}
-html[data-theme="dark"] .footer-base { border-top-color: var(--cream-on-dark-line); }
-html[data-theme="dark"] .lead-title strong { color: var(--chartreuse); }
-html[data-theme="dark"] .highlight {
-  background-image: linear-gradient(180deg, transparent 62%, var(--highlight) 62%);
-}
-
-
-/* ─── Force light mode when user has toggled it ─────────── */
-html[data-theme="light"] {
-  color-scheme: light;
-}
-
-/* ─── Optional theme-toggle button ──────────────────────── */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+.footer-links {
+  list-style: none;
   padding: 0;
-  margin-left: 0.75rem;
-  border: 1.5px solid var(--cream-line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--cream);
-  cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1;
-  transition: border-color 0.2s, color 0.2s;
-}
-.theme-toggle:hover {
-  border-color: var(--chartreuse);
-  color: var(--chartreuse);
-  opacity: 1;
-  transform: none;
-}
-/* ==========================================================
-   We Are Energy System CSS v3.5 additions
-   Append to the end of we-dark.css.
-   1. Accessible label colour on coral buttons (all pages):
-      cream on coral is 2.58:1, charcoal-dark on coral is 5.43:1.
-   2. Building enquiry form card on future.html.
-   ========================================================== */
-
-.button-coral { color: var(--charcoal-dark); }
-
-.form-card { margin-top: 2.5rem; }
-.form-card .card-title,
-.form-card .card-text,
-.form-card label { color: var(--cream); }
-.form-card label {
-  display: block;
-  margin-bottom: 0.375rem;
-  font-family: "Oswald", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.form-card input:not([type="checkbox"]),
-.form-card select,
-.form-card textarea {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1.5px solid var(--cream-on-dark-strong);
-  border-radius: var(--radius-small);
-  background: var(--cream);
-  color: var(--charcoal);
-  font-family: "PT Serif", serif;
-  font-size: 1rem;
-}
-.form-card textarea { min-height: 7rem; resize: vertical; }
-.form-card input:focus,
-.form-card select:focus,
-.form-card textarea:focus { outline: 2px solid var(--chartreuse); outline-offset: 2px; }
-.form-card .form-consent { display: flex; gap: 0.75rem; align-items: flex-start; }
-.form-card .form-consent input { width: 1.1rem; height: 1.1rem; margin-top: 0.2rem; accent-color: var(--chartreuse); }
-.form-card .form-consent label {
   margin: 0;
-  font-family: "PT Serif", serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
 }
-.form-card .form-submit { background: var(--coral); color: var(--charcoal-dark); }
-.form-card .form-submit:hover { background: var(--chartreuse); }
-.form-card .form-legal { color: var(--cream); opacity: 0.8; }
-.form-card .form-legal a { color: var(--chartreuse); }
+
+.footer-links a {
+  color: #d1cecb;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.footer-links a:hover {
+  color: var(--chartreuse);
+}
+
+.footer-base {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #a09d9a;
+}
+
+/* ----------------------------------------------------------
+   LAYER 5: TRUMPS, UTILITIES & HYDRATION PROTECTION
+   ---------------------------------------------------------- */
+/* Scroll Progress Line */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--chartreuse);
+  z-index: 1050;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 100ms; }
+.reveal-d2 { transition-delay: 200ms; }
+.reveal-d3 { transition-delay: 300ms; }
+
+/* Reduced Motion Accessibility Shield */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  .hero-photo {
+    transition: none !important;
+  }
+}
+
+/* Dynamic Data Hydration Cumulative Layout Shift Protection */
+[data-fact],
+.counter[data-fact-to] {
+  display: inline-block;
+  min-width: 0.6em;
+  transition: opacity 150ms ease-in-out;
+}
+
+[data-fact]:empty {
+  opacity: 0;
+}
+
+/* Counter Alignment */
+.counter,
+.calc-result-value,
+.calc-big-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile Touch Hover Shield */
+@media (hover: hover) {
+  .button:hover,
+  .btn-outline-success-we:hover {
+    transform: translateY(-2px);
+  }
+}

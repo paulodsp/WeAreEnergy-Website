@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-plugin-logical-rules"],
+  "rules": {
+    "logical-rules/logical-rules": true,
+    "declaration-property-value-disallowed-list": {
+      "/^margin-/": ["/top/", "/bottom/", "/left/", "/right/"],
+      "/^padding-/": ["/top/", "/bottom/", "/left/", "/right/"],
+      "/^border-/": ["/top/", "/bottom/", "/left/", "/right/"]
+    },
+    "color-named": "never",
+    "declaration-no-important": true,
+    "custom-property-no-missing-var-keyword": true
+  }
+}

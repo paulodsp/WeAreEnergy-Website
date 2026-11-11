@@ -1,9 +1,25 @@
 /* =========================================================
 WE ARE ENERGY
-System CSS v3.4 base
+System CSS v3.6 first-pass (TEST BUILD - see CHANGES below)
 Shared stylesheet for Index, About, FAQs and Thank You
 Single-source visual system: tokens, surfaces, components
 ========================================================= */
+
+/* v3.6 first-pass changes (everything else is byte-identical to v3.4/v3.5):
+   - .reveal hidden state only when scripting is on AND motion is allowed
+   - Visible focus: global :focus-visible, accordion, slider, inputs, sticky CTA
+   - Hover effects inside @media (hover: hover)
+   - Contrast: card-coral/card-chartreuse text, Year-1 value on chartreuse,
+     .lead-title strong on cream (all three colour-scheme blocks patched)
+   - dvh hero, overflow: clip, safe-area insets (nav, sticky CTA)
+   - scroll-padding-block-start for the fixed nav
+   - tabular-nums on stats and calculator numbers
+   - .bg-primary !important removed (token override instead)
+   - Reduced-motion block without !important, moved to end of file
+   - html[data-theme="dark"] now sets color-scheme: dark
+   - :user-invalid / .was-validated styling on register and building forms
+   - Dead selector .card .card-text card-subtitle strong deleted
+   Search for "v3.6" to find every change. */
 
 /* =========================================================
 1. Fonts and tokens
@@ -23,6 +39,9 @@ Single-source visual system: tokens, surfaces, components
   --coral: #f26b5b;
   --charcoal: #373838;
   --cream: #f1eee6;
+
+  /* v3.6: dark olive for TEXT on cream (6.98:1). Decorative uses keep --chartreuse. */
+  --chartreuse-ink: #557a00;
 
   /* support */
   --chartreuse-soft: rgba(192, 215, 38, 0.55);
@@ -80,6 +99,8 @@ Single-source visual system: tokens, surfaces, components
 
 html {
   scroll-behavior: smooth;
+  /* v3.6: anchors no longer land under the fixed nav */
+  scroll-padding-block-start: var(--nav-height);
 }
 
 /* ========================================
@@ -273,15 +294,17 @@ select {
   color: var(--text-dim);
 }
 
+/* v3.6: content is visible by default. The hidden start state applies only
+   when JavaScript is running and the user has not asked for reduced motion. */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal:not(.visible) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
 }
 
 .reveal-d1 { transition-delay: 0.10s; }
@@ -338,9 +361,11 @@ select {
   transition: opacity 0.2s, transform 0.15s, background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
+@media (hover: hover) {
 .button:hover {
   opacity: 0.88;
   transform: translateY(-1px);
+}
 }
 
 .button-chartreuse {
@@ -370,8 +395,10 @@ select {
   border: 1.5px solid var(--ghost-line);
 }
 
+@media (hover: hover) {
 .button-ghost:hover {
   border-color: currentColor;
+}
 }
 
 .button-link {
@@ -386,13 +413,13 @@ select {
 /* =========================================================
 5. Header and nav
 ========================================================= */
-.bg-primary {
-  background-color: var(--charcoal) !important;
-}
-
+/* v3.6: Bootstrap's .bg-primary reads --bs-primary-rgb, so setting the token
+   on the navbar replaces the old !important override. */
 .navbar {
+  --bs-primary-rgb: 55, 56, 56;
+  --text-main: var(--cream); /* focus ring colour on the charcoal bar */
   min-height: var(--nav-height);
-  padding-top: 0.35rem;
+  padding-top: calc(0.35rem + env(safe-area-inset-top, 0px));
   padding-bottom: 0.35rem;
 }
 
@@ -421,15 +448,16 @@ select {
   border-color: var(--coral);
 }
 
+@media (hover: hover) {
 .btn-outline-success-we:hover {
   color: var(--cream);
   background-color: var(--chartreuse);
   border-color: var(--cream);
 }
+}
 
-.btn-outline-success-we:focus,
-.btn-outline-success-we.focus {
-  box-shadow: 0 0 0 0.2rem rgba(242, 107, 91, 0.5);
+.btn-outline-success-we:focus-visible {
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--coral) 50%, transparent);
 }
 
 /* =========================================================
@@ -441,8 +469,8 @@ select {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: min(94vh, 720px);
-  overflow: hidden;
+  min-height: min(94dvh, 720px);
+  overflow: clip;
 }
 
 .hero-photo {
@@ -651,6 +679,9 @@ select {
   padding: var(--space-section-tight) 2rem;
 }
 
+/* v3.6 DECISION NEEDED: this selector list includes plain .section, so it overrides
+   --space-section on EVERY section (and .section-tight). Behaviour kept unchanged
+   in this test build. To restore the token spacing, delete the `.section,` line. */
 .section,
 .section-tightest{
   padding-top:1.5rem;
@@ -938,7 +969,6 @@ select {
   height: 4px;
   background: var(--line-strong);
   border-radius: 2px;
-  outline: none;
   cursor: pointer;
   margin-bottom: 0.5rem;
   display: block;
@@ -1003,9 +1033,11 @@ select {
   transition: border-color 0.14s, color 0.14s, background 0.14s;
 }
 
+@media (hover: hover) {
 .calc-preset:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+}
 }
 
 .calc-preset.active {
@@ -1095,7 +1127,7 @@ select {
   color: var(--charcoal);
 }
 .section-chartreuse .calc-result-value:not(.main) {
-  color: var(--cream);
+  color: var(--charcoal); /* v3.6: cream on chartreuse was 1.39:1 */
 }
 
 /* mobile only — tighten vertical spacing */
@@ -1216,8 +1248,8 @@ select {
 .card-coral {
   --card-bg: var(--coral);
   --card-text-main: var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft: var(--cream);
+  --card-text-subtitle: var(--charcoal-dark);
+  --card-text-soft: var(--charcoal-dark);
   --card-accent: var(--chartreuse);
   --card-link-bg: var(--charcoal);
   --card-link-text: var(--cream);
@@ -1226,11 +1258,21 @@ select {
 .card-chartreuse {
   --card-bg: var(--chartreuse);
   --card-text-main: var(--charcoal);
-  --card-text-subtitle: var(--cream);
+  --card-text-subtitle: var(--charcoal);
   --card-text-soft: var(--charcoal-soft);
   --card-accent: var(--charcoal);
   --card-link-bg: var(--charcoal);
   --card-link-text: var(--cream);
+}
+.card-cream {
+  --bs-card-bg:         var(--cream);
+  --card-bg:            var(--cream);
+  --card-text-main:     var(--charcoal);
+  --card-text-subtitle: var(--charcoal-dark);
+  --card-text-soft:     var(--charcoal-soft);
+  --card-accent:        var(--coral);
+  --card-link-bg:       var(--coral);
+  --card-link-text:     var(--charcoal-dark);
 }
 
 .card .card-title {
@@ -1287,10 +1329,8 @@ select {
   margin-top: 1.0rem;
 }
 
-.card .card-text card-subtitle strong {
-  font-weight: 700;
-  color: var(--card-accent);
-}
+/* v3.6: removed dead selector `.card .card-text card-subtitle strong` (never matched;
+   activating it would put chartreuse <strong> text on coral cards at 1.85:1). */
 
 .card .card-link {
   display: block;
@@ -1309,8 +1349,10 @@ select {
   color: var(--card-link-text);
 }
 
+@media (hover: hover) {
 .card .card-link:hover {
   opacity: 0.8;
+}
 }
 
 .card-image {
@@ -1445,8 +1487,7 @@ select {
 .section-charcoal .accordion-button:focus,
 .section-cream .accordion-button:focus,
 .section-chartreuse .accordion-button:focus {
-  box-shadow: none;
-  outline: none;
+  box-shadow: none; /* v3.6: outline restored via :focus-visible at end of file */
 }
 
 /* 3. Accordion items: transparent background, surface token border */
@@ -1572,7 +1613,6 @@ select {
   padding: 0.85rem 1rem;
   border: 1.5px solid var(--line-strong);
   border-radius: var(--radius-small);
-  outline: none;
   background: var(--cream);
   color: var(--charcoal);
   font-family: "PT Serif", serif;
@@ -1605,9 +1645,11 @@ select {
   transition: background 0.2s, transform 0.15s;
 }
 
+@media (hover: hover) {
 .form-submit:hover {
   background: var(--coral);
   transform: translateY(-1px);
+}
 }
 
 #form-success {
@@ -1702,8 +1744,10 @@ select {
   transition: color 0.2s;
 }
 
+@media (hover: hover) {
 .footer-links a:hover {
   color: var(--accent-color);
+}
 }
 
 .footer-social {
@@ -1728,9 +1772,11 @@ select {
   transition: border-color 0.2s, color 0.2s;
 }
 
+@media (hover: hover) {
 .social-link:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+}
 }
 
 .footer-base {
@@ -1815,26 +1861,13 @@ select {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-
-  .reveal,
-  .hero-photo,
-  .highlight,
-  .button,
-  .form-submit {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  .hero-photo { transform: scale(1) !important; }
-}
+/* v3.6: reduced-motion rules moved to the end of the file (no !important needed). */
 
 /* ===================== STICKY CTA ===================== */
 .sticky-cta {
   position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
   z-index: 900;
   opacity: 0;
   transform: translateY(0.5rem);
@@ -1872,12 +1905,18 @@ select {
   transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.sticky-cta-link:hover,
-.sticky-cta-link:focus {
+@media (hover: hover) {
+.sticky-cta-link:hover {
   background: var(--charcoal);
   color: var(--chartreuse);
   box-shadow: 0 4px 18px var(--charcoal-soft);
-  outline: none;
+}
+}
+
+.sticky-cta-link:focus-visible {
+  background: var(--charcoal);
+  color: var(--chartreuse);
+  box-shadow: 0 4px 18px var(--charcoal-soft);
 }
 
 .sticky-cta-arrow {
@@ -1892,9 +1931,11 @@ html[data-theme="dark"] .sticky-cta-link {
   box-shadow: 0 2px 12px var(--charcoal-strong);
 }
 
+@media (hover: hover) {
 html[data-theme="dark"] .sticky-cta-link:hover {
   background: var(--cream);
   color: var(--charcoal);
+}
 }
 
 /* ─── OS dark preference ────────────────────────────────── */
@@ -1905,10 +1946,12 @@ html[data-theme="dark"] .sticky-cta-link:hover {
     box-shadow: 0 2px 12px var(--charcoal-strong);
   }
 
-  :root:not([data-theme="light"]) .sticky-cta-link:hover {
+  @media (hover: hover) {
+:root:not([data-theme="light"]) .sticky-cta-link:hover {
     background: var(--cream);
     color: var(--charcoal);
   }
+}
 }
 
 
@@ -2085,9 +2128,11 @@ rgba() only appears in :root token definitions, nowhere else.
     background: var(--charcoal);
     color: var(--cream);
   }
-  :root:not([data-theme="light"]) .form-submit:hover {
+  @media (hover: hover) {
+:root:not([data-theme="light"]) .form-submit:hover {
     background: var(--coral);
   }
+}
   /* Referral pill inside register: charcoal-dark bg + chartreuse text */
   :root:not([data-theme="light"]) .referral-pill {
     background: var(--charcoal-dark);
@@ -2122,8 +2167,8 @@ rgba() only appears in :root token definitions, nowhere else.
   :root:not([data-theme="light"]) .card-coral {
     --card-bg:            var(--coral);
     --card-text-main:     var(--charcoal);
-    --card-text-subtitle: var(--cream);
-    --card-text-soft:     var(--cream);
+    --card-text-subtitle: var(--charcoal-dark);
+    --card-text-soft:     var(--charcoal-dark);
     --card-accent:        var(--chartreuse);
     --card-link-bg:       var(--charcoal);
     --card-link-text:     var(--cream);
@@ -2134,11 +2179,23 @@ rgba() only appears in :root token definitions, nowhere else.
   :root:not([data-theme="light"]) .card-chartreuse {
     --card-bg:            var(--chartreuse);
     --card-text-main:     var(--charcoal);
-    --card-text-subtitle: var(--cream);
+    --card-text-subtitle: var(--charcoal);
     --card-text-soft:     var(--charcoal-soft);
     --card-accent:        var(--charcoal);
     --card-link-bg:       var(--charcoal);
     --card-link-text:     var(--cream);
+    border-color: transparent;
+  }
+    /* Cream card in dark mode: Cream surface with Chartreuse button for distinct row contrast */
+  :root:not([data-theme="light"]) .card-cream {
+    --card-bg:            var(--cream);
+    --card-text-main:     var(--charcoal);
+    --card-text-subtitle: var(--charcoal-dark);
+    --card-text-soft:     var(--charcoal-soft);
+    --card-accent:        var(--charcoal);
+    --card-link-bg:       var(--coral);
+    --card-link-text:     var(--charcoal);
+    background: var(--cream);
     border-color: transparent;
   }
 }
@@ -2177,10 +2234,12 @@ rgba() only appears in :root token definitions, nowhere else.
     border-color: var(--cream-on-dark-line);
     color: var(--cream-on-dark-dim);
   }
-  :root:not([data-theme="light"]) .social-link:hover {
+  @media (hover: hover) {
+:root:not([data-theme="light"]) .social-link:hover {
     border-color: var(--chartreuse);
     color: var(--chartreuse);
   }
+}
   :root:not([data-theme="light"]) .footer-base {
     border-top-color: var(--cream-on-dark-line);
   }
@@ -2272,8 +2331,10 @@ html[data-theme="dark"] .form-submit {
   background: var(--charcoal);
   color: var(--cream);
 }
+@media (hover: hover) {
 html[data-theme="dark"] .form-submit:hover {
   background: var(--coral);
+}
 }
 html[data-theme="dark"] .referral-pill {
   background: var(--charcoal-dark);
@@ -2297,8 +2358,8 @@ html[data-theme="dark"] .card-charcoal {
 html[data-theme="dark"] .card-coral {
   --card-bg:            var(--coral);
   --card-text-main:     var(--charcoal);
-  --card-text-subtitle: var(--cream);
-  --card-text-soft:     var(--cream);
+  --card-text-subtitle: var(--charcoal-dark);
+  --card-text-soft:     var(--charcoal-dark);
   --card-accent:        var(--chartreuse);
   --card-link-bg:       var(--charcoal);
   --card-link-text:     var(--cream);
@@ -2307,13 +2368,26 @@ html[data-theme="dark"] .card-coral {
 html[data-theme="dark"] .card-chartreuse {
   --card-bg:            var(--chartreuse);
   --card-text-main:     var(--charcoal);
-  --card-text-subtitle: var(--cream);
+  --card-text-subtitle: var(--charcoal);
   --card-text-soft:     var(--charcoal-soft);
   --card-accent:        var(--charcoal);
   --card-link-bg:       var(--charcoal);
   --card-link-text:     var(--cream);
   border-color: transparent;
 }
+    /* Cream card in dark mode: Cream surface with Chartreuse button for distinct row contrast */
+  html[data-theme="dark"] .card-cream {
+    --card-bg:            var(--cream);
+    --card-text-main:     var(--charcoal);
+    --card-text-subtitle: var(--charcoal-dark);
+    --card-text-soft:     var(--charcoal-soft);
+    --card-accent:        var(--charcoal);
+    --card-link-bg:       var(--coral);
+    --card-link-text:     var(--charcoal-dark);
+    
+    border-color: transparent;
+  }
+
 
 html[data-theme="dark"] {
   --overlay-start: var(--overlay-start-dark);
@@ -2329,9 +2403,11 @@ html[data-theme="dark"] .social-link {
   border-color: var(--cream-on-dark-line);
   color: var(--cream-on-dark-dim);
 }
+@media (hover: hover) {
 html[data-theme="dark"] .social-link:hover {
   border-color: var(--chartreuse);
   color: var(--chartreuse);
+}
 }
 html[data-theme="dark"] .footer-base { border-top-color: var(--cream-on-dark-line); }
 html[data-theme="dark"] .lead-title strong { color: var(--chartreuse); }
@@ -2363,11 +2439,13 @@ html[data-theme="light"] {
   line-height: 1;
   transition: border-color 0.2s, color 0.2s;
 }
+@media (hover: hover) {
 .theme-toggle:hover {
   border-color: var(--chartreuse);
   color: var(--chartreuse);
   opacity: 1;
   transform: none;
+}
 }
 /* ==========================================================
    We Are Energy System CSS v3.5 additions
@@ -2419,6 +2497,95 @@ html[data-theme="light"] {
   text-transform: none;
 }
 .form-card .form-submit { background: var(--coral); color: var(--charcoal-dark); }
+@media (hover: hover) {
 .form-card .form-submit:hover { background: var(--chartreuse); }
+}
 .form-card .form-legal { color: var(--cream); opacity: 0.8; }
 .form-card .form-legal a { color: var(--chartreuse); }
+
+/* ==========================================================
+   v3.6 first-pass additions
+   ========================================================== */
+
+/* Native UI follows the manual dark choice too (light was already handled). */
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Visible keyboard focus. Ring colour follows the surface's text colour,
+   so it contrasts on cream, chartreuse and charcoal sections alike. */
+:focus-visible {
+  outline: 3px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+.card :focus-visible {
+  outline-color: var(--card-text-main);
+}
+
+/* Bootstrap sets `outline: 0` on .accordion-button:focus at the same
+   specificity; this later rule restores the ring. */
+.accordion-button:focus-visible {
+  outline: 3px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+/* Text colour for accents on cream (chartreuse is 1.39:1 there).
+   Specificity is lower than the dark-mode .lead-title strong rules, so those still win. */
+.section-cream .lead-title strong {
+  color: var(--chartreuse-ink);
+}
+
+/* Stable digit widths for counting numbers */
+.stat-number,
+.stat-unit,
+.calc-big-number,
+.calc-result-value,
+.calc-sub span {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Form validation feedback: native :user-invalid plus the .was-validated class
+   the scripts already set on a failed submit. Not colour-only: the label gains text. */
+.register-block input:user-invalid,
+.register-block .was-validated input:invalid {
+  border-color: var(--charcoal-dark);
+  box-shadow: 0 0 0 2px var(--charcoal-dark);
+}
+
+.register-block div:has(> input:user-invalid) > label::after,
+.register-block .was-validated div:has(> input:invalid) > label::after {
+  content: " \2013  please check this field" / "";
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.form-card :is(input, select, textarea):user-invalid,
+.form-card.was-validated :is(input, select, textarea):invalid {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 2px var(--coral);
+}
+
+/* Reduced motion (replaces the earlier block; no !important needed here
+   because it comes last and each selector matches the rule it overrides). */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .hero-photo {
+    transform: scale(1);
+    transition: none;
+  }
+
+  .highlight {
+    background-size: 100% 120%;
+    transition: none;
+  }
+
+  .button,
+  .form-submit,
+  .sticky-cta,
+  .sticky-cta-link,
+  .theme-toggle {
+    transition: none;
+  }
+}

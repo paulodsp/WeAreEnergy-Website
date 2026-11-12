@@ -75,7 +75,7 @@
 
     var fd = new FormData(form);
     extras(fd, code);
-    fetch(CFG.endpoint, { method: 'POST', body: fd })
+    fetch(CFG.endpoint, { method: 'POST',mode: 'no-cors', body: fd })
       .then(function () {
         try { localStorage.setItem('wae_ref_code', code); } catch (err) {}
         track('wae_register', { ref_code: code, referred: !!attr.ref, utm_source: attr.utm_source, utm_campaign: attr.utm_campaign });

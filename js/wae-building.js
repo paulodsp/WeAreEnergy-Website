@@ -35,7 +35,7 @@
     }
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    fetch(W.cfg.buildingEndpoint, { method: 'POST', body: fd })
+    fetch(W.cfg.buildingEndpoint, { method: 'POST',mode: 'no-cors', body: fd })
       .then(function () {
         form.reset();
         btn.textContent = 'Sent';
